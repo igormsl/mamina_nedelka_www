@@ -25,5 +25,6 @@ Caddy маршрутизирует по пути:
 
 ## Источник
 
-Исходник (JSX, ассеты, скриншоты, промт) — в репозитории бота:
-`project/mamina_nedelka/docs/landing/` (`LANDING_PROMPT.md`, `design-system-intake/`, `Mamina Nedelka v2/`).
+Исходник (JSX, ассеты, скриншоты, промт, инструкции) — в репозитории бота:
+`project/mamina_nedelka/docs/landing/` — там `README.md` (навигатор), `claude-design-workflow.md`
+(как собрать), `LANDING_PROMPT.md`, `design-system-intake/`, `generated-site/` (вывод Claude Design).

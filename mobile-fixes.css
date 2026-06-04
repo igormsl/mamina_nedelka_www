@@ -1,27 +1,25 @@
-<style id="mobile-fixes-2026-06-04">
-/* MOBILE FIXES v3 (Claude 2026-06-04): в <head>, !important — переживает React-рендер */
 @media (max-width: 720px){
-  .wrap{ padding:0 16px !important; }
-  .topbar__row{ gap:8px !important; padding:9px 0 !important; }
+  .wrap{ padding:0 22px !important; }
+  .topbar__row{ gap:8px !important; padding-top:9px !important; padding-bottom:9px !important; height:auto !important; }
   .brand__logo{ width:32px !important; height:32px !important; border-radius:10px !important; }
   .brand__name{ font-size:14px !important; }
   .topbar__cta .pill{ padding:8px 12px !important; font-size:12px !important; }
   .topbar__cta .pill .tg-icon{ width:15px !important; height:15px !important; }
   .tabbar{ width:100% !important; margin:0 !important; padding:4px !important; gap:2px !important; justify-content:space-between !important; overflow:visible !important; -webkit-mask-image:none !important; mask-image:none !important; }
-  .tab{ flex:0 1 auto !important; font-size:clamp(10px,2.9vw,12px) !important; padding:7px 6px !important; letter-spacing:-0.3px !important; white-space:nowrap !important; }
+  .tab{ flex:0 1 auto !important; font-size:clamp(10px,2.8vw,12px) !important; padding:7px 5px !important; letter-spacing:-0.3px !important; white-space:nowrap !important; }
   .page{ padding:22px 0 16px !important; }
-  .section{ margin-top:36px !important; }
+  .section{ margin-top:34px !important; }
   .section__title{ font-size:clamp(22px,6vw,30px) !important; }
   .section__sub{ font-size:15px !important; margin-top:10px !important; }
   .hero__title{ font-size:clamp(28px,7.6vw,38px) !important; letter-spacing:-1px !important; }
   .hero__sub{ font-size:15px !important; }
   .value-grid{ grid-template-columns:1fr 1fr !important; gap:10px !important; margin-top:18px !important; }
-  .value-card{ padding:14px 13px !important; gap:8px !important; }
+  .value-card{ padding:15px 14px !important; gap:8px !important; }
   .value-card__icon{ width:36px !important; height:36px !important; font-size:19px !important; border-radius:11px !important; }
   .value-card__title{ font-size:14.5px !important; }
   .value-card__text{ font-size:12.5px !important; line-height:1.4 !important; }
   .plate-grid{ grid-template-columns:1fr 1fr !important; gap:10px !important; margin-top:18px !important; }
-  .plate{ min-height:0 !important; padding:15px 14px !important; }
+  .plate{ min-height:0 !important; padding:16px 14px !important; }
   .plate__icon{ width:36px !important; height:36px !important; font-size:18px !important; }
   .plate__title{ font-size:15px !important; margin-top:10px !important; }
   .plate__text{ font-size:12.5px !important; line-height:1.4 !important; margin-top:5px !important; }
@@ -43,8 +41,8 @@
   .weekcard__vis{ padding:26px 16px !important; }
   .weekcard__emoji{ width:104px !important; height:104px !important; font-size:50px !important; }
   .trustbar{ padding:18px 16px !important; gap:10px 16px !important; }
-  .review-grid{ columns:2 !important; column-gap:10px !important; margin-top:18px !important; }
-  .review{ margin-bottom:10px !important; }
+  .review-grid{ display:grid !important; grid-template-columns:1fr 1fr !important; gap:10px !important; column-gap:10px !important; columns:auto !important; margin-top:18px !important; }
+  .review{ margin-bottom:0 !important; break-inside:auto !important; }
   .review__av{ width:34px !important; height:34px !important; font-size:15px !important; }
   .review__name{ font-size:13px !important; }
   .review__text{ font-size:12px !important; line-height:1.45 !important; }
@@ -59,4 +57,3 @@
   .hero{ padding:22px 18px !important; }
   .hero__cta .pill{ width:100% !important; }
 }
-</style>

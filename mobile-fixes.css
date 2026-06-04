@@ -1,49 +1,92 @@
-<style id="mobile-fixes-2026-06-04">
-/* ===== MOBILE FIXES (Claude 2026-06-04): грузится последним, перекрывает слабый мобайл ===== */
+/* ===== MOBILE FIXES v2 (Claude 2026-06-04): компактная сетка, нав в одну строку ===== */
 @media (max-width: 720px){
-  /* Верхняя панель: компактная кнопка + вкладки отдельной строкой со скролл-подсказкой */
-  .topbar__row{ gap:10px 12px; padding:10px 0; }
-  .topbar__cta .pill{ padding:10px 15px; font-size:13.5px; }
-  .topbar__cta .pill .tg-icon{ width:16px; height:16px; }
-  .tabbar{ order:3; width:100%; margin:0;
-           -webkit-mask-image:linear-gradient(90deg,#000 86%,transparent);
-           mask-image:linear-gradient(90deg,#000 86%,transparent); }
-  .tab{ font-size:13px; padding:8px 13px; }
+  .wrap{ padding:0 16px; }
 
-  /* Плотнее по вертикали, заголовки не гигантские */
-  .page{ padding:26px 0 18px; }
-  .section{ margin-top:42px; }
-  .hero__title{ font-size:clamp(29px,8vw,40px); letter-spacing:-1px; }
-  .section__title{ font-size:clamp(24px,6.6vw,34px); }
+  /* Верхняя панель: всё в одну строку, вкладки без горизонтального скролла */
+  .topbar__row{ gap:8px; padding:9px 0; }
+  .brand__logo{ width:32px; height:32px; border-radius:10px; }
+  .brand__name{ font-size:14px; }
+  .topbar__cta .pill{ padding:8px 12px; font-size:12px; }
+  .topbar__cta .pill .tg-icon{ width:15px; height:15px; }
+  .tabbar{ order:3; width:100%; margin:0; padding:4px; gap:2px;
+           justify-content:space-between; overflow:visible;
+           -webkit-mask-image:none; mask-image:none; }
+  .tab{ flex:0 1 auto; font-size:clamp(10px,2.9vw,12px); padding:7px 6px;
+        letter-spacing:-0.3px; white-space:nowrap; }
 
-  /* AI-чат: без вложенного скролла — сообщения подряд, страница листается нормально */
-  .chat{ height:auto !important; max-height:none !important; }
+  /* Плотнее по вертикали, мельче заголовки */
+  .page{ padding:22px 0 16px; }
+  .section{ margin-top:36px; }
+  .section__title{ font-size:clamp(22px,6vw,30px); }
+  .section__sub{ font-size:15px; margin-top:10px; }
+  .eyebrow{ font-size:11px; }
+  .hero__title{ font-size:clamp(28px,7.6vw,38px); letter-spacing:-1px; }
+  .hero__sub{ font-size:15px; }
+
+  /* Ценности и категории — компактная сетка 2x2 */
+  .value-grid{ grid-template-columns:1fr 1fr; gap:10px; margin-top:18px; }
+  .value-card{ padding:14px 13px; gap:8px; }
+  .value-card__icon{ width:36px; height:36px; font-size:19px; border-radius:11px; }
+  .value-card__title{ font-size:14.5px; }
+  .value-card__text{ font-size:12.5px; line-height:1.4; }
+  .plate-grid{ grid-template-columns:1fr 1fr; gap:10px; margin-top:18px; }
+  .plate{ min-height:0; padding:15px 14px; }
+  .plate__icon{ width:36px; height:36px; font-size:18px; }
+  .plate__title{ font-size:15px; margin-top:10px; }
+  .plate__text{ font-size:12.5px; line-height:1.4; margin-top:5px; }
+
+  /* AI: компактная левая колонка + чат без вложенного скролла */
+  .ai-hero{ gap:18px; }
+  .feature-row{ gap:11px; }
+  .feature-row + .feature-row{ margin-top:12px; }
+  .feature-row__icon{ width:36px; height:36px; font-size:18px; }
+  .feature-row__title{ font-size:15px; }
+  .feature-row__text{ font-size:13px; }
+  .chat{ height:auto !important; max-height:none !important; padding:14px; }
   .chat__thread{ overflow:visible !important; max-height:none !important;
                  -webkit-mask-image:none !important; mask-image:none !important; padding:12px 0 2px; }
-  .bubble{ max-width:90%; }
+  .bubble{ max-width:90%; font-size:13.5px; }
+  .limit-grid{ grid-template-columns:repeat(3,1fr); gap:8px; }
+  .limit-card{ padding:14px 8px; }
+  .limit-card__num{ font-size:30px; }
+  .limit-card__plan{ font-size:11px; }
+  .limit-card__unit{ font-size:11.5px; }
 
-  /* Факты: пилюли со скролл-подсказкой; значение слайдера не обрезается */
-  .weekpills{ -webkit-mask-image:linear-gradient(90deg,#000 86%,transparent);
-              mask-image:linear-gradient(90deg,#000 86%,transparent); }
+  /* Факты: значение слайдера не режется; пилюли мельче */
+  .weekpills{ -webkit-mask-image:none; mask-image:none; gap:6px; }
+  .weekpill{ padding:7px 12px; font-size:13px; }
   .weekslider__row{ flex-wrap:wrap; }
   .weekslider__val{ min-width:0; width:100%; text-align:left; margin-top:2px; font-size:15px; }
+  .weekcard__body{ padding:20px 16px; }
+  .weekcard__vis{ padding:26px 16px; }
+  .weekcard__emoji{ width:104px; height:104px; font-size:50px; }
+  .weekcard__fact{ font-size:14.5px; }
 
-  /* Тарифы: естественный порядок Free -> Basic -> Premium; таблицу-сравнение прячем (дублирует карточки) */
-  .price--pop{ order:0; }
-  .price-grid{ gap:16px; }
+  /* Отзывы — сетка в 2 колонки, компактные карточки */
+  .trustbar{ padding:18px 16px; gap:10px 16px; }
+  .trustbar__txt{ font-size:15px; }
+  .review-grid{ columns:2; column-gap:10px; margin-top:18px; }
+  .review{ margin-bottom:10px; }
+  .review__head{ gap:9px; margin-bottom:8px; }
+  .review__av{ width:34px; height:34px; font-size:15px; }
+  .review__name{ font-size:13px; }
+  .review__week{ font-size:11px; }
+  .review__text{ font-size:12px; line-height:1.45; }
+  .stars{ margin-bottom:8px; }
+
+  /* Тарифы: порядок Free -> Basic -> Premium (надёжно); таблицу прячем */
+  .price--pop{ order:0 !important; }
+  .price-grid{ gap:14px; }
+  .price{ padding:22px 20px; }
   .matrix-wrap{ display:none; }
 
-  /* Меньше дёрганья от тяжёлых анимаций на телефоне */
+  /* CTA-секция мельче; меньше дёрганья анимаций */
+  .cta-band__title{ font-size:clamp(22px,5.6vw,30px); }
+  .cta-band__sub{ font-size:15px; }
   .reveal--blur{ filter:none; }
 }
 @media (max-width:560px){
-  .hero{ padding:24px 20px; }
+  .hero{ padding:22px 18px; }
   .hero__cta{ gap:10px; }
   .hero__cta .pill{ width:100%; }
-  .plate{ min-height:0; padding:20px; }
-  .weekcard__body{ padding:22px 20px; }
-  .weekcard__vis{ padding:30px 20px; }
-  .weekcard__emoji{ width:108px; height:108px; font-size:54px; }
-  .trustbar{ padding:20px; gap:10px 18px; }
 }
-</style>

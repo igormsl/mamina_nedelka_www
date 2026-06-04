@@ -1,12 +1,12 @@
 @media (max-width: 720px){
-  .wrap{ padding:0 32px !important; }
+  .wrap{ padding:0 24px !important; }
   .topbar__row{ gap:8px !important; padding-top:9px !important; padding-bottom:9px !important; height:auto !important; }
   .topbar__cta{ display:none !important; }
   .brand__logo{ width:30px !important; height:30px !important; border-radius:9px !important; }
   .brand__name{ font-size:14px !important; }
   .tabbar{ width:100% !important; margin:0 !important; padding:4px !important; gap:2px !important; justify-content:space-between !important; overflow:visible !important; -webkit-mask-image:none !important; mask-image:none !important; }
   .tab{ flex:0 1 auto !important; font-size:clamp(10px,2.8vw,12px) !important; padding:7px 5px !important; letter-spacing:-0.3px !important; white-space:nowrap !important; }
-  .page{ padding:20px 32px 16px !important; }
+  .page{ padding:20px 24px 16px !important; }
   .section{ margin-top:32px !important; }
   .section__title{ font-size:clamp(21px,5.6vw,28px) !important; }
   .section__sub{ font-size:14.5px !important; margin-top:9px !important; }

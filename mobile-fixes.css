@@ -6,7 +6,7 @@
   .brand__name{ font-size:14px !important; }
   .tabbar{ width:100% !important; margin:0 !important; padding:4px !important; gap:2px !important; justify-content:space-between !important; overflow:visible !important; -webkit-mask-image:none !important; mask-image:none !important; }
   .tab{ flex:0 1 auto !important; font-size:clamp(10px,2.8vw,12px) !important; padding:7px 5px !important; letter-spacing:-0.3px !important; white-space:nowrap !important; }
-  .page{ padding:20px 0 16px !important; }
+  .page{ padding:20px 32px 16px !important; }
   .section{ margin-top:32px !important; }
   .section__title{ font-size:clamp(21px,5.6vw,28px) !important; }
   .section__sub{ font-size:14.5px !important; margin-top:9px !important; }

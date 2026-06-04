@@ -5,7 +5,8 @@
 - **Живёт на:** `https://maminanedelka.ru/` (apex), на казахстанском VPS, отдаётся Caddy как статика.
 - **CTA:** ведёт в бота `https://t.me/mamina_nedelka_bot`; поддержка — `@mamina_nedelka_support_bot`.
 - `index.html` — самодостаточный офлайн-файл (шрифты Bricolage Grotesque + Manrope и картинки вшиты base64). Сгенерирован в Claude Design по дизайн-системе мини-аппа.
-- `mobile-fixes.css` — ручной патч мобильной раскладки, **впаян в `index.html`** блоком `<style id="mobile-fixes-2026-06-04">` перед `</body>` (мобайл «из коробки» у Claude Design слабый). ⚠️ При повторной генерации в Claude Design патч теряется — впаять заново.
+- `mobile-fixes.css` — патч мобильной раскладки (компактные сетки 2-кол, нав в одну строку, AI-чат без вложенного скролла, порядок тарифов). Мобайл «из коробки» у Claude Design слабый.
+- `apply-mobile-fixes.py` — впаивает `mobile-fixes.css` в `index.html`. ⚠️ Простой `<style>` НЕ работает: бандл пересоздаёт документ из сериализованной строки и стирает статические теги, поэтому CSS вписывается ВНУТРЬ этой строки (скрипт делает это сам). **После каждой новой генерации в Claude Design:** `python3 apply-mobile-fixes.py`, затем коммит и `cp index.html /srv/maminanedelka_www/`.
 
 ## Архитектура хостинга (важно)
 

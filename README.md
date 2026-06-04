@@ -5,6 +5,7 @@
 - **Живёт на:** `https://maminanedelka.ru/` (apex), на казахстанском VPS, отдаётся Caddy как статика.
 - **CTA:** ведёт в бота `https://t.me/mamina_nedelka_bot`; поддержка — `@mamina_nedelka_support_bot`.
 - `index.html` — самодостаточный офлайн-файл (шрифты Bricolage Grotesque + Manrope и картинки вшиты base64). Сгенерирован в Claude Design по дизайн-системе мини-аппа.
+- `mobile-fixes.css` — ручной патч мобильной раскладки, **впаян в `index.html`** блоком `<style id="mobile-fixes-2026-06-04">` перед `</body>` (мобайл «из коробки» у Claude Design слабый). ⚠️ При повторной генерации в Claude Design патч теряется — впаять заново.
 
 ## Архитектура хостинга (важно)
 

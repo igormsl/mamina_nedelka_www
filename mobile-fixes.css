@@ -1,0 +1,49 @@
+<style id="mobile-fixes-2026-06-04">
+/* ===== MOBILE FIXES (Claude 2026-06-04): грузится последним, перекрывает слабый мобайл ===== */
+@media (max-width: 720px){
+  /* Верхняя панель: компактная кнопка + вкладки отдельной строкой со скролл-подсказкой */
+  .topbar__row{ gap:10px 12px; padding:10px 0; }
+  .topbar__cta .pill{ padding:10px 15px; font-size:13.5px; }
+  .topbar__cta .pill .tg-icon{ width:16px; height:16px; }
+  .tabbar{ order:3; width:100%; margin:0;
+           -webkit-mask-image:linear-gradient(90deg,#000 86%,transparent);
+           mask-image:linear-gradient(90deg,#000 86%,transparent); }
+  .tab{ font-size:13px; padding:8px 13px; }
+
+  /* Плотнее по вертикали, заголовки не гигантские */
+  .page{ padding:26px 0 18px; }
+  .section{ margin-top:42px; }
+  .hero__title{ font-size:clamp(29px,8vw,40px); letter-spacing:-1px; }
+  .section__title{ font-size:clamp(24px,6.6vw,34px); }
+
+  /* AI-чат: без вложенного скролла — сообщения подряд, страница листается нормально */
+  .chat{ height:auto !important; max-height:none !important; }
+  .chat__thread{ overflow:visible !important; max-height:none !important;
+                 -webkit-mask-image:none !important; mask-image:none !important; padding:12px 0 2px; }
+  .bubble{ max-width:90%; }
+
+  /* Факты: пилюли со скролл-подсказкой; значение слайдера не обрезается */
+  .weekpills{ -webkit-mask-image:linear-gradient(90deg,#000 86%,transparent);
+              mask-image:linear-gradient(90deg,#000 86%,transparent); }
+  .weekslider__row{ flex-wrap:wrap; }
+  .weekslider__val{ min-width:0; width:100%; text-align:left; margin-top:2px; font-size:15px; }
+
+  /* Тарифы: естественный порядок Free -> Basic -> Premium; таблицу-сравнение прячем (дублирует карточки) */
+  .price--pop{ order:0; }
+  .price-grid{ gap:16px; }
+  .matrix-wrap{ display:none; }
+
+  /* Меньше дёрганья от тяжёлых анимаций на телефоне */
+  .reveal--blur{ filter:none; }
+}
+@media (max-width:560px){
+  .hero{ padding:24px 20px; }
+  .hero__cta{ gap:10px; }
+  .hero__cta .pill{ width:100%; }
+  .plate{ min-height:0; padding:20px; }
+  .weekcard__body{ padding:22px 20px; }
+  .weekcard__vis{ padding:30px 20px; }
+  .weekcard__emoji{ width:108px; height:108px; font-size:54px; }
+  .trustbar{ padding:20px; gap:10px 18px; }
+}
+</style>

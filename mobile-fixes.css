@@ -1,5 +1,5 @@
 @media (max-width: 720px){
-  .wrap{ padding:0 24px !important; }
+  .wrap{ padding:0 32px !important; }
   .topbar__row{ gap:8px !important; padding-top:9px !important; padding-bottom:9px !important; height:auto !important; }
   .topbar__cta{ display:none !important; }
   .brand__logo{ width:30px !important; height:30px !important; border-radius:9px !important; }

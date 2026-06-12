@@ -13,6 +13,12 @@ Apex `maminanedelka.ru` **одновременно** обслуживает жи
 
 Любая правка Caddy-конфига apex может убить вебхук. Деплой/откат лендинга — `../VPS CLAUDE CODE RULLES/12-mamina-landing.md`.
 
+## Блог `/blog/` (SEO-статьи)
+
+Статика рядом с лендингом: `blog/<slug>.html` (источник — `../mamina_marketing/vc_content/content/seo/`,
+сборка `python3 build_blog.py`, деплой `cp -r blog sitemap.xml robots.txt /srv/maminanedelka_www/` без sudo).
+⚠️ URL только плоские `.html` — каталоги (`/blog/`) проваливаются в SPA-лендинг (см. README § Блог).
+
 ## Как обновить лендинг
 
 1. Перегенерировать/поправить в Claude Design → экспорт Standalone HTML → заменить `index.html`.

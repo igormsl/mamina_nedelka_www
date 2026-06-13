@@ -41,11 +41,13 @@ SECTIONS = [
      ["analizy", "skrining", "vtoroy-skrining", "uzi-grafik"]),
     ("💛", "Самочувствие и тело", "feel",
      ["toksikoz", "oteki", "pribavka-vesa", "pitanie", "sheveleniya-nachalo",
-      "schitat-sheveleniya", "kogda-viden-zhivot", "bessonnitsa", "prostuda"]),
+      "schitat-sheveleniya", "kogda-viden-zhivot", "bessonnitsa", "prostuda",
+      "izzhoga", "zapor", "bolit-poyasnitsa", "vydeleniya"]),
     ("🎒", "Подготовка к родам", "birth",
      ["rodom", "podgotovka-k-rodam", "predvestniki", "shvatki"]),
     ("📱", "Практическое", "misc",
-     ["dekret", "perelyoty", "krasit-volosy", "sravnenie-prilozheniy"]),
+     ["dekret", "perelyoty", "krasit-volosy", "mozhno-li-kofe",
+      "sravnenie-prilozheniy"]),
 ]
 SECTION_OF = {slug: name for _, name, _, slugs in SECTIONS for slug in slugs}
 FALLBACK_SECTION = ("📌", "Ещё статьи")
@@ -58,7 +60,8 @@ EMOJI = {
     "28-nedelya": "🍆", "30-nedelya": "🥥", "32-nedelya": "🍈", "34-nedelya": "🍈",
     "36-nedelya": "🥭", "38-nedelya": "🎃", "40-nedelya": "🍉",
     "kogda-viden-zhivot": "🤰", "bessonnitsa": "😴", "perelyoty": "✈️",
-    "krasit-volosy": "💇‍♀️", "prostuda": "🤧",
+    "krasit-volosy": "💇‍♀️", "prostuda": "🤧", "izzhoga": "🔥", "zapor": "🌿",
+    "bolit-poyasnitsa": "🧘", "mozhno-li-kofe": "☕", "vydeleniya": "🤍",
     "analizy": "🩺", "skrining": "🔬", "vtoroy-skrining": "🔍", "uzi-grafik": "📅",
     "toksikoz": "🍵", "oteki": "💧", "pribavka-vesa": "⚖️", "pitanie": "🥗",
     "sheveleniya-nachalo": "🦋", "schitat-sheveleniya": "🦶",

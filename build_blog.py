@@ -32,13 +32,18 @@ TODAY = date.today().isoformat()
 MAX_H2 = 65  # однострочный блок короче этого и без концевой пунктуации = подзаголовок
 
 SECTIONS = [
-    ("🤰", "Беременность по неделям", ["12-nedelya", "20-nedelya", "30-nedelya"]),
-    ("🩺", "Обследования и анализы", ["analizy", "skrining", "vtoroy-skrining", "uzi-grafik"]),
-    ("💛", "Самочувствие и тело", ["toksikoz", "oteki", "pribavka-vesa", "pitanie",
-                                  "sheveleniya-nachalo", "schitat-sheveleniya"]),
-    ("🎒", "Подготовка к родам", ["rodom", "podgotovka-k-rodam", "predvestniki", "shvatki"]),
-    ("📱", "Практическое", ["dekret", "sravnenie-prilozheniy"]),
+    ("🤰", "Беременность по неделям", "weeks",
+     ["12-nedelya", "20-nedelya", "30-nedelya"]),
+    ("🩺", "Обследования и анализы", "checkups",
+     ["analizy", "skrining", "vtoroy-skrining", "uzi-grafik"]),
+    ("💛", "Самочувствие и тело", "feel",
+     ["toksikoz", "oteki", "pribavka-vesa", "pitanie",
+      "sheveleniya-nachalo", "schitat-sheveleniya"]),
+    ("🎒", "Подготовка к родам", "birth",
+     ["rodom", "podgotovka-k-rodam", "predvestniki", "shvatki"]),
+    ("📱", "Практическое", "misc", ["dekret", "sravnenie-prilozheniy"]),
 ]
+SECTION_OF = {slug: name for _, name, _, slugs in SECTIONS for slug in slugs}
 FALLBACK_SECTION = ("📌", "Ещё статьи")
 
 # Эмодзи-иконка статьи (карточки индекса, шапка статьи, related)
@@ -120,12 +125,12 @@ color:var(--accent);opacity:.08;letter-spacing:-2px}
 box-shadow:0 2px 10px rgba(42,27,71,.06);overflow:hidden}
 .ahead .bigwk{position:absolute;right:14px;top:-18px;font-size:110px;font-weight:800;
 color:var(--accent);opacity:.07;letter-spacing:-4px}
-.ahead .fr{position:absolute;right:20px;bottom:14px;font-size:44px;transform:rotate(-8deg)}
+.ahead .fr{position:absolute;right:16px;bottom:12px;font-size:38px;transform:rotate(-8deg)}
 .chiprow{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
 .chip{background:var(--soft);color:var(--accent);border-radius:999px;padding:3px 12px;
 font-size:12.5px;font-weight:800;white-space:nowrap}
 .chip.alt{background:var(--peach);color:#B0683A}
-.ahead h1{font-size:24px;line-height:1.3;letter-spacing:-.3px;text-wrap:balance;max-width:24ch}
+.ahead h1{font-size:24px;line-height:1.3;letter-spacing:-.3px;text-wrap:balance;padding-right:52px}
 .block{background:#fff;border-radius:22px;padding:20px 22px;margin-top:14px;
 box-shadow:0 2px 10px rgba(42,27,71,.06)}
 .block h2{display:flex;align-items:center;gap:10px;font-size:18.5px;margin-bottom:10px;text-wrap:balance}
@@ -141,6 +146,20 @@ padding:22px;margin-top:16px;display:flex;align-items:center;gap:16px}
 .rel .t{font-weight:800;font-size:17px;margin-bottom:10px}
 footer{color:var(--muted);font-size:13px;margin-top:34px;text-align:center;padding:0 10px}
 footer a{font-weight:700}
+html{scroll-behavior:smooth}
+.wk.more{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+.wk.more:hover{background:#fff}
+.intro{background:#fff;border-radius:20px;padding:18px 20px;margin-top:2px;
+box-shadow:0 2px 10px rgba(42,27,71,.06)}
+.intro p{font-size:15.5px;color:var(--ink);margin:0 0 14px}
+.hubs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:600px){.hubs{grid-template-columns:repeat(5,1fr)}}
+.hub{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;
+background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:12px 8px;
+text-decoration:none;color:var(--ink);font-weight:800;font-size:12.5px;line-height:1.3;
+transition:transform .12s}
+.hub:hover{transform:translateY(-2px);background:var(--soft)}
+.hub span{font-size:24px}
 """
 
 HEAD = """<!doctype html>
@@ -247,8 +266,12 @@ def jsonld_article(a: dict, url: str) -> str:
             + json.dumps(data, ensure_ascii=False) + "</script>")
 
 
+def is_week_article(a: dict) -> bool:
+    return a["slug"].endswith("-nedelya")
+
+
 def card(a: dict, i: int) -> str:
-    bigwk = f'<span class="bigwk">{a["week"]}</span>' if a["week"] else ""
+    bigwk = f'<span class="bigwk">{a["week"]}</span>' if is_week_article(a) else ""
     return (f'<a class="card" href="{a["slug"]}.html">{bigwk}'
             f'<span class="ic {ICON_BG[i % len(ICON_BG)]}">{EMOJI.get(a["slug"], "🌸")}</span>'
             f'<div><b>{esc(a["title"])}</b>'
@@ -268,12 +291,14 @@ def render_article(a: dict, arts: list) -> str:
                          jsonld=jsonld_article(a, url))]
     parts.append('<a class="crumb" href="index.html">← Все статьи</a>')
     chips = ""
-    if a["week"]:
+    if is_week_article(a):
         chips += f'<span class="chip">неделя {a["week"]}</span>'
         chips += f'<span class="chip alt">{trimester(a["week"])}</span>'
     else:
-        chips += '<span class="chip">полезное</span>'
-    bigwk = f'<span class="bigwk">{a["week"]}</span>' if a["week"] else ""
+        chips += f'<span class="chip">{esc(SECTION_OF.get(a["slug"], "полезное"))}</span>'
+        if a["week"]:
+            chips += f'<span class="chip alt">{trimester(a["week"])}</span>'
+    bigwk = f'<span class="bigwk">{a["week"]}</span>' if is_week_article(a) else ""
     fruit = f'<span class="fr">{EMOJI.get(a["slug"], "🌸")}</span>'
     parts.append(f'<div class="ahead">{bigwk}{fruit}'
                  f'<div class="chiprow">{chips}</div>'
@@ -315,10 +340,10 @@ def render_article(a: dict, arts: list) -> str:
 def render_index(arts: list) -> str:
     url = f"{BASE}/blog/index.html"
     by_slug = {a["slug"]: a for a in arts}
-    weeks = sorted({a["week"] for a in arts if a["week"]})
-    ribbon = "".join(
-        f'<a class="wk" href="{next(x for x in arts if x["week"] == w)["slug"]}.html">'
-        f"нед.<b>{w}</b></a>" for w in weeks)
+    week_arts = sorted((a for a in arts if is_week_article(a)), key=lambda x: x["week"])
+    ribbon = "".join(f'<a class="wk" href="{a["slug"]}.html">нед.<b>{a["week"]}</b></a>'
+                     for a in week_arts)
+    ribbon += f'<a class="wk more" href="{BOT}">все 42<b>в боте →</b></a>'
     headextra = ("<h1>Спокойные статьи для будущих мам</h1>"
                  '<p class="sub">Что происходит с малышом по неделям, какие обследования '
                  "когда и как собраться в&nbsp;роддом. Ориентиры, а не назначения — "
@@ -330,14 +355,23 @@ def render_index(arts: list) -> str:
              "обследования когда, как подготовиться к родам. Без алармизма, решает врач.",
         url=url, ogtype="website", base=BASE, css=CSS, bot=BOT, short="",
         headextra=headextra, jsonld="")]
+    hubs = "".join(f'<a class="hub" href="#{anchor}"><span>{em}</span>{esc(name)}</a>'
+                   for em, name, anchor, _ in SECTIONS)
+    parts.append('<div class="intro">'
+                 "<p><b>Это блог «Маминой недельки»</b> — гида по беременности в Telegram. "
+                 "Здесь — спокойные статьи по темам, которые чаще всего тревожат: выбирайте "
+                 "раздел, а понедельный календарь (все 42 недели, чек-листы и дневник) "
+                 "живёт в&nbsp;боте.</p>"
+                 f'<div class="hubs">{hubs}</div></div>')
     placed = set()
     i = 0
-    for em, name, slugs in SECTIONS:
+    for em, name, anchor, slugs in SECTIONS:
         items = [by_slug[s] for s in slugs if s in by_slug]
         placed.update(x["slug"] for x in items)
         if not items:
             continue
-        parts.append(f'<div class="sec"><span class="em">{em}</span> {esc(name)}</div>')
+        parts.append(f'<div class="sec" id="{anchor}"><span class="em">{em}</span> '
+                     f"{esc(name)}</div>")
         parts.append('<div class="row">'
                      + "".join(card(a, i + j) for j, a in
                                enumerate(sorted(items, key=lambda x: x["week"])))

@@ -33,9 +33,10 @@ MAX_H2 = 65  # однострочный блок короче этого и бе
 
 SECTIONS = [
     ("🤰", "Беременность по неделям", "weeks",
-     ["5-nedelya", "8-nedelya", "12-nedelya", "16-nedelya", "20-nedelya",
-      "24-nedelya", "28-nedelya", "30-nedelya", "34-nedelya", "38-nedelya",
-      "40-nedelya"]),
+     ["5-nedelya", "6-nedelya", "8-nedelya", "10-nedelya", "12-nedelya",
+      "14-nedelya", "16-nedelya", "18-nedelya", "20-nedelya", "22-nedelya",
+      "24-nedelya", "26-nedelya", "28-nedelya", "30-nedelya", "32-nedelya",
+      "34-nedelya", "36-nedelya", "38-nedelya", "40-nedelya"]),
     ("🩺", "Обследования и анализы", "checkups",
      ["analizy", "skrining", "vtoroy-skrining", "uzi-grafik"]),
     ("💛", "Самочувствие и тело", "feel",
@@ -51,9 +52,11 @@ FALLBACK_SECTION = ("📌", "Ещё статьи")
 
 # Эмодзи-иконка статьи (карточки индекса, шапка статьи, related)
 EMOJI = {
-    "5-nedelya": "🍊", "8-nedelya": "🍓", "12-nedelya": "🍋", "16-nedelya": "🥑",
-    "20-nedelya": "🍌", "24-nedelya": "🌽", "28-nedelya": "🍆", "30-nedelya": "🥥",
-    "34-nedelya": "🍈", "38-nedelya": "🎃", "40-nedelya": "🍉",
+    "5-nedelya": "🍊", "6-nedelya": "🌱", "8-nedelya": "🫐", "10-nedelya": "🍓",
+    "12-nedelya": "🍑", "14-nedelya": "🍋", "16-nedelya": "🥑", "18-nedelya": "🫑",
+    "20-nedelya": "🍌", "22-nedelya": "🥭", "24-nedelya": "🌽", "26-nedelya": "🥒",
+    "28-nedelya": "🍆", "30-nedelya": "🥥", "32-nedelya": "🍈", "34-nedelya": "🍈",
+    "36-nedelya": "🥭", "38-nedelya": "🎃", "40-nedelya": "🍉",
     "kogda-viden-zhivot": "🤰", "bessonnitsa": "😴", "perelyoty": "✈️",
     "krasit-volosy": "💇‍♀️", "prostuda": "🤧",
     "analizy": "🩺", "skrining": "🔬", "vtoroy-skrining": "🔍", "uzi-grafik": "📅",
@@ -185,7 +188,7 @@ HEAD = """<!doctype html>
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{base}/blog/assets/logo-96.png">
+<meta property="og:image" content="{base}/blog/assets/og-cover.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

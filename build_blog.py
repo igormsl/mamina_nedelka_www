@@ -6,6 +6,10 @@ keyword:/week_ref:/intent:, пустая, заголовок, тело абза�
 однострочный блок без точки на конце; в конце CTA-абзац со ссылкой на бота и
 блок «ФОТО-ИДЕИ:», который в вёрстку не идёт).
 
+Дизайн — гибрид «как мини-апп» + фруктовые акценты (выбор Игоря 2026-06-13,
+мокапы _probe/sketches/): градиентная шапка, лента недель, статья карточками,
+большие полупрозрачные цифры недель, эмодзи-иконки секций.
+
 Выход: blog/<slug>.html (плоские файлы — apex-Caddy отдаёт только реальные
 файлы, каталоги проваливаются в SPA-лендинг), blog/index.html, sitemap.xml,
 robots.txt. Запуск: python3 build_blog.py [путь-к-папке-статей]
@@ -28,50 +32,115 @@ TODAY = date.today().isoformat()
 MAX_H2 = 65  # однострочный блок короче этого и без концевой пунктуации = подзаголовок
 
 SECTIONS = [
-    ("Беременность по неделям", ["12-nedelya", "20-nedelya", "30-nedelya"]),
-    ("Обследования и анализы", ["analizy", "skrining", "vtoroy-skrining", "uzi-grafik"]),
-    ("Самочувствие и тело", ["toksikoz", "oteki", "pribavka-vesa", "pitanie",
-                             "sheveleniya-nachalo", "schitat-sheveleniya"]),
-    ("Подготовка к родам", ["rodom", "podgotovka-k-rodam", "predvestniki", "shvatki"]),
-    ("Практическое", ["dekret", "sravnenie-prilozheniy"]),
+    ("🤰", "Беременность по неделям", ["12-nedelya", "20-nedelya", "30-nedelya"]),
+    ("🩺", "Обследования и анализы", ["analizy", "skrining", "vtoroy-skrining", "uzi-grafik"]),
+    ("💛", "Самочувствие и тело", ["toksikoz", "oteki", "pribavka-vesa", "pitanie",
+                                  "sheveleniya-nachalo", "schitat-sheveleniya"]),
+    ("🎒", "Подготовка к родам", ["rodom", "podgotovka-k-rodam", "predvestniki", "shvatki"]),
+    ("📱", "Практическое", ["dekret", "sravnenie-prilozheniy"]),
 ]
-FALLBACK_SECTION = "Практическое"
+FALLBACK_SECTION = ("📌", "Ещё статьи")
+
+# Эмодзи-иконка статьи (карточки индекса, шапка статьи, related)
+EMOJI = {
+    "12-nedelya": "🍋", "20-nedelya": "🍌", "30-nedelya": "🥥",
+    "analizy": "🩺", "skrining": "🔬", "vtoroy-skrining": "🔍", "uzi-grafik": "📅",
+    "toksikoz": "🍵", "oteki": "💧", "pribavka-vesa": "⚖️", "pitanie": "🥗",
+    "sheveleniya-nachalo": "🦋", "schitat-sheveleniya": "🦶",
+    "rodom": "🎒", "podgotovka-k-rodam": "📋", "predvestniki": "⏰", "shvatki": "🌊",
+    "dekret": "📄", "sravnenie-prilozheniy": "📱",
+}
+ICON_BG = ["i-lav", "i-peach", "i-pink", "i-blue"]
+
+# Эмодзи подзаголовков внутри статьи — по ключевым словам (первое совпадение)
+H2_EMOJI = [
+    ("малыш", "👶"), ("ребён", "👶"), ("мам", "💛"), ("врач", "🩺"), ("анализ", "🩺"),
+    ("скрининг", "🔬"), ("узи", "🔍"), ("сумк", "🎒"), ("документ", "📄"),
+    ("чек-лист", "✅"), ("итог", "✅"), ("не стоит", "⚠️"), ("ошибк", "⚠️"),
+    ("пита", "🥗"), ("еда", "🥗"), ("сон", "😴"), ("шевел", "🦋"), ("вес", "⚖️"),
+    ("отек", "💧"), ("отёк", "💧"), ("дом", "🏠"), ("быт", "🏠"), ("настро", "🌿"),
+    ("когда", "⏰"), ("срок", "📅"), ("недел", "📅"), ("зачем", "💡"), ("вопрос", "💬"),
+]
+
+
+def h2_icon(text: str) -> str:
+    low = text.lower()
+    for key, em in H2_EMOJI:
+        if key in low:
+            return em
+    return "🌸"
+
 
 CSS = """
-:root{--ink:#2A1B47;--muted:#8A7FA0;--accent:#7A65C2;--soft:#E6DFFA;--line:#DDD1F4;--bg:#FAFAFD}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
-font-family:Manrope,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.65;font-size:17px}
+:root{--ink:#2A1B47;--muted:#8A7FA0;--accent:#7A65C2;--soft:#E6DFFA;--line:#DDD1F4;--bg:#F4F1FB;
+--peach:#FCE6D0;--pink:#F4B6C9;--blue:#C5DAEE;--yellow:#FCDA68;--rose:#D26B82}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Manrope,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);
+color:var(--ink);line-height:1.65;font-size:16.5px}
 a{color:var(--accent)}
-.top{display:flex;align-items:center;gap:10px;max-width:760px;margin:0 auto;padding:14px 20px}
-.top img{width:30px;height:30px;border-radius:8px}
-.top .brand{font-weight:800;color:var(--ink);text-decoration:none;font-size:17px}
-.top nav{margin-left:auto;display:flex;gap:14px;align-items:center}
-.top nav a{text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap}
-.btn{display:inline-block;background:var(--accent);color:#fff!important;text-decoration:none;
-font-weight:700;padding:9px 16px;border-radius:12px;font-size:15px}
-.wrap{max-width:680px;margin:0 auto;padding:8px 20px 48px}
-.crumb{font-size:14px;margin:10px 0 0}.crumb a{text-decoration:none;font-weight:600}
-h1{font-size:30px;line-height:1.25;letter-spacing:-.3px;margin:14px 0 6px;font-weight:800}
-.meta{color:var(--muted);font-size:14px;margin:0 0 18px}
-h2{font-size:21px;margin:30px 0 8px;font-weight:800;letter-spacing:-.2px}
-p{margin:0 0 14px}
-.cta{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:30px 0}
-.cta p{margin:0 0 12px;font-size:16px}
-.rel{margin-top:38px;border-top:1px solid var(--line);padding-top:18px}
-.rel h2{margin-top:0;font-size:18px}
-.card{display:block;background:#fff;border:1px solid var(--line);border-radius:14px;
-padding:14px 16px;margin:0 0 10px;text-decoration:none;color:var(--ink)}
-.card b{display:block;font-size:16px;line-height:1.4}
-.card span{color:var(--muted);font-size:14px}
-.chip{display:inline-block;background:var(--soft);color:var(--accent);border-radius:999px;
-padding:1px 10px;font-size:12.5px;font-weight:700;margin-bottom:6px}
-.hero{margin:18px 0 8px}.hero p{color:var(--muted);font-size:16px}
-.sec{margin:26px 0 4px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;
-color:var(--muted);font-weight:800}
-footer{border-top:1px solid var(--line);margin-top:44px;padding:20px;background:#fff}
-footer .in{max-width:680px;margin:0 auto;font-size:13.5px;color:var(--muted)}
-footer a{font-weight:600}
-@media(max-width:480px){h1{font-size:25px}.top nav a.plain{display:none}}
+.app-head{background:linear-gradient(135deg,#7A65C2,#9B85E0 60%,#B8A8E6);color:#fff;
+border-radius:0 0 26px 26px;padding:14px 20px 20px}
+.app-head.short{padding-bottom:16px}
+.bar{display:flex;align-items:center;gap:10px;max-width:760px;margin:0 auto}
+.bar img{width:32px;height:32px;border-radius:9px}
+.bar .brand{font-weight:800;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px}
+.bar nav{margin-left:auto;display:flex;gap:12px;align-items:center}
+.bar nav .plain{color:#fff;text-decoration:none;font-weight:700;font-size:14.5px;white-space:nowrap}
+.btn{display:inline-block;background:#fff;color:var(--accent);text-decoration:none;font-weight:800;
+padding:9px 16px;border-radius:12px;font-size:14.5px;white-space:nowrap;transition:transform .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.grad{background:var(--accent);color:#fff;box-shadow:0 6px 14px rgba(122,101,194,.35)}
+.app-head h1{max-width:760px;margin:18px auto 4px;font-size:27px;letter-spacing:-.3px;text-wrap:balance}
+.app-head .sub{max-width:760px;margin:0 auto;color:#fffd;font-size:15px;text-wrap:balance}
+.weeks{display:flex;gap:8px;overflow-x:auto;max-width:760px;margin:16px auto 0;padding-bottom:4px;
+scrollbar-width:none}
+.weeks::-webkit-scrollbar{display:none}
+.wk{flex:0 0 auto;background:#ffffff22;border:1px solid #ffffff55;color:#fff;border-radius:14px;
+padding:7px 12px;text-align:center;font-size:11.5px;font-weight:700;text-decoration:none;white-space:nowrap}
+.wk b{display:block;font-size:16px}
+.wk:hover{background:#fff;color:var(--accent)}
+.wrap{max-width:760px;margin:0 auto;padding:16px 20px 56px}
+.sec{display:flex;align-items:center;gap:8px;margin:24px 0 10px;font-weight:800;font-size:17px}
+.sec .em{font-size:20px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.row{grid-template-columns:1fr}.app-head h1{font-size:23px}}
+.card{position:relative;display:flex;gap:12px;background:#fff;border-radius:18px;padding:14px;
+text-decoration:none;color:var(--ink);box-shadow:0 2px 10px rgba(42,27,71,.06);
+transition:transform .12s,box-shadow .12s;overflow:hidden}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(42,27,71,.12)}
+.card .bigwk{position:absolute;right:8px;top:-12px;font-size:58px;font-weight:800;
+color:var(--accent);opacity:.08;letter-spacing:-2px}
+.card .ic{flex:0 0 46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:24px}
+.i-lav{background:var(--soft)}.i-peach{background:var(--peach)}.i-pink{background:var(--pink)}
+.i-blue{background:var(--blue)}
+.card b{display:block;font-size:15.5px;line-height:1.35;text-wrap:balance}
+.card span.d{color:var(--muted);font-size:13.5px;display:block;margin-top:3px}
+.crumb{font-size:14px;font-weight:700;margin:2px 0 12px;display:inline-block;text-decoration:none}
+.ahead{position:relative;background:#fff;border-radius:22px;padding:22px;
+box-shadow:0 2px 10px rgba(42,27,71,.06);overflow:hidden}
+.ahead .bigwk{position:absolute;right:14px;top:-18px;font-size:110px;font-weight:800;
+color:var(--accent);opacity:.07;letter-spacing:-4px}
+.ahead .fr{position:absolute;right:20px;bottom:14px;font-size:44px;transform:rotate(-8deg)}
+.chiprow{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.chip{background:var(--soft);color:var(--accent);border-radius:999px;padding:3px 12px;
+font-size:12.5px;font-weight:800;white-space:nowrap}
+.chip.alt{background:var(--peach);color:#B0683A}
+.ahead h1{font-size:24px;line-height:1.3;letter-spacing:-.3px;text-wrap:balance;max-width:24ch}
+.block{background:#fff;border-radius:22px;padding:20px 22px;margin-top:14px;
+box-shadow:0 2px 10px rgba(42,27,71,.06)}
+.block h2{display:flex;align-items:center;gap:10px;font-size:18.5px;margin-bottom:10px;text-wrap:balance}
+.block h2 .em{flex:0 0 34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:18px}
+.block p{margin:0 0 13px;font-size:16px}
+.block p:last-child{margin:0}
+.ctab{background:linear-gradient(135deg,#7A65C2,#9B85E0);border-radius:22px;color:#fff;
+padding:22px;margin-top:16px;display:flex;align-items:center;gap:16px}
+.ctab .em{font-size:38px}
+.ctab b{font-size:17px}
+.ctab p{font-size:14.5px;color:#fffd;margin:4px 0 12px}
+.rel{margin-top:28px}
+.rel .t{font-weight:800;font-size:17px;margin-bottom:10px}
+footer{color:var(--muted);font-size:13px;margin-top:34px;text-align:center;padding:0 10px}
+footer a{font-weight:700}
 """
 
 HEAD = """<!doctype html>
@@ -97,25 +166,28 @@ HEAD = """<!doctype html>
 {jsonld}
 </head>
 <body>
-<header class="top">
-  <a class="brand" href="https://maminanedelka.ru/" style="display:flex;align-items:center;gap:10px">
-    <img src="assets/logo-96.png" alt="Мамина неделька"> Мамина неделька</a>
-  <nav>
-    <a class="plain" href="index.html">Блог</a>
-    <a class="btn" href="{bot}">Открыть бота</a>
-  </nav>
-</header>
+<div class="app-head{short}">
+  <div class="bar">
+    <a class="brand" href="https://maminanedelka.ru/"><img src="assets/logo-96.png"
+      alt="Мамина неделька"> Мамина неделька</a>
+    <nav>
+      <a class="plain" href="index.html">Блог</a>
+      <a class="btn" href="{bot}">Открыть бота</a>
+    </nav>
+  </div>
+{headextra}</div>
 <div class="wrap">
 """
 
-FOOT = """</div>
-<footer><div class="in">
-<p>Материалы блога — ориентиры для спокойствия, а не медицинские рекомендации.
+FOOT = """
+<footer>
+<p>Материалы блога — ориентиры для спокойствия, а не медицинские рекомендации.<br>
 Решения о вашем здоровье и здоровье малыша принимает ваш врач.</p>
-<p><a href="https://maminanedelka.ru/">Мамина неделька</a> — гид по беременности в Telegram ·
-<a href="{bot}">открыть бота</a> · поддержка:
+<p style="margin-top:8px"><a href="https://maminanedelka.ru/">Мамина неделька</a> — гид по
+беременности в Telegram · <a href="{bot}">открыть бота</a> · поддержка:
 <a href="https://t.me/mamina_nedelka_support_bot">@mamina_nedelka_support_bot</a></p>
-</div></footer>
+</footer>
+</div>
 </body>
 </html>
 """
@@ -148,12 +220,16 @@ def parse(path: Path) -> dict:
             "content": content, "cta": cta}
 
 
-def cta_html(raw: str) -> str:
+def trimester(week: int) -> str:
+    if not week:
+        return ""
+    return ("первый" if week <= 13 else "второй" if week <= 27 else "третий") + " триместр"
+
+
+def cta_text(raw: str) -> str:
     txt = raw.replace("?start=vc_seo", "?start=blog")
     txt = re.sub(r"\s*Посмотреть:\s*\S+\s*$", "", txt)
-    txt = re.sub(r"\s*\n\s*", " ", txt).strip()
-    return ('<div class="cta"><p>' + esc(txt) + "</p>"
-            f'<a class="btn" href="{BOT}">Открыть бота в Telegram</a></div>')
+    return re.sub(r"\s*\n\s*", " ", txt).strip()
 
 
 def jsonld_article(a: dict, url: str) -> str:
@@ -171,6 +247,14 @@ def jsonld_article(a: dict, url: str) -> str:
             + json.dumps(data, ensure_ascii=False) + "</script>")
 
 
+def card(a: dict, i: int) -> str:
+    bigwk = f'<span class="bigwk">{a["week"]}</span>' if a["week"] else ""
+    return (f'<a class="card" href="{a["slug"]}.html">{bigwk}'
+            f'<span class="ic {ICON_BG[i % len(ICON_BG)]}">{EMOJI.get(a["slug"], "🌸")}</span>'
+            f'<div><b>{esc(a["title"])}</b>'
+            f'<span class="d">{esc(a["desc"])}</span></div></a>')
+
+
 def related(a: dict, arts: list) -> list:
     others = [x for x in arts if x["slug"] != a["slug"]]
     return sorted(others, key=lambda x: abs(x["week"] - a["week"]))[:3]
@@ -179,25 +263,51 @@ def related(a: dict, arts: list) -> list:
 def render_article(a: dict, arts: list) -> str:
     url = f"{BASE}/blog/{a['slug']}.html"
     parts = [HEAD.format(title=esc(a["title"]) + " — Мамина неделька",
-                         desc=esc(a["desc"]), url=url, ogtype="article",
-                         base=BASE, css=CSS, bot=BOT,
+                         desc=esc(a["desc"]), url=url, ogtype="article", base=BASE,
+                         css=CSS, bot=BOT, short=" short", headextra="",
                          jsonld=jsonld_article(a, url))]
-    parts.append('<p class="crumb"><a href="index.html">← Все статьи</a></p>')
-    parts.append(f"<h1>{esc(a['title'])}</h1>")
-    week = f"Неделя {a['week']} · " if a["week"] else ""
-    parts.append(f'<p class="meta">{week}Блог «Маминой недельки»</p>')
+    parts.append('<a class="crumb" href="index.html">← Все статьи</a>')
+    chips = ""
+    if a["week"]:
+        chips += f'<span class="chip">неделя {a["week"]}</span>'
+        chips += f'<span class="chip alt">{trimester(a["week"])}</span>'
+    else:
+        chips += '<span class="chip">полезное</span>'
+    bigwk = f'<span class="bigwk">{a["week"]}</span>' if a["week"] else ""
+    fruit = f'<span class="fr">{EMOJI.get(a["slug"], "🌸")}</span>'
+    parts.append(f'<div class="ahead">{bigwk}{fruit}'
+                 f'<div class="chiprow">{chips}</div>'
+                 f"<h1>{esc(a['title'])}</h1></div>")
+    # тело: интро-абзацы до первого h2 — первая карточка; дальше карточка на главу
+    blocks, cur, icon_i = [], [], 0
+    cur_head = None
     for kind, txt in a["content"]:
-        parts.append(f"<h2>{esc(txt)}</h2>" if kind == "h2" else f"<p>{esc(txt)}</p>")
+        if kind == "h2":
+            if cur or cur_head:
+                blocks.append((cur_head, cur))
+            cur_head, cur = txt, []
+        else:
+            cur.append(txt)
+    if cur or cur_head:
+        blocks.append((cur_head, cur))
+    for head, paras in blocks:
+        b = ['<div class="block">']
+        if head:
+            b.append(f'<h2><span class="em {ICON_BG[icon_i % len(ICON_BG)]}">'
+                     f"{h2_icon(head)}</span> {esc(head)}</h2>")
+            icon_i += 1
+        b.extend(f"<p>{esc(t)}</p>" for t in paras)
+        b.append("</div>")
+        parts.append("".join(b))
     if a["cta"]:
-        parts.append(cta_html(a["cta"]))
+        parts.append('<div class="ctab"><span class="em">🌸</span><div>'
+                     "<b>«Мамина неделька» в Telegram</b>"
+                     f"<p>{esc(cta_text(a['cta']))}</p>"
+                     f'<a class="btn" href="{BOT}">Открыть бота</a></div></div>')
     rel = related(a, arts)
     if rel:
-        parts.append('<div class="rel"><h2>Ещё по теме</h2>')
-        for r in rel:
-            chip = f'<span class="chip">неделя {r["week"]}</span>' if r["week"] else ""
-            parts.append(f'<a class="card" href="{r["slug"]}.html">{chip}'
-                         f"<b>{esc(r['title'])}</b><span>{esc(r['desc'])}</span></a>")
-        parts.append("</div>")
+        parts.append('<div class="rel"><div class="t">Ещё по теме</div><div class="row">'
+                     + "".join(card(r, i) for i, r in enumerate(rel)) + "</div></div>")
     parts.append(FOOT.format(bot=BOT))
     return "\n".join(parts)
 
@@ -205,31 +315,40 @@ def render_article(a: dict, arts: list) -> str:
 def render_index(arts: list) -> str:
     url = f"{BASE}/blog/index.html"
     by_slug = {a["slug"]: a for a in arts}
-    placed = set()
+    weeks = sorted({a["week"] for a in arts if a["week"]})
+    ribbon = "".join(
+        f'<a class="wk" href="{next(x for x in arts if x["week"] == w)["slug"]}.html">'
+        f"нед.<b>{w}</b></a>" for w in weeks)
+    headextra = ("<h1>Спокойные статьи для будущих мам</h1>"
+                 '<p class="sub">Что происходит с малышом по неделям, какие обследования '
+                 "когда и как собраться в&nbsp;роддом. Ориентиры, а не назначения — "
+                 "решает всегда ваш&nbsp;врач.</p>"
+                 f'<div class="weeks">{ribbon}</div>')
     parts = [HEAD.format(
         title="Блог — Мамина неделька: беременность по неделям, анализы, подготовка к родам",
         desc="Спокойные статьи для будущих мам: что происходит по неделям, какие "
              "обследования когда, как подготовиться к родам. Без алармизма, решает врач.",
-        url=url, ogtype="website", base=BASE, css=CSS, bot=BOT, jsonld="")]
-    parts.append('<div class="hero"><h1>Блог «Маминой недельки»</h1>'
-                 "<p>Спокойные статьи для будущих мам: что происходит с малышом по "
-                 "неделям, какие обследования когда, как собраться в роддом. "
-                 "Ориентиры, а не назначения — решает всегда ваш врач.</p></div>")
-    def card(a):
-        chip = f'<span class="chip">неделя {a["week"]}</span>' if a["week"] else ""
-        return (f'<a class="card" href="{a["slug"]}.html">{chip}'
-                f"<b>{esc(a['title'])}</b><span>{esc(a['desc'])}</span></a>")
-    for name, slugs in SECTIONS:
+        url=url, ogtype="website", base=BASE, css=CSS, bot=BOT, short="",
+        headextra=headextra, jsonld="")]
+    placed = set()
+    i = 0
+    for em, name, slugs in SECTIONS:
         items = [by_slug[s] for s in slugs if s in by_slug]
         placed.update(x["slug"] for x in items)
         if not items:
             continue
-        parts.append(f'<p class="sec">{esc(name)}</p>')
-        parts.extend(card(a) for a in sorted(items, key=lambda x: x["week"]))
+        parts.append(f'<div class="sec"><span class="em">{em}</span> {esc(name)}</div>')
+        parts.append('<div class="row">'
+                     + "".join(card(a, i + j) for j, a in
+                               enumerate(sorted(items, key=lambda x: x["week"])))
+                     + "</div>")
+        i += len(items)
     rest = [a for a in arts if a["slug"] not in placed]
     if rest:
-        parts.append(f'<p class="sec">{esc(FALLBACK_SECTION)}</p>')
-        parts.extend(card(a) for a in rest)
+        em, name = FALLBACK_SECTION
+        parts.append(f'<div class="sec"><span class="em">{em}</span> {esc(name)}</div>')
+        parts.append('<div class="row">' + "".join(card(a, i + j) for j, a in enumerate(rest))
+                     + "</div>")
     parts.append(FOOT.format(bot=BOT))
     return "\n".join(parts)
 

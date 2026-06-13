@@ -33,22 +33,29 @@ MAX_H2 = 65  # однострочный блок короче этого и бе
 
 SECTIONS = [
     ("🤰", "Беременность по неделям", "weeks",
-     ["12-nedelya", "20-nedelya", "30-nedelya"]),
+     ["5-nedelya", "8-nedelya", "12-nedelya", "16-nedelya", "20-nedelya",
+      "24-nedelya", "28-nedelya", "30-nedelya", "34-nedelya", "38-nedelya",
+      "40-nedelya"]),
     ("🩺", "Обследования и анализы", "checkups",
      ["analizy", "skrining", "vtoroy-skrining", "uzi-grafik"]),
     ("💛", "Самочувствие и тело", "feel",
-     ["toksikoz", "oteki", "pribavka-vesa", "pitanie",
-      "sheveleniya-nachalo", "schitat-sheveleniya"]),
+     ["toksikoz", "oteki", "pribavka-vesa", "pitanie", "sheveleniya-nachalo",
+      "schitat-sheveleniya", "kogda-viden-zhivot", "bessonnitsa", "prostuda"]),
     ("🎒", "Подготовка к родам", "birth",
      ["rodom", "podgotovka-k-rodam", "predvestniki", "shvatki"]),
-    ("📱", "Практическое", "misc", ["dekret", "sravnenie-prilozheniy"]),
+    ("📱", "Практическое", "misc",
+     ["dekret", "perelyoty", "krasit-volosy", "sravnenie-prilozheniy"]),
 ]
 SECTION_OF = {slug: name for _, name, _, slugs in SECTIONS for slug in slugs}
 FALLBACK_SECTION = ("📌", "Ещё статьи")
 
 # Эмодзи-иконка статьи (карточки индекса, шапка статьи, related)
 EMOJI = {
-    "12-nedelya": "🍋", "20-nedelya": "🍌", "30-nedelya": "🥥",
+    "5-nedelya": "🍊", "8-nedelya": "🍓", "12-nedelya": "🍋", "16-nedelya": "🥑",
+    "20-nedelya": "🍌", "24-nedelya": "🌽", "28-nedelya": "🍆", "30-nedelya": "🥥",
+    "34-nedelya": "🍈", "38-nedelya": "🎃", "40-nedelya": "🍉",
+    "kogda-viden-zhivot": "🤰", "bessonnitsa": "😴", "perelyoty": "✈️",
+    "krasit-volosy": "💇‍♀️", "prostuda": "🤧",
     "analizy": "🩺", "skrining": "🔬", "vtoroy-skrining": "🔍", "uzi-grafik": "📅",
     "toksikoz": "🍵", "oteki": "💧", "pribavka-vesa": "⚖️", "pitanie": "🥗",
     "sheveleniya-nachalo": "🦋", "schitat-sheveleniya": "🦶",
@@ -130,6 +137,7 @@ color:var(--accent);opacity:.07;letter-spacing:-4px}
 .chip{background:var(--soft);color:var(--accent);border-radius:999px;padding:3px 12px;
 font-size:12.5px;font-weight:800;white-space:nowrap}
 .chip.alt{background:var(--peach);color:#B0683A}
+.chip.dim{background:var(--bg);color:var(--muted)}
 .ahead h1{font-size:24px;line-height:1.3;letter-spacing:-.3px;text-wrap:balance;padding-right:52px}
 .block{background:#fff;border-radius:22px;padding:20px 22px;margin-top:14px;
 box-shadow:0 2px 10px rgba(42,27,71,.06)}
@@ -235,9 +243,22 @@ def parse(path: Path) -> dict:
     first_p = next(t for k, t in content if k == "p")
     desc = first_p if len(first_p) <= 158 else first_p[:158].rsplit(" ", 1)[0] + "…"
     week_digits = re.search(r"\d+", meta.get("week_ref", "") or "")
+    n_chars = sum(len(t) for k, t in content if k == "p")
     return {"slug": slug, "title": title, "keyword": meta.get("keyword", ""),
             "week": int(week_digits.group()) if week_digits else 0, "desc": desc,
-            "content": content, "cta": cta}
+            "content": content, "cta": cta, "mins": max(2, round(n_chars / 1100))}
+
+
+def plural_stati(n: int) -> str:
+    if n % 100 in (11, 12, 13, 14):
+        f = "статей"
+    elif n % 10 == 1:
+        f = "статья"
+    elif n % 10 in (2, 3, 4):
+        f = "статьи"
+    else:
+        f = "статей"
+    return f"{n} {f}"
 
 
 def trimester(week: int) -> str:
@@ -263,8 +284,19 @@ def jsonld_article(a: dict, url: str) -> str:
                       "logo": {"@type": "ImageObject",
                                "url": f"{BASE}/blog/assets/logo-96.png"}},
     }
+    crumbs = {
+        "@context": "https://schema.org", "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Мамина неделька", "item": BASE + "/"},
+            {"@type": "ListItem", "position": 2, "name": "Блог",
+             "item": BASE + "/blog/index.html"},
+            {"@type": "ListItem", "position": 3, "name": a["title"], "item": url},
+        ],
+    }
     return ('<script type="application/ld+json">'
-            + json.dumps(data, ensure_ascii=False) + "</script>")
+            + json.dumps(data, ensure_ascii=False) + "</script>\n"
+            + '<script type="application/ld+json">'
+            + json.dumps(crumbs, ensure_ascii=False) + "</script>")
 
 
 def is_week_article(a: dict) -> bool:
@@ -299,6 +331,7 @@ def render_article(a: dict, arts: list) -> str:
         chips += f'<span class="chip">{esc(SECTION_OF.get(a["slug"], "полезное"))}</span>'
         if a["week"]:
             chips += f'<span class="chip alt">{trimester(a["week"])}</span>'
+    chips += f'<span class="chip dim">{a["mins"]} мин</span>'
     bigwk = f'<span class="bigwk">{a["week"]}</span>' if is_week_article(a) else ""
     fruit = f'<span class="fr">{EMOJI.get(a["slug"], "🌸")}</span>'
     parts.append(f'<div class="ahead">{bigwk}{fruit}'
@@ -346,9 +379,9 @@ def render_index(arts: list) -> str:
                      for a in week_arts)
     ribbon += f'<a class="wk more" href="{BOT}">все 42<b>в боте →</b></a>'
     headextra = ("<h1>Спокойные статьи для будущих мам</h1>"
-                 '<p class="sub">Что происходит с малышом по неделям, какие обследования '
-                 "когда и как собраться в&nbsp;роддом. Ориентиры, а не назначения — "
-                 "решает всегда ваш&nbsp;врач.</p>"
+                 f'<p class="sub">{plural_stati(len(arts))}: что происходит с малышом по неделям, '
+                 "какие обследования когда и как собраться в&nbsp;роддом. Ориентиры, "
+                 "а не назначения — решает всегда ваш&nbsp;врач.</p>"
                  f'<div class="weeks">{ribbon}</div>')
     parts = [HEAD.format(
         title="Блог — Мамина неделька: беременность по неделям, анализы, подготовка к родам",

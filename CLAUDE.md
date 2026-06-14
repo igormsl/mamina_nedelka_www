@@ -21,9 +21,7 @@ Apex `maminanedelka.ru` **одновременно** обслуживает жи
 
 ## Как обновить лендинг
 
-1. Перегенерировать/поправить в Claude Design → экспорт Standalone HTML → заменить `index.html`.
-2. **После каждой генерации:** `python3 apply-mobile-fixes.py` (впаивает `mobile-fixes.css` ВНУТРЬ сериализованной строки бандла — простой `<style>` стирается).
-3. Коммит + push, затем на VPS `cp index.html /srv/maminanedelka_www/` (без рестарта Caddy — файл подхватывается сразу).
+С 2026-06-13 `index.html` — **hand-coded** (не Claude Design). Правь файл напрямую, проверь рендером (desktop+mobile+меню), коммить+push, затем на VPS `cp index.html /srv/maminanedelka_www/` (без рестарта Caddy). ⚠️ Не удаляй `<meta name="yandex-verification">` из `<head>`. `apply-mobile-fixes.py`/`mobile-fixes.css` — легаси от старого бандла, не нужны.
 
 ## Связь
 

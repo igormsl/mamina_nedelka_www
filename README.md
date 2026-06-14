@@ -4,9 +4,9 @@
 
 - **Живёт на:** `https://maminanedelka.ru/` (apex), на казахстанском VPS, отдаётся Caddy как статика.
 - **CTA:** ведёт в бота `https://t.me/mamina_nedelka_bot`; поддержка — `@mamina_nedelka_support_bot`.
-- `index.html` — самодостаточный офлайн-файл (шрифты Bricolage Grotesque + Manrope и картинки вшиты base64). Сгенерирован в Claude Design по дизайн-системе мини-аппа.
-- `mobile-fixes.css` — патч мобильной раскладки (компактные сетки 2-кол, нав в одну строку, AI-чат без вложенного скролла, порядок тарифов). Мобайл «из коробки» у Claude Design слабый.
-- `apply-mobile-fixes.py` — впаивает `mobile-fixes.css` в `index.html`. ⚠️ Простой `<style>` НЕ работает: бандл пересоздаёт документ из сериализованной строки и стирает статические теги, поэтому CSS вписывается ВНУТРЬ этой строки (скрипт делает это сам). **После каждой новой генерации в Claude Design:** `python3 apply-mobile-fixes.py`, затем коммит и `cp index.html /srv/maminanedelka_www/`.
+- `index.html` — **hand-coded HTML/CSS** (с 2026-06-13). Один самодостаточный файл: инлайн-CSS, SVG-иконки, шрифт Manrope (Google Fonts), мобильное меню на ванильном JS, sticky-навбар с пунктом **«Блог»**, секции hero/возможности/AI/недели/отзывы/тарифы/футер. Полностью редактируемый — правь прямо в файле.
+- ⚠️ **Старый бандл Claude Design убран** (он пересобирал документ из сериализованной строки → нельзя было добавить пункт меню или поправить вёрстку; бэкап в `_probe/index_claudedesign_backup.html`). Поэтому `apply-mobile-fixes.py` + `mobile-fixes.css` **больше НЕ нужны** (легаси, мобайл теперь нативно в `index.html`). Лендинг и блог — единый hand-coded сайт.
+- ⚠️ В `<head>` обязателен `<meta name="yandex-verification" content="5de9122d74676c4f">` — без него отвалится подтверждение домена в Яндекс.Вебмастере. CTA → `t.me/mamina_nedelka_bot?start=landing` (атрибуция).
 
 ## Архитектура хостинга (важно)
 
@@ -21,9 +21,11 @@ Caddy маршрутизирует по пути:
 
 ## Обновить лендинг
 
-1. Перегенерировать/поправить в Claude Design → экспорт Standalone HTML.
-2. Заменить `index.html` здесь, закоммитить, запушить.
-3. На VPS: скопировать новый `index.html` в `/srv/maminanedelka_www/` (без `sudo systemctl restart caddy` — файл подхватывается сразу, Caddy перечитывать не нужно).
+1. Править `index.html` напрямую (hand-coded, инлайн-CSS).
+2. Проверить рендером (локальный Caddy + playwright) — desktop 1280 + mobile 390 + меню.
+3. Коммит, запушить.
+4. На VPS: `cp index.html /srv/maminanedelka_www/` (без sudo; Caddy перечитывать не нужно).
+   Опц. ассеты: `cp -r blog/assets /srv/maminanedelka_www/blog/`.
 
 ## Блог (`/blog/`)
 

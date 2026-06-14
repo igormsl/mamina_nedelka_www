@@ -205,7 +205,7 @@ HEAD = """<!doctype html>
     <a class="brand" href="https://maminanedelka.ru/"><img src="assets/logo-96.png"
       alt="Мамина неделька"> Мамина неделька</a>
     <nav>
-      <a class="plain" href="index.html">Блог</a>
+      <a class="plain" href="https://maminanedelka.ru/">← На сайт</a>
       <a class="btn" href="{bot}">Открыть бота</a>
     </nav>
   </div>

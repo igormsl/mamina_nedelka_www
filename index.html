@@ -23,50 +23,52 @@
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Мамина неделька","applicationCategory":"HealthApplication","operatingSystem":"Telegram","offers":{"@type":"Offer","price":"0","priceCurrency":"RUB"},"description":"Тёплый помощник для будущих мам в Telegram: беременность по неделям, чек-листы, AI-ассистент, дневник самочувствия.","url":"https://maminanedelka.ru/"}
 </script>
 <style>
-:root{--ink:#2A1B47;--muted:#7C7191;--accent:#7A65C2;--accent2:#9B85E0;--soft:#EBE5FA;--line:#E4DCF4;
+:root{--ink:#2A1B47;--muted:#6E6385;--accent:#7A65C2;--accent-d:#5E4AA0;--accent2:#9B85E0;--soft:#EBE5FA;--line:#E4DCF4;
 --bg:#FBFAFE;--peach:#FCE6D0;--pink:#F7C9D8;--blue:#CFE0F0;--card:#fff;--ok:#3FA37A}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Manrope,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);
-line-height:1.6;font-size:16.5px;-webkit-font-smoothing:antialiased}
+line-height:1.6;font-size:16.5px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 section{padding:56px 0;scroll-margin-top:80px}
-.eyebrow{color:var(--accent);font-weight:800;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;text-align:center;margin-bottom:10px}
+.eyebrow{color:var(--accent-d);font-weight:800;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;text-align:center;margin-bottom:10px}
 h2{font-size:34px;line-height:1.15;letter-spacing:-.5px;text-align:center;font-weight:800;margin-bottom:12px;text-wrap:balance}
 .sub{color:var(--muted);text-align:center;max-width:38em;margin:0 auto 38px;font-size:17px;text-wrap:balance}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;border-radius:13px;
-cursor:pointer;border:0;transition:transform .15s,box-shadow .15s;white-space:nowrap;font-family:inherit;font-size:15px}
+cursor:pointer;border:0;transition:transform .15s,box-shadow .15s;white-space:nowrap;font-family:inherit;font-size:15px;min-height:44px}
 .btn:focus-visible{outline:3px solid var(--accent2);outline-offset:2px}
-.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:12px 22px;
+.btn.primary{background:linear-gradient(135deg,var(--accent),#6E57BE);color:#fff;padding:12px 22px;
 box-shadow:0 8px 20px rgba(122,101,194,.30)}
 .btn.primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(122,101,194,.40)}
 .btn.ghost{background:var(--card);color:var(--ink);padding:12px 20px;border:1px solid var(--line)}
-.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent-d)}
+a:focus-visible{outline:3px solid var(--accent2);outline-offset:3px;border-radius:6px}
 svg{stroke-width:1.7;flex:none}
 /* NAV */
-.nav{position:sticky;top:0;z-index:50;background:rgba(251,250,254,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;gap:8px;height:66px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}
-.logo img{width:34px;height:34px;border-radius:10px}
-.nav .links{display:flex;gap:2px;margin-left:18px}
-.nav .links a{padding:8px 13px;border-radius:10px;color:var(--muted);font-weight:600;font-size:15px;transition:.15s;white-space:nowrap}
+.nav{position:sticky;top:0;z-index:50;background:rgba(251,250,254,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;gap:14px;height:66px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;flex:none;white-space:nowrap;line-height:1}
+.logo img{width:34px;height:34px;border-radius:10px;flex:none}
+.logo span{white-space:nowrap}
+.nav .links{display:flex;gap:2px;margin-left:8px}
+.nav .links a{padding:8px 10px;border-radius:10px;color:var(--muted);font-weight:600;font-size:15px;transition:.15s;white-space:nowrap}
 .nav .links a:hover{color:var(--ink);background:var(--soft)}
-.nav .links a.blog{color:var(--accent)}
-.nav .right{margin-left:auto;display:flex;align-items:center;gap:10px}
-.burger{display:none;margin-left:auto;background:none;border:0;padding:8px;cursor:pointer}
+.nav .links a.blog{color:var(--accent-d)}
+.nav .right{margin-left:auto;display:flex;align-items:center;gap:10px;flex:none}
+.burger{display:none;background:none;border:0;width:44px;height:44px;padding:0;place-items:center;cursor:pointer}
 .burger svg{width:26px;height:26px;stroke:var(--ink)}
 /* MOBILE MENU */
 .mmenu{position:fixed;inset:66px 0 auto 0;background:var(--bg);border-bottom:1px solid var(--line);
 padding:14px 24px 22px;z-index:49;transform:translateY(-12px);opacity:0;pointer-events:none;transition:.2s}
 .mmenu.open{transform:translateY(0);opacity:1;pointer-events:auto}
-.mmenu a{display:block;padding:13px 8px;font-weight:700;font-size:17px;border-bottom:1px solid var(--line)}
-.mmenu a.blog{color:var(--accent)}
+.mmenu a{display:block;padding:14px 8px;font-weight:700;font-size:17px;border-bottom:1px solid var(--line)}
+.mmenu a.blog{color:var(--accent-d)}
 .mmenu .btn{width:100%;margin-top:16px;padding:14px}
 /* HERO */
 .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding:60px 0 36px}
-.pill{display:inline-flex;align-items:center;gap:7px;background:var(--soft);color:var(--accent);font-weight:700;
+.pill{display:inline-flex;align-items:center;gap:7px;background:var(--soft);color:var(--accent-d);font-weight:700;
 font-size:13.5px;padding:6px 13px;border-radius:999px;margin-bottom:18px}
 .pill svg{width:15px;height:15px;stroke:currentColor}
 h1{font-size:46px;line-height:1.1;letter-spacing:-1px;font-weight:800;margin-bottom:16px;text-wrap:balance}
@@ -74,23 +76,24 @@ h1{font-size:46px;line-height:1.1;letter-spacing:-1px;font-weight:800;margin-bot
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 .trust{display:flex;align-items:center;gap:13px;margin-top:22px;color:var(--muted);font-size:14px;flex-wrap:wrap}
 .avatars{display:flex}
-.avatars span{width:30px;height:30px;border-radius:50%;border:2px solid var(--bg);margin-left:-8px;background:var(--accent2);
+.avatars span{width:30px;height:30px;border-radius:50%;border:2px solid var(--bg);margin-left:-8px;background:var(--accent);
 display:grid;place-items:center;color:#fff;font-size:12px;font-weight:700}
 .avatars span:first-child{margin-left:0}
 .phone-wrap{position:relative;display:grid;place-items:center}
-.glow{position:absolute;width:330px;height:330px;border-radius:50%;background:radial-gradient(circle,var(--accent2),transparent 65%);opacity:.32;filter:blur(12px)}
-.phone{position:relative;width:280px;background:#fff;border-radius:36px;padding:12px;box-shadow:0 30px 60px rgba(42,27,71,.22);border:1px solid var(--line)}
-.phone .screen{background:linear-gradient(160deg,var(--soft),#fff);border-radius:26px;overflow:hidden}
-.ph-head{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:18px 18px 22px}
-.ph-head .wk{font-size:13px;opacity:.85}.ph-head .big{font-size:23px;font-weight:800;margin-top:2px}
-.ph-body{padding:15px}
-.ph-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;margin-bottom:9px;display:flex;gap:11px;align-items:center;box-shadow:0 4px 12px rgba(42,27,71,.05)}
-.ph-ic{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:0 0 40px}
-.ph-ic svg{width:21px;height:21px}
-.ph-card b{font-size:13px;display:block}.ph-card span{font-size:11px;color:var(--muted)}
+.glow{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,var(--accent2),transparent 64%);opacity:.30;filter:blur(14px)}
+/* DEVICE with real screenshots */
+.device{position:relative;width:286px;aspect-ratio:480/1041;border-radius:40px;padding:8px;
+background:linear-gradient(160deg,#fff,#EFE9FB);box-shadow:0 34px 64px rgba(42,27,71,.24);border:1px solid var(--line)}
+.device .scr{position:relative;width:100%;height:100%;border-radius:32px;overflow:hidden;background:#fff;box-shadow:inset 0 0 0 1px rgba(42,27,71,.05)}
+.device .scr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0;transition:opacity .7s ease}
+.device .scr img.on{opacity:1}
+.hero-dots{display:flex;gap:8px;justify-content:center;margin-top:16px}
+.hero-dots button{width:9px;height:9px;border-radius:999px;border:0;background:var(--line);padding:0;cursor:pointer;transition:.25s}
+.hero-dots button.on{background:var(--accent);width:24px}
+.hero-dots button:focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
 .float{position:absolute;background:#fff;border:1px solid var(--line);border-radius:14px;padding:9px 12px;
-box-shadow:0 12px 28px rgba(42,27,71,.14);display:flex;gap:9px;align-items:center;font-size:12.5px;font-weight:600}
-.float.f1{top:34px;left:-22px}.float.f2{bottom:50px;right:-26px}
+box-shadow:0 14px 30px rgba(42,27,71,.15);display:flex;gap:9px;align-items:center;font-size:12.5px;font-weight:700}
+.float.f1{top:54px;left:-14px}.float.f2{bottom:78px;right:-14px}
 .float .dot{width:28px;height:28px;border-radius:9px;display:grid;place-items:center}
 .float .dot svg{width:17px;height:17px}
 /* FEATURES */
@@ -113,19 +116,61 @@ box-shadow:0 12px 28px rgba(42,27,71,.14);display:flex;gap:9px;align-items:cente
 .lim .t{font-size:13px;font-weight:800;letter-spacing:.05em;opacity:.85}
 .lim .n{font-size:34px;font-weight:800;margin:2px 0}
 .lim small{font-size:12.5px;opacity:.85}
-/* WEEK STRIP */
-.chips{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-top:6px}
-.chips a{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:9px 15px;font-weight:700;font-size:14.5px;color:var(--ink);transition:.15s}
-.chips a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
-.chips a.all{background:var(--accent);color:#fff;border-color:var(--accent)}
-/* PROOF */
-.proof{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.quote{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px}
+/* WEEK SLIDER */
+.weekbox{max-width:760px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:28px;
+padding:28px;box-shadow:0 20px 48px rgba(42,27,71,.08)}
+.wk-top{display:flex;gap:26px;align-items:center}
+.wk-img{flex:none;width:158px;height:158px;border-radius:50%;overflow:hidden;background:var(--soft);
+border:5px solid #fff;box-shadow:0 12px 30px rgba(42,27,71,.14)}
+.wk-img img{width:100%;height:100%;object-fit:cover;display:block}
+.wk-meta{flex:1;min-width:0}
+.wk-num{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-d)}
+.wk-title{font-size:27px;font-weight:800;line-height:1.1;margin:3px 0 11px;letter-spacing:-.4px}
+.wk-pills{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:12px}
+.wk-pill{background:var(--soft);color:var(--accent-d);font-weight:700;font-size:13.5px;padding:6px 13px;border-radius:999px}
+.wk-fact{color:var(--muted);font-size:15px;line-height:1.55}
+.wk-range{margin-top:26px}
+.range-slider{-webkit-appearance:none;appearance:none;width:100%;height:40px;background:transparent;cursor:pointer;display:block}
+.range-slider::-webkit-slider-runnable-track{height:8px;border-radius:999px;
+background:linear-gradient(90deg,var(--accent) 0%,var(--accent) var(--pct,75%),var(--soft) var(--pct,75%),var(--soft) 100%)}
+.range-slider::-webkit-slider-thumb{-webkit-appearance:none;margin-top:-10px;width:28px;height:28px;border-radius:50%;
+background:#fff;border:3px solid var(--accent);box-shadow:0 4px 12px rgba(122,101,194,.45);transition:transform .12s}
+.range-slider::-webkit-slider-thumb:hover{transform:scale(1.12)}
+.range-slider::-moz-range-track{height:8px;border-radius:999px;background:var(--soft)}
+.range-slider::-moz-range-progress{height:8px;border-radius:999px;background:var(--accent)}
+.range-slider::-moz-range-thumb{width:24px;height:24px;border:3px solid var(--accent);border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(122,101,194,.45)}
+.range-slider:focus-visible{outline:0}
+.range-slider:focus-visible::-webkit-slider-thumb{outline:3px solid var(--accent2);outline-offset:3px}
+.range-slider:focus-visible::-moz-range-thumb{outline:3px solid var(--accent2);outline-offset:3px}
+.wk-scale{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted);margin-top:4px;font-weight:600}
+.wk-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px}
+.wk-cta .blink{display:inline-flex;align-items:center;gap:6px;color:var(--accent-d);font-weight:700;font-size:15px;min-height:44px;padding:0 6px}
+.wk-cta .blink:hover{color:var(--ink)}
+/* PROOF / CAROUSEL */
+.carousel{position:relative}
+.track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+padding:6px 2px 16px;scrollbar-width:none;-ms-overflow-style:none}
+.track::-webkit-scrollbar{display:none}
+.quote{scroll-snap-align:start;flex:0 0 calc((100% - 36px)/3);background:var(--card);border:1px solid var(--line);
+border-radius:20px;padding:22px;transition:transform .18s,box-shadow .18s}
+.quote:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(42,27,71,.10)}
 .quote .stars{color:#F5B945;font-size:15px;margin-bottom:10px;letter-spacing:2px}
 .quote p{font-size:15px;margin-bottom:14px}
 .quote .who{display:flex;align-items:center;gap:10px}
-.quote .who span{width:36px;height:36px;border-radius:50%;background:var(--accent2);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px}
+.quote .who span{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
 .quote .who b{font-size:14px;display:block}.quote .who small{color:var(--muted)}
+.car-nav{display:flex;justify-content:center;align-items:center;gap:16px;margin-top:8px}
+.car-arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);
+display:grid;place-items:center;cursor:pointer;color:var(--ink);transition:.15s}
+.car-arrow svg{width:20px;height:20px;stroke:currentColor}
+.car-arrow:hover{border-color:var(--accent);color:var(--accent-d);transform:translateY(-1px)}
+.car-arrow:disabled{opacity:.35;cursor:default;transform:none}
+.car-arrow:focus-visible{outline:3px solid var(--accent2);outline-offset:2px}
+.dots{display:flex;gap:3px;align-items:center}
+.dots button{background:none;border:0;padding:11px 5px;cursor:pointer;line-height:0}
+.dots button i{display:block;width:9px;height:9px;border-radius:999px;background:var(--line);transition:.25s}
+.dots button.on i{background:var(--accent);width:24px}
+.dots button:focus-visible{outline:2px solid var(--accent2);outline-offset:1px;border-radius:8px}
 /* PRICING */
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
 .plan{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px;display:flex;flex-direction:column}
@@ -153,33 +198,171 @@ footer{border-top:1px solid var(--line);margin-top:50px;padding:40px 0 30px;colo
 .disclaimer{background:var(--soft);border-radius:14px;padding:14px 18px;margin-top:26px;font-size:13.5px;color:var(--ink);display:flex;gap:10px;align-items:flex-start}
 .disclaimer svg{width:18px;height:18px;stroke:var(--accent);margin-top:2px;flex:none}
 .foot-bot{margin-top:20px;font-size:13px}
-@media(max-width:860px){
- .nav .links,.nav .right{display:none}.burger{display:block}
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.rv-s{transform:translateY(26px) scale(.96)}
+.reveal.rv-s.in{transform:none}
+
+/* ====== LIVING BACKGROUND ====== */
+body{background:var(--bg)}
+#bg{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+#bg .blob{position:absolute;border-radius:50%;filter:blur(70px);will-change:transform}
+#bg .b1{width:48vw;height:48vw;left:-13vw;top:-11vw;background:radial-gradient(circle at 32% 30%,rgba(155,133,224,.52),transparent 68%);animation:drift1 28s ease-in-out infinite}
+#bg .b2{width:44vw;height:44vw;right:-15vw;top:3vw;background:radial-gradient(circle at 60% 40%,rgba(252,210,190,.55),transparent 68%);animation:drift2 34s ease-in-out infinite}
+#bg .b3{width:54vw;height:54vw;left:12vw;top:56vh;background:radial-gradient(circle at 50% 50%,rgba(247,201,216,.46),transparent 68%);animation:drift3 40s ease-in-out infinite}
+#bg .b4{width:42vw;height:42vw;right:-4vw;bottom:-14vw;background:radial-gradient(circle at 50% 50%,rgba(207,224,240,.46),transparent 68%);animation:drift2 31s ease-in-out infinite reverse}
+@keyframes drift1{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(5vw,4vh,0) scale(1.12)}}
+@keyframes drift2{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-5vw,5vh,0) scale(1.1)}}
+@keyframes drift3{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(4vw,-5vh,0) scale(1.16)}}
+#grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.045;mix-blend-mode:multiply;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#prog{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;border-radius:0 3px 3px 0;
+ background:linear-gradient(90deg,var(--accent),var(--accent2),var(--peach))}
+.nav{transition:box-shadow .25s,background .25s}
+.nav.scrolled{box-shadow:0 8px 30px rgba(42,27,71,.08);background:rgba(251,250,254,.92)}
+
+/* ====== GLASS SURFACES ====== */
+.feat,.quote,.plan{background:rgba(255,255,255,.83);backdrop-filter:blur(14px) saturate(1.15);-webkit-backdrop-filter:blur(14px) saturate(1.15);border-color:rgba(255,255,255,.65)}
+.weekbox{background:rgba(255,255,255,.82);backdrop-filter:blur(16px) saturate(1.15);-webkit-backdrop-filter:blur(16px) saturate(1.15);border-color:rgba(255,255,255,.6)}
+
+/* ====== CARD SPOTLIGHT + LIFT ====== */
+.feat,.plan{isolation:isolate;transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s}
+.feat::after,.plan::after{content:'';position:absolute;inset:0;border-radius:inherit;z-index:-1;opacity:0;transition:opacity .35s;
+ background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(122,101,194,.18),transparent 62%)}
+.feat:hover::after,.plan:hover::after{opacity:1}
+.feat:hover{transform:translateY(-6px);box-shadow:0 22px 48px rgba(42,27,71,.12)}
+.feat .ic{box-shadow:0 8px 18px rgba(42,27,71,.08)}
+
+/* ====== BUTTONS: shine + spring ====== */
+.btn{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,border-color .15s,color .15s}
+.btn.primary{position:relative;overflow:hidden;isolation:isolate}
+.btn.primary::after{content:'';position:absolute;top:0;left:-130%;width:55%;height:100%;z-index:1;pointer-events:none;
+ background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-18deg)}
+.btn.primary:hover::after{animation:shine .85s ease}
+@keyframes shine{from{left:-130%}to{left:150%}}
+.btn:active{transform:scale(.97)}
+
+/* ====== HERO ENTRANCE + DEVICE LIFE ====== */
+.hero .pill{animation:fadeUp .6s .02s both}
+.hero h1{animation:fadeUp .7s .1s both}
+.hero p.lead{animation:fadeUp .7s .2s both}
+.hero .cta-row{animation:fadeUp .7s .3s both}
+.hero .trust{animation:fadeUp .7s .4s both}
+.phone-wrap{animation:fadeUp .8s .2s both;perspective:1100px}
+.stage{transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.device{animation:floaty 6.5s ease-in-out infinite}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.glow{animation:glowpulse 7s ease-in-out infinite}
+@keyframes glowpulse{0%,100%{opacity:.26;transform:scale(1)}50%{opacity:.42;transform:scale(1.08)}}
+.float{animation:floaty 5.6s ease-in-out infinite}
+.float.f2{animation-duration:6.9s;animation-delay:-2s}
+
+/* ====== AI BAND + CLOSE AURORA ====== */
+.ai-band{position:relative;overflow:hidden;isolation:isolate}
+.ai-band::before{content:'';position:absolute;width:65%;height:220%;top:-60%;left:-12%;z-index:-1;
+ background:radial-gradient(closest-side,rgba(255,255,255,.22),transparent);animation:sweep 13s ease-in-out infinite}
+.ai-band::after{content:'';position:absolute;width:55%;height:200%;bottom:-50%;right:-8%;z-index:-1;
+ background:radial-gradient(closest-side,rgba(252,210,190,.24),transparent);animation:sweep 16s ease-in-out infinite reverse}
+@keyframes sweep{0%,100%{transform:translate(0,0)}50%{transform:translate(28%,12%)}}
+.lim{transition:transform .25s,background .25s}
+.lim:hover{transform:translateY(-4px);background:#ffffff2e}
+.lim .n{background:linear-gradient(180deg,#ffffff,#E6DBFF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.close{position:relative;overflow:hidden;isolation:isolate}
+.close::before{content:'';position:absolute;inset:-60% -10%;z-index:-1;
+ background:radial-gradient(closest-side,rgba(255,255,255,.18),transparent);animation:sweep 15s ease-in-out infinite}
+.close > *{position:relative}
+
+/* ====== PRICING BEST GLOW ====== */
+.plan{transition:transform .28s cubic-bezier(.2,.7,.2,1),box-shadow .28s}
+.plan:hover{transform:translateY(-4px);box-shadow:0 22px 48px rgba(42,27,71,.12)}
+.plan.best{transform:translateY(-6px)}
+.plan.best::before{content:'';position:absolute;inset:-2px;border-radius:inherit;z-index:-1;
+ background:linear-gradient(135deg,var(--accent),var(--accent2),var(--peach));filter:blur(15px);opacity:.4}
+.plan.best:hover{transform:translateY(-10px)}
+
+/* ====== WEEK SLIDER: premium ====== */
+.wk-track{position:relative}
+.range-slider{height:44px}
+.range-slider::-webkit-slider-runnable-track{height:10px;border-radius:999px;
+ background:linear-gradient(90deg,var(--accent),var(--accent2)) left/var(--pct,75%) 100% no-repeat,var(--soft)}
+.range-slider::-moz-range-track{height:10px;border-radius:999px;background:var(--soft)}
+.range-slider::-moz-range-progress{height:10px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.range-slider::-webkit-slider-thumb{margin-top:-12px;width:34px;height:34px;border:4px solid #fff;
+ background:radial-gradient(circle at 35% 30%,var(--accent2),var(--accent));
+ box-shadow:0 6px 16px rgba(122,101,194,.5),0 0 0 6px rgba(122,101,194,.13)}
+.range-slider::-moz-range-thumb{width:30px;height:30px;border:4px solid #fff;background:var(--accent);
+ box-shadow:0 6px 16px rgba(122,101,194,.5),0 0 0 6px rgba(122,101,194,.13)}
+.wk-bubble{position:absolute;top:-4px;left:0;transform:translate(-50%,-100%);
+ background:linear-gradient(135deg,var(--accent),#6E57BE);color:#fff;font-weight:800;font-size:13px;
+ padding:4px 11px;border-radius:10px;pointer-events:none;white-space:nowrap;box-shadow:0 8px 18px rgba(122,101,194,.42);z-index:2}
+.wk-bubble::after{content:'';position:absolute;left:50%;bottom:-5px;transform:translateX(-50%);
+ border:5px solid transparent;border-top-color:#6E57BE}
+.wk-scale{display:flex;gap:6px;margin-top:14px}
+.wk-scale span{flex:1;text-align:center;font-size:11.5px;font-weight:700;color:var(--muted);
+ padding:7px 4px;border-radius:9px;background:var(--soft);opacity:.55;transition:.25s}
+.wk-scale span.on{opacity:1;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 6px 14px rgba(122,101,194,.3)}
+.wk-img.pop{animation:popimg .45s ease}
+@keyframes popimg{0%{transform:scale(.86);opacity:.45}100%{transform:scale(1);opacity:1}}
+.wk-pop{animation:txtpop .4s ease}
+@keyframes txtpop{0%{opacity:0;transform:translateY(7px)}100%{opacity:1;transform:none}}
+
+/* ====== CAROUSEL DRAG ====== */
+.track{cursor:grab}
+.track.dragging{cursor:grabbing;scroll-snap-type:none;scroll-behavior:auto;user-select:none}
+.track.dragging .quote{pointer-events:none}
+.quote{transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s}
+.quote:hover{transform:translateY(-4px)}
+
+/* RESPONSIVE */
+@media(max-width:1080px){
+ .nav .links,.nav .right{display:none}.burger{display:grid}
+}
+@media(max-width:1040px){
+ .quote{flex:0 0 calc((100% - 18px)/2)}
+}
+@media(max-width:980px){
  .hero{grid-template-columns:1fr;text-align:center;padding:36px 0 16px}
  .hero .pill{margin-inline:auto}.hero p.lead{margin-inline:auto}.cta-row,.trust{justify-content:center}
- h1{font-size:34px}h2{font-size:28px}.bento,.proof,.plans{grid-template-columns:1fr}.feat.wide{grid-column:span 1}
+ .phone-wrap{margin-top:8px}
+ h1{font-size:34px}h2{font-size:28px}.bento,.plans{grid-template-columns:1fr}.feat.wide{grid-column:span 1}
  .limits{grid-template-columns:1fr}.float{display:none}.foot-grid{gap:30px}
+ .wk-top{flex-direction:column;text-align:center}.wk-meta{width:100%}.wk-pills{justify-content:center}
+ .quote{flex:0 0 86%}
 }
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+@media(max-width:420px){
+ .wrap{padding:0 18px}
+ .weekbox{padding:22px 18px}.wk-img{width:140px;height:140px}
+}
+@media(max-width:360px){
+ .logo{font-size:16px;gap:8px}.logo img{width:30px;height:30px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}
+ .reveal{opacity:1;transform:none}.device .scr img{transition:none}}
 </style>
 </head>
 <body>
 
+<div id="bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span></div>
+<div id="grain" aria-hidden="true"></div>
+<div id="prog" aria-hidden="true"></div>
+
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="/"><img src="/blog/assets/logo-96.png" alt="Мамина неделька">Мамина неделька</a>
+    <a class="logo" href="/"><img src="/blog/assets/logo-96.png" alt=""><span>Мамина неделька</span></a>
     <nav class="links" aria-label="Основная навигация">
       <a href="#features">Возможности</a>
       <a href="#ai">AI-ассистент</a>
       <a href="#weeks">По неделям</a>
+      <a href="#reviews">Отзывы</a>
       <a class="blog" href="/blog/index.html">Блог</a>
       <a href="#pricing">Тарифы</a>
     </nav>
     <div class="right">
-      <a class="btn ghost" href="/blog/index.html">Читать блог</a>
       <a class="btn primary" href="https://t.me/mamina_nedelka_bot?start=landing">Открыть в Telegram</a>
     </div>
-    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+    <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mmenu">
       <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
   </div>
@@ -188,6 +371,7 @@ footer{border-top:1px solid var(--line);margin-top:50px;padding:40px 0 30px;colo
   <a href="#features">Возможности</a>
   <a href="#ai">AI-ассистент</a>
   <a href="#weeks">По неделям</a>
+  <a href="#reviews">Отзывы</a>
   <a class="blog" href="/blog/index.html">Блог</a>
   <a href="#pricing">Тарифы</a>
   <a class="btn primary" href="https://t.me/mamina_nedelka_bot?start=landing">Открыть в Telegram</a>
@@ -211,17 +395,17 @@ footer{border-top:1px solid var(--line);margin-top:50px;padding:40px 0 30px;colo
     </div>
     <div class="phone-wrap">
       <div class="glow"></div>
-      <div class="phone">
-        <div class="screen">
-          <div class="ph-head"><div class="wk">24 неделя · 2 триместр</div><div class="big">Привет, мама 🌸</div></div>
-          <div class="ph-body">
-            <div class="ph-card"><div class="ph-ic i-lav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg></div><div><b>Малыш с кукурузный початок</b><span>≈30 см · уже есть отпечатки пальцев</span></div></div>
-            <div class="ph-card"><div class="ph-ic i-peach"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l4 4 10-10" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><b>Чек-ап самочувствия пройден</b><span>настроение · сон · активность</span></div></div>
-            <div class="ph-card"><div class="ph-ic i-pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 01-2 2H8l-4 4V5a2 2 0 012-2h13a2 2 0 012 2z" stroke-linejoin="round"/></svg></div><div><b>Спросить AI-ассистента</b><span>осталось 7 вопросов сегодня</span></div></div>
+      <div class="stage" id="heroStage">
+        <div class="device">
+          <div class="scr" id="heroScr">
+            <img src="assets/shots/01-checklist.jpg" alt="Экран приложения: чек-лист недели и напоминания" class="on" width="480" height="1041">
+            <img src="assets/shots/03-stats.jpg" alt="Экран приложения: дневник самочувствия и статистика" width="480" height="1041" loading="lazy">
+            <img src="assets/shots/04-profile.jpg" alt="Экран приложения: профиль и тариф" width="480" height="1041" loading="lazy">
           </div>
         </div>
+        <div class="hero-dots" id="heroDots" role="tablist" aria-label="Скриншоты приложения"></div>
       </div>
-      <div class="float f1"><div class="dot i-peach"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l4 4 10-10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Сумка в роддом собрана</div>
+      <div class="float f1"><div class="dot i-peach"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l4 4 10-10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Чек-лист недели</div>
       <div class="float f2"><div class="dot i-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/></svg></div>Папа тоже в курсе</div>
     </div>
   </section>
@@ -245,9 +429,9 @@ footer{border-top:1px solid var(--line);margin-top:50px;padding:40px 0 30px;colo
       <h2>AI-ассистент, который рядом 24/7</h2>
       <p class="sub">Тёплый собеседник: помогает разобраться в тревогах, объясняет простыми словами и всегда мягко напомнит посоветоваться с врачом. На любом тарифе можно спросить о важном.</p>
       <div class="limits">
-        <div class="lim"><div class="t">FREE</div><div class="n">3</div><small>вопроса в день</small></div>
-        <div class="lim"><div class="t">BASIC</div><div class="n">7</div><small>вопросов в день</small></div>
-        <div class="lim"><div class="t">PREMIUM</div><div class="n">20</div><small>+ расшифровка анализов 5/день</small></div>
+        <div class="lim"><div class="t">FREE</div><div class="n" data-count="3">3</div><small>вопроса в день</small></div>
+        <div class="lim"><div class="t">BASIC</div><div class="n" data-count="7">7</div><small>вопросов в день</small></div>
+        <div class="lim"><div class="t">PREMIUM</div><div class="n" data-count="20">20</div><small>+ расшифровка анализов 5/день</small></div>
       </div>
     </div>
   </section>
@@ -255,15 +439,38 @@ footer{border-top:1px solid var(--line);margin-top:50px;padding:40px 0 30px;colo
   <section id="weeks">
     <div class="eyebrow">По неделям</div>
     <h2>Загляните в любую неделю прямо сейчас</h2>
-    <p class="sub">42 недели выверенного контента в приложении, а в блоге — подробные статьи к ним: что с малышом, какие анализы, как готовиться к родам.</p>
-    <div class="chips">
-      <a href="/blog/8-nedelya.html">8 неделя</a>
-      <a href="/blog/12-nedelya.html">12 неделя</a>
-      <a href="/blog/20-nedelya.html">20 неделя</a>
-      <a href="/blog/24-nedelya.html">24 неделя</a>
-      <a href="/blog/30-nedelya.html">30 неделя</a>
-      <a href="/blog/36-nedelya.html">36 неделя</a>
-      <a class="all" href="/blog/index.html">Все 45 статей →</a>
+    <p class="sub">Подвигайте ползунок — и увидите, как растёт малыш: с чем сравнить по размеру, сколько сантиметров и что нового на этой неделе.</p>
+    <div class="weekbox" id="weekbox">
+      <div class="wk-top">
+        <div class="wk-img"><img id="wkImg" src="assets/babies/b24.jpg" alt="Иллюстрация малыша по неделе беременности"></div>
+        <div class="wk-meta">
+          <div class="wk-num" id="wkNum">24 недели</div>
+          <div class="wk-title" id="wkTitle">Размером как кукурузный початок</div>
+          <div class="wk-pills">
+            <span class="wk-pill" id="wkSize">≈ 30 см</span>
+            <span class="wk-pill" id="wkTri">II триместр</span>
+          </div>
+          <p class="wk-fact" id="wkFact">Отпечатки пальцев сформированы, мозг активно «бороздится».</p>
+        </div>
+      </div>
+      <div class="wk-range">
+        <div class="wk-track" id="wkTrack">
+          <input type="range" min="1" max="40" value="24" step="1" class="range-slider" id="wkRange"
+                 aria-label="Неделя беременности" aria-valuetext="24 неделя">
+          <div class="wk-bubble" id="wkBubble" aria-hidden="true">24</div>
+        </div>
+        <div class="wk-scale" id="wkScale">
+          <span data-tri="1">I триместр</span>
+          <span data-tri="2">II триместр</span>
+          <span data-tri="3">III триместр</span>
+        </div>
+      </div>
+      <div class="wk-cta">
+        <a class="btn primary" href="https://t.me/mamina_nedelka_bot?start=landing">Открыть свою неделю в Telegram</a>
+        <a class="blink" href="/blog/index.html">Читать статьи по неделям
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -271,13 +478,22 @@ footer{border-top:1px solid var(--line);margin-top:50px;padding:40px 0 30px;colo
     <div class="eyebrow">Отзывы</div>
     <h2>Мамам спокойнее вместе</h2>
     <p class="sub">Истории тех, кто проходит беременность рядом с приложением — неделя за неделей.</p>
-    <div class="proof">
-      <div class="quote"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Перестала тревожно гуглить каждую мелочь. Теперь просто спрашиваю в приложении и получаю спокойный ответ. Очень выручает ночью».</p><div class="who"><span>А</span><div><b>Алёна</b><small>24 неделя</small></div></div></div>
-      <div class="quote"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Дневник самочувствия — моё любимое. Утром и вечером отмечаю настроение, и видно, как меняется неделя».</p><div class="who"><span>М</span><div><b>Марина</b><small>31 неделя</small></div></div></div>
-      <div class="quote"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Напоминания о приёмах и анализах спасают — в беременном мозге всё вылетает. Ни одного приёма не пропустила».</p><div class="who"><span>О</span><div><b>Оля</b><small>36 неделя</small></div></div></div>
-      <div class="quote"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Расшифровала анализы по фото, и мне понятным языком объяснили, что к чему. Стало спокойнее идти к врачу».</p><div class="who"><span>Н</span><div><b>Настя</b><small>12 неделя</small></div></div></div>
-      <div class="quote"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Каждую неделю жду факт про малыша — с чем сравнить по размеру, что уже умеет. Так интереснее ждать встречи».</p><div class="who"><span>К</span><div><b>Катя</b><small>18 неделя</small></div></div></div>
-      <div class="quote"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«На раннем сроке было особенно страшно. Тёплый тон приложения реально поддерживает — как будто рядом подруга».</p><div class="who"><span>Л</span><div><b>Лена</b><small>9 неделя</small></div></div></div>
+    <div class="carousel">
+      <div class="track" id="revTrack" tabindex="0" role="group" aria-label="Отзывы мам, листайте свайпом или стрелками">
+        <div class="quote"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«На раннем сроке было особенно страшно. Тёплый тон приложения реально поддерживает — как будто рядом подруга».</p><div class="who"><span>Л</span><div><b>Лена</b><small>9 неделя</small></div></div></div>
+        <div class="quote"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Расшифровала анализы по фото, и мне понятным языком объяснили, что к чему. Стало спокойнее идти к врачу».</p><div class="who"><span>Н</span><div><b>Настя</b><small>12 неделя</small></div></div></div>
+        <div class="quote"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Каждую неделю жду факт про малыша — с чем сравнить по размеру, что уже умеет».</p><div class="who"><span>К</span><div><b>Катя</b><small>18 неделя</small></div></div></div>
+        <div class="quote"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Перестала тревожно гуглить каждую мелочь. Теперь просто спрашиваю в приложении и получаю спокойный ответ. Очень выручает ночью».</p><div class="who"><span>А</span><div><b>Алёна</b><small>24 неделя</small></div></div></div>
+        <div class="quote"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Счётчик шевелений — простой и не пугающий. Просто отмечаю, и спокойнее на душе».</p><div class="who"><span>В</span><div><b>Вика</b><small>28 неделя</small></div></div></div>
+        <div class="quote"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Дневник самочувствия — моё любимое. Утром и вечером отмечаю настроение, и видно, как меняется неделя».</p><div class="who"><span>М</span><div><b>Марина</b><small>31 неделя</small></div></div></div>
+        <div class="quote"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Напоминания о приёмах и анализах спасают — в беременном мозге всё вылетает. Ни одного приёма не пропустила».</p><div class="who"><span>О</span><div><b>Оля</b><small>36 неделя</small></div></div></div>
+        <div class="quote"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Дошла до самого конца вместе с приложением. Спокойно и по делу».</p><div class="who"><span>Д</span><div><b>Дарья</b><small>40 неделя</small></div></div></div>
+      </div>
+      <div class="car-nav">
+        <button class="car-arrow" id="revPrev" aria-label="Предыдущий отзыв"><svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="dots" id="revDots" role="tablist" aria-label="Перейти к отзыву"></div>
+        <button class="car-arrow" id="revNext" aria-label="Следующий отзыв"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
     </div>
   </section>
 
@@ -343,6 +559,9 @@ footer{border-top:1px solid var(--line);margin-top:50px;padding:40px 0 30px;colo
 </div></footer>
 
 <script>
+const REDUCED=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---- Mobile menu ---- */
 (function(){
   var b=document.getElementById('burger'),m=document.getElementById('mmenu');
   function close(){m.classList.remove('open');b.setAttribute('aria-expanded','false');b.setAttribute('aria-label','Открыть меню');}
@@ -352,7 +571,225 @@ footer{border-top:1px solid var(--line);margin-top:50px;padding:40px 0 30px;colo
     b.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');
   });
   m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
-  window.addEventListener('resize',function(){if(window.innerWidth>860)close();});
+  window.addEventListener('resize',function(){if(window.innerWidth>980)close();});
+})();
+
+/* ---- Hero screenshot rotation ---- */
+(function(){
+  var scr=document.getElementById('heroScr'); if(!scr) return;
+  var imgs=[].slice.call(scr.querySelectorAll('img')),dotsBox=document.getElementById('heroDots'),i=0,timer;
+  imgs.forEach(function(im,idx){
+    var d=document.createElement('button');
+    d.setAttribute('role','tab');d.setAttribute('aria-label','Скриншот '+(idx+1));
+    if(idx===0)d.className='on';
+    d.addEventListener('click',function(){show(idx);restart();});
+    dotsBox.appendChild(d);
+  });
+  var dots=[].slice.call(dotsBox.children);
+  function show(n){i=n;imgs.forEach(function(im,k){im.classList.toggle('on',k===n)});dots.forEach(function(d,k){d.classList.toggle('on',k===n)});}
+  function next(){show((i+1)%imgs.length);}
+  function start(){if(REDUCED)return;timer=setInterval(next,3800);}
+  function restart(){clearInterval(timer);start();}
+  var wrap=scr.closest('.phone-wrap');
+  wrap.addEventListener('mouseenter',function(){clearInterval(timer);});
+  wrap.addEventListener('mouseleave',start);
+  start();
+})();
+
+/* ---- Week slider ---- */
+const WEEKS=[{"w":1,"f":"маковое зёрнышко","l":0.1,"img":4,"t":"По акушерскому сроку это подготовительная неделя: организм только идёт к овуляции, а эмбриона обычно ещё нет."},{"w":2,"f":"кунжутное семечко","l":0.2,"img":4,"t":"Чаще всего на этой неделе происходит овуляция; если яйцеклетка встретится со сперматозоидом, начнутся первые деления клеток."},{"w":3,"f":"яблочное семечко","l":0.3,"img":4,"t":"Если произошло зачатие, крошечный эмбрион движется к матке и к концу недели может начать имплантацию."},{"w":4,"f":"горошина","l":0.4,"img":4,"t":"После имплантации закладываются нервная трубка, будущая плацента и околоплодные оболочки; эмбрион ещё совсем крошечный."},{"w":5,"f":"апельсиновая косточка","l":0.5,"img":5,"t":"Развиваются полушария мозга и зачатки органов чувств; пуповина связывает малыша с плацентой."},{"w":6,"f":"зернышко граната","l":0.6,"img":6,"t":"Лицо обретает черты, удлиняются конечности; развиваются кишечник и внутренние органы."},{"w":7,"f":"ягоды голубики","l":1.0,"img":7,"t":"Появляются зачатки пальцев; почки начинают работать, в печени созревают кровяные клетки."},{"w":8,"f":"малина","l":1.6,"img":7,"t":"Хвостик исчезает, пальцы разделяются; закладываются вкусовые рецепторы и дыхательные пути."},{"w":9,"f":"вишня","l":2.3,"img":9,"t":"Малыш официально считается плодом; сердце четырёхкамерное, растут волосы и закладываются молочные зубы."},{"w":10,"f":"клубника","l":3.1,"img":10,"t":"Растут ногти, почки фильтруют кровь; мозг активно наращивает нейроны, малыш глотает околоплодную воду."},{"w":11,"f":"лайм","l":4.1,"img":11,"t":"Работают рефлексы, кишечник занимает своё место в животе; малыш активно двигается."},{"w":12,"f":"слива","l":5.4,"img":11,"t":"Основные органы сформированы и продолжают расти; печень вырабатывает желчь, завершается ключевой этап I триместра."},{"w":13,"f":"персик","l":7.4,"img":13,"t":"У малыша уже сформированы подушечки пальцев с уникальным отпечатком, а тело начинает расти быстрее головы."},{"w":14,"f":"лимон","l":8.7,"img":14,"t":"Лицо малыша становится всё более выразительным: он может хмуриться, щуриться и гримасничать."},{"w":15,"f":"яблоко","l":10.1,"img":15,"t":"Кости скелета малыша становятся твёрже, а ножки уже длиннее ручек."},{"w":16,"f":"авокадо","l":11.6,"img":16,"t":"Мышцы спины укрепляются, и малыш уже может держать голову прямее."},{"w":17,"f":"гранат","l":13.0,"img":17,"t":"Начинает формироваться подкожный жир, который поможет малышу удерживать тепло после рождения."},{"w":18,"f":"болгарский перец","l":14.2,"img":18,"t":"Нервная система стремительно развивается: формируются нервы, покрытые миелином для быстрой передачи импульсов."},{"w":19,"f":"манго","l":15.3,"img":19,"t":"Кожа малыша покрывается первородной смазкой (верниксом), которая защищает её от размокания в околоплодных водах."},{"w":20,"f":"банан","l":25.0,"img":19,"t":"Экватор беременности: малыш уже размером с небольшой банан от макушки до пяточек."},{"w":21,"f":"морковь","l":26.7,"img":21,"t":"Пищеварительная система достаточно развита, чтобы усваивать воду и сахара из околоплодных вод."},{"w":22,"f":"папайя","l":27.8,"img":22,"t":"Губы и веки малыша становятся чётче, а под дёснами появляются зачатки зубов."},{"w":23,"f":"грейпфрут","l":28.9,"img":23,"t":"В лёгких начинает вырабатываться сурфактант — вещество, нужное для раскрытия лёгких при первом вдохе."},{"w":24,"f":"кукурузный початок","l":30.0,"img":24,"t":"Отпечатки пальцев сформированы, мозг активно «бороздится»; кожа менее прозрачная за счёт подкожного жира."},{"w":25,"f":"брюква","l":34.6,"img":25,"t":"Капилляры под кожей наполняются кровью, придавая малышу розоватый оттенок, а в лёгких активно формируются кровеносные сосуды."},{"w":26,"f":"цуккини","l":35.6,"img":26,"t":"Малыш впервые открывает глаза: пока видит размытые тени, зрительные пути уже работают."},{"w":27,"f":"цветная капуста","l":36.6,"img":27,"t":"Лёгкие и печень продолжают созревать, иммунная система малыша всё активнее работает самостоятельно."},{"w":28,"f":"баклажан","l":37.6,"img":28,"t":"Третий триместр: вес около килограмма, мозг покрывается извилинами."},{"w":29,"f":"жёлудевая тыква","l":38.6,"img":29,"t":"Мышцы и лёгкие созревают; голова растёт вместе с мозгом."},{"w":30,"f":"капуста","l":39.9,"img":30,"t":"Больше жировой ткани — малыш округляется, готовясь к рождению."},{"w":31,"f":"кокос","l":41.1,"img":31,"t":"Нервные связи в мозге формируются очень быстро; малыш обрабатывает сигналы от органов чувств."},{"w":32,"f":"дыня","l":42.4,"img":31,"t":"Кожа гладкая и розовая; ногти на руках подрастают до кончиков пальцев."},{"w":33,"f":"ананас","l":43.7,"img":33,"t":"Кости черепа остаются подвижими — так безопаснее проходить родовые пути."},{"w":34,"f":"мускусная дыня","l":45.0,"img":34,"t":"Центральная нервная система созревает; при рождении на этом сроке шансы на адаптацию обычно хорошие при поддержке неонатологов."},{"w":35,"f":"медовая дыня","l":46.2,"img":35,"t":"Малыш активно копит жир, особенно в области плеч; всё больше похож на пухлого младенца."},{"w":36,"f":"папайя","l":47.4,"img":36,"t":"Малыш продолжает набирать вес и дозревать. На 36-й неделе беременность ещё не считается доношенной, но многие системы уже близки к зрелости."},{"w":37,"f":"мангольд","l":48.6,"img":37,"t":"Малыш продолжает набирать массу; хрящи ушных раковин и других зон постепенно уплотняются."},{"w":38,"f":"небольшая тыква","l":49.8,"img":38,"t":"Органы работают как у новорождённого; малыш в основном набирает подкожный жир."},{"w":39,"f":"мини-арбуз","l":50.7,"img":39,"t":"Малыш готов к рождению; в кишечнике накопился меконий для первых суток."},{"w":40,"f":"арбуз","l":51.2,"img":40,"t":"Предполагаемая дата родов: малыш сформирован и ждёт родов."}];
+(function(){
+  var r=document.getElementById('wkRange'); if(!r) return;
+  var imgWrap=document.getElementById('wkImg').parentElement,
+      img=document.getElementById('wkImg'),num=document.getElementById('wkNum'),title=document.getElementById('wkTitle'),
+      size=document.getElementById('wkSize'),tri=document.getElementById('wkTri'),fact=document.getElementById('wkFact'),
+      bubble=document.getElementById('wkBubble'),scale=document.getElementById('wkScale');
+  var triSpans=[].slice.call(scale.querySelectorAll('span'));
+  // preload baby illustrations → instant, smooth swaps while dragging
+  var seen={};WEEKS.forEach(function(d){if(!seen[d.img]){seen[d.img]=1;var im=new Image();im.src='assets/babies/b'+d.img+'.jpg';}});
+  function plural(n,a,b,c){var m=Math.abs(n)%100,d=m%10;if(m>10&&m<20)return c;if(d>1&&d<5)return b;if(d===1)return a;return c;}
+  function fmt(x){return (Math.round(x*10)/10).toString().replace('.',',');}
+  function triIdx(w){return w<=13?1:(w<=27?2:3);}
+  function triName(i){return i===1?'I триместр':(i===2?'II триместр':'III триместр');}
+  function pop(el,cls){el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls);}
+  var lastW=null,lastImg=null,lastTri=null;
+  function render(w,animate){
+    var d=WEEKS[w-1],ti=triIdx(w),jump=(lastW!==null&&Math.abs(w-lastW)>=2);
+    if(d.img!==lastImg){img.src='assets/babies/b'+d.img+'.jpg';if(animate&&!REDUCED&&jump)pop(imgWrap,'pop');lastImg=d.img;}
+    img.alt='Малыш на '+w+'-й неделе беременности — размером как '+d.f;
+    num.textContent=w+' '+plural(w,'неделя','недели','недель');
+    title.textContent='Размером как '+d.f;
+    size.textContent='≈ '+fmt(d.l)+' см';
+    tri.textContent=triName(ti);
+    fact.textContent=d.t;
+    if(animate&&!REDUCED&&jump){pop(num,'wk-pop');pop(title,'wk-pop');}
+    if(ti!==lastTri){triSpans.forEach(function(s){s.classList.toggle('on',+s.dataset.tri===ti);});lastTri=ti;}
+    r.setAttribute('aria-valuetext',num.textContent);
+    var pct=(w-1)/39;
+    r.style.setProperty('--pct',(pct*100).toFixed(1)+'%');
+    bubble.textContent=w;
+    var tw=34,cw=r.clientWidth||r.offsetWidth,x=tw/2+pct*(cw-tw);
+    bubble.style.left=Math.max(20,Math.min(cw-20,x))+'px';
+    lastW=w;
+  }
+  r.addEventListener('input',function(){render(parseInt(r.value,10),true);});
+  window.addEventListener('resize',function(){render(parseInt(r.value,10),false);});
+  render(parseInt(r.value,10),false);
+})();
+
+/* ---- Reviews carousel ---- */
+(function(){
+  var track=document.getElementById('revTrack'); if(!track) return;
+  var slides=[].slice.call(track.children),dotsBox=document.getElementById('revDots'),
+      prev=document.getElementById('revPrev'),next=document.getElementById('revNext'),timer,cur=0;
+  slides.forEach(function(s,idx){
+    var b=document.createElement('button');b.setAttribute('role','tab');b.setAttribute('aria-label','Отзыв '+(idx+1));
+    b.innerHTML='<i></i>';
+    b.addEventListener('click',function(){go(idx);restart();});
+    dotsBox.appendChild(b);
+  });
+  var dots=[].slice.call(dotsBox.children);
+  function nearest(){
+    var best=0,bd=1e9;
+    slides.forEach(function(s,i){var d=Math.abs(s.offsetLeft-track.scrollLeft);if(d<bd){bd=d;best=i;}});
+    return best;
+  }
+  function paint(i){cur=i;dots.forEach(function(d,k){d.classList.toggle('on',k===i)});
+    prev.disabled=i<=0; next.disabled=i>=maxIndex();}
+  function maxIndex(){
+    // last index whose left edge can become the active (account for cards visible)
+    var last=slides.length-1;
+    for(var i=0;i<slides.length;i++){
+      if(slides[i].offsetLeft<=track.scrollWidth-track.clientWidth+2){last=i;}
+      else break;
+    }
+    return last;
+  }
+  function go(i){i=Math.max(0,Math.min(i,slides.length-1));track.scrollTo({left:slides[i].offsetLeft,behavior:REDUCED?'auto':'smooth'});paint(i);}
+  function step(dir){var t=nearest()+dir; if(t>maxIndex())t=0; if(t<0)t=maxIndex(); go(t);}
+  prev.addEventListener('click',function(){step(-1);restart();});
+  next.addEventListener('click',function(){step(1);restart();});
+  var st;track.addEventListener('scroll',function(){clearTimeout(st);st=setTimeout(function(){paint(nearest());},90);});
+  function start(){if(REDUCED)return;timer=setInterval(function(){step(1);},5000);}
+  function restart(){clearInterval(timer);start();}
+  ['mouseenter','focusin','touchstart'].forEach(function(ev){track.addEventListener(ev,function(){clearInterval(timer);},{passive:true});});
+  ['mouseleave','focusout'].forEach(function(ev){track.addEventListener(ev,start);});
+  window.addEventListener('resize',function(){paint(nearest());});
+
+  /* mouse drag-to-scroll with momentum (touch keeps native swipe) */
+  var down=false,moved=false,sx=0,sl=0,vx=0,lastX=0,lastT=0,raf;
+  track.addEventListener('pointerdown',function(e){
+    if(e.pointerType!=='mouse'||e.button!==0)return;
+    down=true;moved=false;sx=e.clientX;sl=track.scrollLeft;vx=0;lastX=e.clientX;lastT=performance.now();
+    cancelAnimationFrame(raf);clearInterval(timer);track.classList.add('dragging');
+    try{track.setPointerCapture(e.pointerId);}catch(_){}
+  });
+  track.addEventListener('pointermove',function(e){
+    if(!down)return;
+    var dx=e.clientX-sx; if(Math.abs(dx)>4)moved=true;
+    track.scrollLeft=sl-dx;
+    var now=performance.now(),dt=now-lastT; if(dt>0){vx=(e.clientX-lastX)/dt;lastX=e.clientX;lastT=now;}
+  });
+  function endDrag(){
+    if(!down)return; down=false; track.classList.remove('dragging');
+    var v=vx*16;
+    function glide(){if(Math.abs(v)>0.6){track.scrollLeft-=v;v*=0.92;raf=requestAnimationFrame(glide);}else{go(nearest());restart();}}
+    if(!REDUCED&&Math.abs(v)>0.6)glide(); else {go(nearest());restart();}
+  }
+  track.addEventListener('pointerup',endDrag);
+  track.addEventListener('pointercancel',endDrag);
+  track.addEventListener('click',function(e){if(moved){e.preventDefault();e.stopPropagation();}},true);
+
+  paint(0);start();
+})();
+
+/* ---- Scroll reveal ---- */
+(function(){
+  if(REDUCED||!('IntersectionObserver'in window))return;
+  var groups=[
+    document.querySelectorAll('.eyebrow'),
+    document.querySelectorAll('section > .wrap > h2, section h2'),
+    document.querySelectorAll('.sub'),
+    document.querySelectorAll('#features .feat'),
+    document.querySelectorAll('#ai .ai-band'),
+    document.querySelectorAll('#weeks .weekbox'),
+    document.querySelectorAll('#reviews .carousel'),
+    document.querySelectorAll('#pricing .plan'),
+    document.querySelectorAll('.paynote'),
+    document.querySelectorAll('.close')
+  ];
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+  groups.forEach(function(list){
+    [].slice.call(list).forEach(function(el,i){
+      if(el.classList.contains('reveal'))return;
+      el.classList.add('reveal','rv-s');
+      el.style.transitionDelay=(Math.min(i,5)*0.07)+'s';
+      io.observe(el);
+    });
+  });
+})();
+
+/* ---- Scroll progress + nav shadow ---- */
+(function(){
+  var prog=document.getElementById('prog'),nav=document.querySelector('.nav'),tick=false;
+  function upd(){
+    var h=document.documentElement,max=h.scrollHeight-h.clientHeight,y=h.scrollTop||document.body.scrollTop||0;
+    if(prog)prog.style.width=(max>0?(y/max*100):0)+'%';
+    if(nav)nav.classList.toggle('scrolled',y>8);
+    tick=false;
+  }
+  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd);}},{passive:true});
+  upd();
+})();
+
+/* ---- Hero 3D tilt (mouse only) ---- */
+(function(){
+  if(REDUCED)return;
+  var stage=document.getElementById('heroStage'); if(!stage)return;
+  var area=stage.closest('.phone-wrap'); if(!area)return;
+  if(window.matchMedia('(hover:none)').matches)return;
+  var raf;
+  area.addEventListener('pointermove',function(e){
+    if(e.pointerType!=='mouse')return;
+    var r=area.getBoundingClientRect();
+    var ry=((e.clientX-r.left)/r.width-0.5)*12, rx=-((e.clientY-r.top)/r.height-0.5)*12;
+    cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(function(){stage.style.transform='rotateX('+rx.toFixed(2)+'deg) rotateY('+ry.toFixed(2)+'deg)';});
+  });
+  area.addEventListener('pointerleave',function(){cancelAnimationFrame(raf);stage.style.transform='';});
+})();
+
+/* ---- Card spotlight follow ---- */
+(function(){
+  if(REDUCED||window.matchMedia('(hover:none)').matches)return;
+  document.querySelectorAll('.feat,.plan').forEach(function(el){
+    el.addEventListener('pointermove',function(e){
+      var r=el.getBoundingClientRect();
+      el.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(1)+'%');
+      el.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(1)+'%');
+    });
+  });
+})();
+
+/* ---- Count-up (AI limits) ---- */
+(function(){
+  var band=document.getElementById('ai'); if(!band)return;
+  var nums=[].slice.call(band.querySelectorAll('.n[data-count]'));
+  function run(){
+    nums.forEach(function(el){
+      var target=+el.dataset.count;
+      if(REDUCED){el.textContent=target;return;}
+      var t0=null,dur=1100;
+      (function tick(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);
+        el.textContent=Math.round(target*(1-Math.pow(1-p,3)));
+        if(p<1)requestAnimationFrame(tick);})(performance.now());
+    });
+  }
+  if(!('IntersectionObserver'in window)){run();return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run();io.disconnect();}});},{threshold:.4});
+  io.observe(band);
 })();
 </script>
 </body>

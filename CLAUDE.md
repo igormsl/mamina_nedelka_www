@@ -21,7 +21,13 @@ Apex `maminanedelka.ru` **одновременно** обслуживает жи
 
 ## Как обновить лендинг
 
-С 2026-06-13 `index.html` — **hand-coded** (не Claude Design). Правь файл напрямую, проверь рендером (desktop+mobile+меню), коммить+push, затем на VPS `cp index.html /srv/maminanedelka_www/` (без рестарта Caddy). ⚠️ Не удаляй `<meta name="yandex-verification">` из `<head>`. `apply-mobile-fixes.py`/`mobile-fixes.css` — легаси от старого бандла, не нужны.
+С 2026-06-13 `index.html` — **hand-coded** (не Claude Design), ванильный JS без сборки. Правь файл напрямую, проверь рендером (playwright из воркспейсного `.venv`: desktop 1280 + mobile 390 + меню + сетка ширин на оверфлоу), коммить+push, затем на VPS `cp index.html /srv/maminanedelka_www/` (+ `cp -r assets ...` если менялись картинки) — без рестарта Caddy. После деплоя: `curl https://maminanedelka.ru/health` → `ok`.
+
+⚠️ **Не удаляй** `<meta name="yandex-verification">` из `<head>`. `apply-mobile-fixes.py`/`mobile-fixes.css` — легаси от старого бандла, не нужны.
+
+**Визуальный слой (с 2026-06-14):** живой aurora-фон (`#bg` блобы + `#grain` + `#prog`), стеклянные карточки со spotlight, hero с реальными скринами приложения + 3D-tilt, **карусель отзывов тянется мышью** (drag+инерция), **интерактивный слайдер недель 1→40**, count-up, scroll-reveal. Всё ванилью, `prefers-reduced-motion` + AA + 0 горизонт-скролла 360–1440. Подробности и грабли (IO-reveal + smooth-scroll = поздний ревил при playwright-проверке) — в [README.md](README.md).
+
+**Ассеты** в `assets/babies/` (илл. малыша для слайдера) + `assets/shots/` (скрины приложения). Данные недель **вшиты в JS-массив `WEEKS`** в `index.html` (на проде бот `weeks.json` не отдаёт) — при правке контента синхронизировать вручную из `../mamina_nedelka/content/weeks.json`.
 
 ## Связь
 

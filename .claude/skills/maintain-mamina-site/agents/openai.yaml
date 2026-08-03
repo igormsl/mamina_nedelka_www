@@ -1,0 +1,4 @@
+interface:
+  display_name: "Maintain Mamina Site"
+  short_description: "Безопасное обслуживание сайта и блога"
+  default_prompt: "Use $maintain-mamina-site to update and validate the landing or generated blog safely."

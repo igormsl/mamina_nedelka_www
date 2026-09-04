@@ -10,8 +10,11 @@ description: Обслуживает hand-coded лендинг и сгенери�
 - Лендинг: `index.html` и `assets/` этого репозитория.
 - Статьи: `../mamina_marketing/vc_content/content/seo/A-*.md`.
 - Генератор: `build_blog.py`; результат: `blog/` и `sitemap.xml`.
-- Хостинг и deploy: `README.md` и `../VPS CLAUDE CODE RULLES/12-mamina-landing.md`.
+- Хостинг и deploy: `README.md` и `../VPS CLAUDE CODE RULES/12-mamina-landing.md`.
 - Проверенный срез: `STATUS.md`.
+
+Сначала сверить дату и ограничения в `STATUS.md`. Правка источника не разрешает
+возвращать отключённый сайт, менять Caddy или считать старый HTTP-срез свежим.
 
 ## Граница apex
 

@@ -1,0 +1,9 @@
+{
+  "checked_markdown": {
+    "mamina_nedelka_www": 9,
+    "mamina_marketing": 60
+  },
+  "missing": [],
+  "passed": true,
+  "scope": "Changed Markdown files, real links outside code, source /blog links resolved to website output"
+}

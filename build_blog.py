@@ -1,454 +1,233 @@
 #!/usr/bin/env python3
-"""Сборка блога maminanedelka.ru/blog/ из SEO-статей mamina_marketing.
-
-Источник: ../mamina_marketing/vc_content/content/seo/A-*.md (формат: 3 строки
-keyword:/week_ref:/intent:, пустая, заголовок, тело абзацами; подзаголовок =
-однострочный блок без точки на конце; в конце CTA-абзац со ссылкой на бота и
-блок «ФОТО-ИДЕИ:», который в вёрстку не идёт).
-
-Дизайн — гибрид «как мини-апп» + фруктовые акценты (выбор Игоря 2026-06-13,
-мокапы _probe/sketches/): градиентная шапка, лента недель, статья карточками,
-большие полупрозрачные цифры недель, эмодзи-иконки секций.
-
-Выход: blog/<slug>.html (плоские файлы — apex-Caddy отдаёт только реальные
-файлы, каталоги проваливаются в SPA-лендинг), blog/index.html, sitemap.xml,
-robots.txt. Запуск: python3 build_blog.py [путь-к-папке-статей]
+"""Reproducible stdlib build. Markdown stays in mamina_marketing; no network or bot imports.
+Default: local preview. --public-preview is an authorized noindex launch.
+--release requires completed reviews; both deployment modes write a separate directory.
 """
+import argparse
 import html
 import json
 import re
-import sys
+import shutil
 from datetime import date
 from pathlib import Path
+from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parent
-SRC = Path(sys.argv[1]) if len(sys.argv) > 1 else (
-    ROOT.parent / "mamina_marketing" / "vc_content" / "content" / "seo")
-OUT = ROOT / "blog"
-BASE = "https://maminanedelka.ru"
-BOT = "https://t.me/mamina_nedelka_bot?start=blog"
-PUBLISHED = "2026-06-12"
-TODAY = date.today().isoformat()
-MAX_H2 = 65  # однострочный блок короче этого и без концевой пунктуации = подзаголовок
-
-SECTIONS = [
-    ("🤰", "Беременность по неделям", "weeks",
-     ["5-nedelya", "6-nedelya", "8-nedelya", "10-nedelya", "12-nedelya",
-      "14-nedelya", "16-nedelya", "18-nedelya", "20-nedelya", "22-nedelya",
-      "24-nedelya", "26-nedelya", "28-nedelya", "30-nedelya", "32-nedelya",
-      "34-nedelya", "36-nedelya", "38-nedelya", "40-nedelya"]),
-    ("🩺", "Обследования и анализы", "checkups",
-     ["analizy", "skrining", "vtoroy-skrining", "uzi-grafik"]),
-    ("💛", "Самочувствие и тело", "feel",
-     ["toksikoz", "oteki", "pribavka-vesa", "pitanie", "sheveleniya-nachalo",
-      "schitat-sheveleniya", "kogda-viden-zhivot", "bessonnitsa", "prostuda",
-      "izzhoga", "zapor", "bolit-poyasnitsa", "vydeleniya"]),
-    ("🎒", "Подготовка к родам", "birth",
-     ["rodom", "podgotovka-k-rodam", "predvestniki", "shvatki"]),
-    ("📱", "Практическое", "misc",
-     ["dekret", "perelyoty", "krasit-volosy", "mozhno-li-kofe",
-      "sravnenie-prilozheniy"]),
-]
-SECTION_OF = {slug: name for _, name, _, slugs in SECTIONS for slug in slugs}
-FALLBACK_SECTION = ("📌", "Ещё статьи")
-
-# Эмодзи-иконка статьи (карточки индекса, шапка статьи, related)
-EMOJI = {
-    "5-nedelya": "🍊", "6-nedelya": "🌱", "8-nedelya": "🫐", "10-nedelya": "🍓",
-    "12-nedelya": "🍑", "14-nedelya": "🍋", "16-nedelya": "🥑", "18-nedelya": "🫑",
-    "20-nedelya": "🍌", "22-nedelya": "🥭", "24-nedelya": "🌽", "26-nedelya": "🥒",
-    "28-nedelya": "🍆", "30-nedelya": "🥥", "32-nedelya": "🍈", "34-nedelya": "🍈",
-    "36-nedelya": "🥭", "38-nedelya": "🎃", "40-nedelya": "🍉",
-    "kogda-viden-zhivot": "🤰", "bessonnitsa": "😴", "perelyoty": "✈️",
-    "krasit-volosy": "💇‍♀️", "prostuda": "🤧", "izzhoga": "🔥", "zapor": "🌿",
-    "bolit-poyasnitsa": "🧘", "mozhno-li-kofe": "☕", "vydeleniya": "🤍",
-    "analizy": "🩺", "skrining": "🔬", "vtoroy-skrining": "🔍", "uzi-grafik": "📅",
-    "toksikoz": "🍵", "oteki": "💧", "pribavka-vesa": "⚖️", "pitanie": "🥗",
-    "sheveleniya-nachalo": "🦋", "schitat-sheveleniya": "🦶",
-    "rodom": "🎒", "podgotovka-k-rodam": "📋", "predvestniki": "⏰", "shvatki": "🌊",
-    "dekret": "📄", "sravnenie-prilozheniy": "📱",
+SOURCE = ROOT.parent / 'mamina_marketing/blog/content/seo'
+BASE = 'https://maminanedelka.ru'
+BOT = 'https://t.me/mamina_nedelka_bot'
+UPDATED = '2026-10-15'
+RELEASE_GATES = ('owner_visual_acceptance', 'owner_details_confirmed',
+                 'privacy_and_hosting_review', 'bot_telegram_smoke',
+                 'vps_backup_and_rollback_plan', 'public_enable_approved')
+PUBLIC_PREVIEW_GATES = ('owner_visual_acceptance', 'vps_backup_and_rollback_plan', 'public_enable_approved')
+CATEGORIES = {'weeks':'По неделям','checkups':'Обследования','feel':'Самочувствие','birth':'К родам','life':'Повседневная жизнь','start':'Начало беременности'}
+DEFAULT_GROUPS = {
+ 'checkups':'analizy skrining vtoroy-skrining uzi-grafik',
+ 'feel':'toksikoz oteki pribavka-vesa sheveleniya-nachalo schitat-sheveleniya kogda-viden-zhivot bessonnitsa prostuda izzhoga zapor bolit-poyasnitsa vydeleniya trevoga',
+ 'birth':'rodom podgotovka-k-rodam predvestniki shvatki',
+ 'life':'dekret perelyoty krasit-volosy mozhno-li-kofe sravnenie-prilozheniy pitanie podderzhka-partnera',
+ 'start':'akusherskiy-srok polozhitelnyy-test lekarstva',
 }
-ICON_BG = ["i-lav", "i-peach", "i-pink", "i-blue"]
 
-# Эмодзи подзаголовков внутри статьи — по ключевым словам (первое совпадение)
-H2_EMOJI = [
-    ("малыш", "👶"), ("ребён", "👶"), ("мам", "💛"), ("врач", "🩺"), ("анализ", "🩺"),
-    ("скрининг", "🔬"), ("узи", "🔍"), ("сумк", "🎒"), ("документ", "📄"),
-    ("чек-лист", "✅"), ("итог", "✅"), ("не стоит", "⚠️"), ("ошибк", "⚠️"),
-    ("пита", "🥗"), ("еда", "🥗"), ("сон", "😴"), ("шевел", "🦋"), ("вес", "⚖️"),
-    ("отек", "💧"), ("отёк", "💧"), ("дом", "🏠"), ("быт", "🏠"), ("настро", "🌿"),
-    ("когда", "⏰"), ("срок", "📅"), ("недел", "📅"), ("зачем", "💡"), ("вопрос", "💬"),
-]
+def esc(s): return html.escape(str(s), quote=True)
 
+def site_href(url):
+    return url[len(BASE):] if url.startswith(BASE+'/') else url
 
-def h2_icon(text: str) -> str:
-    low = text.lower()
-    for key, em in H2_EMOJI:
-        if key in low:
-            return em
-    return "🌸"
+def inline(text):
+    """Small explicit Markdown subset; raw HTML and executable URL schemes are escaped."""
+    pieces = []; pos = 0
+    for m in re.finditer(r'\[([^\]\n]+)\]\(([^\s)]+)\)', text):
+        pieces.append(esc(text[pos:m.start()]))
+        label, url = m.groups()
+        if url.startswith(('https://','/blog/','/about.html','/editorial.html')):
+            pieces.append(f'<a href="{esc(url)}"' + (' rel="noopener noreferrer"' if url.startswith('https://') else '') + f'>{esc(label)}</a>')
+        else: pieces.append(esc(m.group()))
+        pos = m.end()
+    pieces.append(esc(text[pos:])); return ''.join(pieces)
 
+def parse(path):
+    raw = path.read_text(encoding='utf-8')
+    text = raw.split('ФОТО-ИДЕИ:',1)[0].strip()
+    head, sep, rest = text.partition('\n\n')
+    if not sep: raise ValueError(f'{path.name}: missing metadata separator')
+    meta = dict(line.split(':',1) for line in head.splitlines() if ':' in line)
+    meta = {k.strip():v.strip() for k,v in meta.items()}
+    blocks = [s.strip() for s in re.split(r'\n\s*\n',rest) if s.strip()]
+    slug = re.sub(r'^A-\d{4}-','',path.stem)
+    if not re.fullmatch(r'[a-z0-9-]+',slug): raise ValueError(f'Invalid slug: {slug}')
+    title = blocks.pop(0).lstrip('# ')
+    content = []
+    for b in blocks:
+        if b.startswith('## '): content.append(('h2',b[3:]))
+        elif all(line.startswith('- ') for line in b.splitlines()): content.append(('ul',b))
+        else: content.append(('p',re.sub(r'\s*\n\s*',' ',b)))
+    intro = next((s for k,s in content if k=='p'),'')
+    category = meta.get('category') or ('weeks' if slug.endswith('-nedelya') else next((k for k,v in DEFAULT_GROUPS.items() if slug in v.split()),'life'))
+    if category not in CATEGORIES: raise ValueError(f'{slug}: unknown category')
+    return dict(slug=slug,id=path.stem[:6].lower().replace('-',''),file=path.name,title=title,
+                desc=meta.get('description') or intro[:150].rsplit(' ',1)[0]+'…',intro=intro,
+                week=int(meta.get('week_ref','0')) if meta.get('week_ref','').isdigit() else 0,
+                category=category,content=content,modified=meta.get('updated',UPDATED),
+                status=meta.get('status','specialist_review'),sources=meta.get('sources','').split(),
+                related=meta.get('related','').split(),medical=meta.get('medical','true')=='true',
+                review_evidence=meta.get('review_evidence',''),
+                minutes=max(2,round(sum(len(s.split()) for _,s in content)/180)))
 
-CSS = """
-:root{--ink:#2A1B47;--muted:#8A7FA0;--accent:#7A65C2;--soft:#E6DFFA;--line:#DDD1F4;--bg:#F4F1FB;
---peach:#FCE6D0;--pink:#F4B6C9;--blue:#C5DAEE;--yellow:#FCDA68;--rose:#D26B82}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Manrope,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);
-color:var(--ink);line-height:1.65;font-size:16.5px}
-a{color:var(--accent)}
-.app-head{background:linear-gradient(135deg,#7A65C2,#9B85E0 60%,#B8A8E6);color:#fff;
-border-radius:0 0 26px 26px;padding:14px 20px 20px}
-.app-head.short{padding-bottom:16px}
-.bar{display:flex;align-items:center;gap:10px;max-width:760px;margin:0 auto}
-.bar img{width:32px;height:32px;border-radius:9px}
-.bar .brand{font-weight:800;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px}
-.bar nav{margin-left:auto;display:flex;gap:12px;align-items:center}
-.bar nav .plain{color:#fff;text-decoration:none;font-weight:700;font-size:14.5px;white-space:nowrap}
-.btn{display:inline-block;background:#fff;color:var(--accent);text-decoration:none;font-weight:800;
-padding:9px 16px;border-radius:12px;font-size:14.5px;white-space:nowrap;transition:transform .15s}
-.btn:hover{transform:translateY(-1px)}
-.btn.grad{background:var(--accent);color:#fff;box-shadow:0 6px 14px rgba(122,101,194,.35)}
-.app-head h1{max-width:760px;margin:18px auto 4px;font-size:27px;letter-spacing:-.3px;text-wrap:balance}
-.app-head .sub{max-width:760px;margin:0 auto;color:#fffd;font-size:15px;text-wrap:balance}
-.weeks{display:flex;gap:8px;overflow-x:auto;max-width:760px;margin:16px auto 0;padding-bottom:4px;
-scrollbar-width:none}
-.weeks::-webkit-scrollbar{display:none}
-.wk{flex:0 0 auto;background:#ffffff22;border:1px solid #ffffff55;color:#fff;border-radius:14px;
-padding:7px 12px;text-align:center;font-size:11.5px;font-weight:700;text-decoration:none;white-space:nowrap}
-.wk b{display:block;font-size:16px}
-.wk:hover{background:#fff;color:var(--accent)}
-.wrap{max-width:760px;margin:0 auto;padding:16px 20px 56px}
-.sec{display:flex;align-items:center;gap:8px;margin:24px 0 10px;font-weight:800;font-size:17px}
-.sec .em{font-size:20px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:600px){.row{grid-template-columns:1fr}.app-head h1{font-size:23px}}
-.card{position:relative;display:flex;gap:12px;background:#fff;border-radius:18px;padding:14px;
-text-decoration:none;color:var(--ink);box-shadow:0 2px 10px rgba(42,27,71,.06);
-transition:transform .12s,box-shadow .12s;overflow:hidden}
-.card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(42,27,71,.12)}
-.card .bigwk{position:absolute;right:8px;top:-12px;font-size:58px;font-weight:800;
-color:var(--accent);opacity:.08;letter-spacing:-2px}
-.card .ic{flex:0 0 46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:24px}
-.i-lav{background:var(--soft)}.i-peach{background:var(--peach)}.i-pink{background:var(--pink)}
-.i-blue{background:var(--blue)}
-.card b{display:block;font-size:15.5px;line-height:1.35;text-wrap:balance}
-.card span.d{color:var(--muted);font-size:13.5px;display:block;margin-top:3px}
-.crumb{font-size:14px;font-weight:700;margin:2px 0 12px;display:inline-block;text-decoration:none}
-.ahead{position:relative;background:#fff;border-radius:22px;padding:22px;
-box-shadow:0 2px 10px rgba(42,27,71,.06);overflow:hidden}
-.ahead .bigwk{position:absolute;right:14px;top:-18px;font-size:110px;font-weight:800;
-color:var(--accent);opacity:.07;letter-spacing:-4px}
-.ahead .fr{position:absolute;right:16px;bottom:12px;font-size:38px;transform:rotate(-8deg)}
-.chiprow{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
-.chip{background:var(--soft);color:var(--accent);border-radius:999px;padding:3px 12px;
-font-size:12.5px;font-weight:800;white-space:nowrap}
-.chip.alt{background:var(--peach);color:#B0683A}
-.chip.dim{background:var(--bg);color:var(--muted)}
-.ahead h1{font-size:24px;line-height:1.3;letter-spacing:-.3px;text-wrap:balance;padding-right:52px}
-.block{background:#fff;border-radius:22px;padding:20px 22px;margin-top:14px;
-box-shadow:0 2px 10px rgba(42,27,71,.06)}
-.block h2{display:flex;align-items:center;gap:10px;font-size:18.5px;margin-bottom:10px;text-wrap:balance}
-.block h2 .em{flex:0 0 34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:18px}
-.block p{margin:0 0 13px;font-size:16px}
-.block p:last-child{margin:0}
-.ctab{background:linear-gradient(135deg,#7A65C2,#9B85E0);border-radius:22px;color:#fff;
-padding:22px;margin-top:16px;display:flex;align-items:center;gap:16px}
-.ctab .em{font-size:38px}
-.ctab b{font-size:17px}
-.ctab p{font-size:14.5px;color:#fffd;margin:4px 0 12px}
-.rel{margin-top:28px}
-.rel .t{font-weight:800;font-size:17px;margin-bottom:10px}
-footer{color:var(--muted);font-size:13px;margin-top:34px;text-align:center;padding:0 10px}
-footer a{font-weight:700}
-html{scroll-behavior:smooth}
-.wk.more{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
-.wk.more:hover{background:#fff}
-.intro{background:#fff;border-radius:20px;padding:18px 20px;margin-top:2px;
-box-shadow:0 2px 10px rgba(42,27,71,.06)}
-.intro p{font-size:15.5px;color:var(--ink);margin:0 0 14px}
-.hubs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-@media(min-width:600px){.hubs{grid-template-columns:repeat(5,1fr)}}
-.hub{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;
-background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:12px 8px;
-text-decoration:none;color:var(--ink);font-weight:800;font-size:12.5px;line-height:1.3;
-transition:transform .12s}
-.hub:hover{transform:translateY(-2px);background:var(--soft)}
-.hub span{font-size:24px}
-"""
+def bot_link(source, placement, label='Открыть в Telegram', light=False):
+    source = f'{source}_{placement}'
+    assert re.fullmatch(r'[a-z0-9_-]{1,64}',source)
+    return f'<a class="btn{" light" if light else ""}" data-bot="{esc(placement)}" href="{BOT}?start={source}">{esc(label)} <span aria-hidden="true">↗</span></a>'
 
-HEAD = """<!doctype html>
-<html lang="ru">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="yandex-verification" content="5de9122d74676c4f" />
-<title>{title}</title>
-<meta name="description" content="{desc}">
-<link rel="canonical" href="{url}">
-<meta property="og:site_name" content="Мамина неделька">
-<meta property="og:locale" content="ru_RU">
-<meta property="og:type" content="{ogtype}">
-<meta property="og:title" content="{title}">
-<meta property="og:description" content="{desc}">
-<meta property="og:url" content="{url}">
-<meta property="og:image" content="{base}/blog/assets/og-cover.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-<style>{css}</style>
-{jsonld}
-</head>
-<body>
-<div class="app-head{short}">
-  <div class="bar">
-    <a class="brand" href="https://maminanedelka.ru/"><img src="assets/logo-96.png"
-      alt="Мамина неделька"> Мамина неделька</a>
-    <nav>
-      <a class="plain" href="https://maminanedelka.ru/">← На сайт</a>
-      <a class="btn" href="{bot}">Открыть бота</a>
-    </nav>
-  </div>
-{headextra}</div>
-<div class="wrap">
-"""
+def json_script(data):
+    return '<script type="application/ld+json">'+json.dumps(data,ensure_ascii=False).replace('<','\\u003c')+'</script>'
 
-FOOT = """
-<footer>
-<p>Материалы блога — ориентиры для спокойствия, а не медицинские рекомендации.<br>
-Решения о вашем здоровье и здоровье малыша принимает ваш врач.</p>
-<p style="margin-top:8px"><a href="https://maminanedelka.ru/">Мамина неделька</a> — гид по
-беременности в Telegram · <a href="{bot}">открыть бота</a> · поддержка:
-<a href="https://t.me/mamina_nedelka_support_bot">@mamina_nedelka_support_bot</a></p>
-</footer>
-</div>
-</body>
-</html>
-"""
+def shell(title, description, path, body, *, source='landing', page='home', schema=None, preview=True, image='life'):
+    url=BASE+path
+    schemas=[{'@context':'https://schema.org','@type':'WebSite','@id':BASE+'/#website','name':'Мамина неделька','url':BASE+'/' ,'inLanguage':'ru-RU'}]
+    if schema: schemas.extend(schema)
+    return f'''<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{esc(title)}</title><meta name="description" content="{esc(description)}">
+<meta name="yandex-verification" content="5de9122d74676c4f"><meta name="robots" content="{'noindex, follow' if preview else 'index, follow, max-image-preview:large'}">
+<meta name="referrer" content="strict-origin-when-cross-origin"><meta name="theme-color" content="#faf8f5">
+<link rel="canonical" href="{url}"><link rel="icon" href="/blog/assets/favicon-32.png" sizes="32x32" type="image/png">
+<meta property="og:site_name" content="Мамина неделька"><meta property="og:locale" content="ru_RU"><meta property="og:type" content="{'article' if re.fullmatch(r'a[0-9]{4}',page) else 'website'}">
+<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}"><meta property="og:url" content="{url}">
+<meta property="og:image" content="{BASE}/assets/illustrations/{image}.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Мамина неделька — {esc(CATEGORIES.get(image,'полезные материалы'))}">
+<meta name="twitter:card" content="summary_large_image"><link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script>
+<noscript><style>.filter-panel{{display:none}}@media(max-width:760px){{.topbar{{position:static}}.navrow{{flex-wrap:wrap;padding-bottom:16px}}.menu-toggle{{display:none}}.navlinks{{display:flex;position:static;flex-flow:row wrap;gap:16px;padding:0;box-shadow:none;border:0;width:100%;margin:0}}}}</style></noscript>
+{''.join(json_script(s) for s in schemas)}</head><body data-page="{page}">
+<a class="skip" href="#main">Перейти к содержанию</a>
+{('<div class="preview-label">' + ('Предварительная версия · материалы проходят проверку' if preview == 'public-preview' else 'Локальный просмотр · материалы готовятся к публикации') + '</div>') if preview else ''}
+<header class="topbar"><div class="wrap navrow"><a class="brand" href="/"><img src="/blog/assets/logo-96.png" alt="" width="37" height="37"><span>Мамина неделька<small>рядом с самого начала</small></span></a>
+<button class="menu-toggle" aria-label="Меню" aria-expanded="false" aria-controls="navigation">☰</button>
+<nav class="navlinks" id="navigation" aria-label="Главная навигация"><a href="/blog/index.html">Блог</a><a href="/#features">О приложении</a><a href="/#plans">Тарифы</a>{bot_link(source,'nav')}</nav></div></header>
+{body}
+<footer class="footer"><div class="wrap"><div class="footer-top"><a class="brand" href="/">Мамина неделька</a><nav aria-label="Внизу страницы"><a href="/about.html">О проекте и контакты</a><a href="/editorial.html">Как мы пишем</a><a href="/privacy.html">Конфиденциальность</a><a href="https://t.me/mamina_nedelka_support_bot" rel="noreferrer">Поддержка</a></nav></div>
+<p>Информационный проект для будущих мам. Статьи и AI-помощник не ставят диагнозы и не заменяют медицинскую помощь. При ухудшении самочувствия обращайтесь к врачу.</p>
+<div class="footer-bottom"><span>© 2026 Мамина неделька</span><span>С заботой о вашем времени и внимании</span></div></div></footer></body></html>'''
 
+def card(a, searchable=False):
+    extra=f' data-article data-category="{a["category"]}" data-search="{esc(a["title"]+" "+a["desc"])}"' if searchable else ''
+    badge=f'<span class="week-badge">{a["week"]}</span>' if a['category']=='weeks' else ''
+    return f'''<a class="story" href="/blog/{a['slug']}.html"{extra}><div class="story-art"><img src="/assets/illustrations/{a['category']}.svg" alt="" width="1200" height="630" loading="lazy">{badge}</div><div class="story-body"><span class="label">{CATEGORIES[a['category']]}</span><h3>{esc(a['title'])}</h3><p>{esc(a['desc'])}</p><span class="read">{a['minutes']} мин чтения <span aria-hidden="true">↗</span></span></div></a>'''
 
-def esc(s: str) -> str:
-    return html.escape(s, quote=True)
+def article(a, all_articles, sources, preview):
+    source=f'blog_{a["id"]}'
+    headings=[]; parts=[]
+    intro_removed=False
+    for kind,text in a['content']:
+        if kind=='p' and not intro_removed:
+            intro_removed=True; continue
+        if kind=='h2':
+            anchor=f'section-{len(headings)+1}'; headings.append((anchor,text)); parts.append(f'<h2 id="{anchor}">{esc(text)}</h2>')
+        elif kind=='ul': parts.append('<ul>'+''.join('<li>'+inline(x[2:])+'</li>' for x in text.splitlines())+'</ul>')
+        else: parts.append('<p>'+inline(text)+'</p>')
+    toc='<aside class="toc" aria-label="Содержание статьи"><b>В этой статье</b><ol>'+''.join(f'<li><a href="#{i}">{esc(t)}</a></li>' for i,t in headings)+'</ol></aside>'
+    by_slug={x['slug']:x for x in all_articles}
+    related=[by_slug[s] for s in a['related'] if s in by_slug and s!=a['slug']][:3]
+    if len(related)<3:
+        related += [x for x in all_articles if x['category']==a['category'] and x not in related and x!=a][:3-len(related)]
+    refs=''.join(f'<li><a href="{esc(site_href(sources[s]["url"]))}" rel="noreferrer">{esc(sources[s]["title"])}</a> — {esc(sources[s]["scope"])}</li>' for s in a['sources'])
+    review = ('Требуется проверка акушером-гинекологом перед публикацией. Ссылки на источники приведены в конце; медицинская рецензия пока не проводилась.' if a['medical'] else 'Редакционный материал подготовлен для приёмки владельцем. Публикация ещё не выполнена.')
+    if preview == 'public-preview':
+        review = ('Медицинская рецензия пока не проводилась. Материал требует проверки акушером-гинекологом; ссылки на использованные источники приведены в конце.' if a['medical'] else 'Предварительная редакция: материал проходит проверку.')
+    note=f'<div class="review-note">{review}</div>' if a['status']!='approved' else '<div class="review-note">Информационный материал. Индивидуальные рекомендации даёт ваш врач.</div>' if a['medical'] else ''
+    cta=f'''<section class="article-cta"><h2>Своя неделя — под рукой</h2><p>В «Маминой недельке» можно открыть материалы по сроку и сохранить вопросы к приёму. После перехода нажмите «Старт» в Telegram, откройте приложение и укажите срок. Базовый доступ бесплатный.</p>{bot_link(source,'article_end','Посмотреть свою неделю')}<p class="small">При тревожных симптомах обращайтесь за медицинской помощью; бот не оценивает срочность вашего состояния.</p></section>'''
+    body=f'''<main class="wrap" id="main"><nav class="crumbs" aria-label="Хлебные крошки"><a href="/">Главная</a><span>/</span><a href="/blog/index.html">Блог</a><span>/</span><span>{CATEGORIES[a['category']]}</span></nav>
+<header class="article-head"><div class="eyebrow">{CATEGORIES[a['category']]}</div><h1>{esc(a['title'])}</h1><p class="lead">{inline(a['intro'])}</p><div class="meta"><span>{a['minutes']} мин чтения</span><span>Редакция текста: <time datetime="{a['modified']}">{a['modified']}</time></span><a href="/editorial.html">Источники и редакционные правила</a></div></header>{note}
+<div class="article-layout"><article class="article-body"><img class="article-cover" src="/assets/illustrations/{a['category']}.svg" alt="" width="1200" height="630">{''.join(parts)}
+<section class="sources" id="sources"><h2>Источники</h2><p>Сверка доступных материалов: 15 октября 2026. Общие рекомендации зарубежных служб не заменяют российский план наблюдения.</p><ol>{refs}</ol></section>{cta}<a class="back-top" href="#main">↑ К началу статьи</a></article>{toc}</div>
+<section class="related"><div class="section-head"><h2>Можно почитать дальше</h2><a href="/blog/index.html">Все материалы →</a></div><div class="story-grid">{''.join(card(x) for x in related)}</div></section></main>'''
+    url=BASE+f'/blog/{a["slug"]}.html'
+    # No invented doctor, author, first-publication date, ratings or medical review.
+    schema=[{'@context':'https://schema.org','@type':'Article','headline':a['title'],'description':a['desc'],'mainEntityOfPage':url,'url':url,'inLanguage':'ru-RU','dateModified':a['modified'],'image':[BASE+f'/assets/illustrations/{a["category"]}.png'],'publisher':{'@type':'Organization','name':'Мамина неделька','url':BASE+'/'},'citation':[sources[s]['url'] for s in a['sources']]}, {'@context':'https://schema.org','@type':'BreadcrumbList','itemListElement':[{'@type':'ListItem','position':1,'name':'Главная','item':BASE+'/'},{'@type':'ListItem','position':2,'name':'Блог','item':BASE+'/blog/index.html'},{'@type':'ListItem','position':3,'name':a['title'],'item':url}]}]
+    return shell(a['title']+' | Мамина неделька',a['desc'],f'/blog/{a["slug"]}.html',body,source=source,page=a['id'],schema=schema,preview=preview,image=a['category'])
 
+def catalogue(arts,preview):
+    filters='<button class="filter" data-filter="all" aria-pressed="true">Все темы</button>'+''.join(f'<button class="filter" data-filter="{k}" aria-pressed="false">{v}</button>' for k,v in CATEGORIES.items())
+    featured=['polozhitelnyy-test','rodom','trevoga','skrining','akusherskiy-srok','podderzhka-partnera']
+    ordered=sorted(arts,key=lambda a:(featured.index(a['slug']) if a['slug'] in featured else 10,a['category']=='weeks',a['week'],a['title']))
+    body=f'''<main class="wrap" id="main"><section class="blog-intro"><div class="eyebrow">Библиотека будущей мамы</div><h1>Есть вопрос.<br>Давайте разберёмся.</h1><p>От первых двух полосок до сумки в роддом. Понятные объяснения, полезные списки и вопросы, которые стоит задать врачу.</p></section><div class="filter-panel"><div class="search-row"><label><span class="sr-only">Найти статью</span><input id="article-search" type="search" placeholder="Например: скрининг, сон, 20 неделя" autocomplete="off"></label><output id="result-count" aria-live="polite">Материалов: {len(arts)}</output></div><div class="filters" role="group" aria-label="Темы статей">{filters}</div></div><noscript><p>Все статьи доступны ниже. Для поиска на странице используйте поиск браузера.</p></noscript><div class="story-grid" id="articles">{''.join(card(a,True) for a in ordered)}</div><div class="empty" id="no-results" hidden><h2>Такой статьи пока нет</h2><p>Попробуйте другое слово или выберите все темы.</p><button class="filter" id="reset-search">Сбросить поиск</button></div></main>'''
+    schema=[{'@context':'https://schema.org','@type':'CollectionPage','name':'Блог Маминой недельки','url':BASE+'/blog/index.html','hasPart':[{'@type':'Article','headline':a['title'],'url':BASE+f'/blog/{a["slug"]}.html'} for a in arts]}]
+    return shell('Блог о беременности: недели, самочувствие, подготовка к родам | Мамина неделька','Статьи о беременности с источниками: обследования, самочувствие, подготовка к родам и повседневные вопросы. Выберите свою тему.', '/blog/index.html',body,source='blog',page='blog',schema=schema,preview=preview)
 
-def parse(path: Path) -> dict:
-    text = path.read_text(encoding="utf-8")
-    body = text.split("ФОТО-ИДЕИ:")[0]
-    blocks = [b.strip() for b in re.split(r"\n\s*\n", body) if b.strip()]
-    meta = dict(re.findall(r"^(keyword|week_ref|intent):\s*(.+)$", blocks[0], re.M))
-    title = blocks[1]
-    content, cta = [], None
-    for b in blocks[2:]:
-        if "mamina_nedelka_bot" in b:
-            cta = b
-        elif "\n" not in b and len(b) <= MAX_H2 and b[-1] not in ".!?…:»)":
-            content.append(("h2", b))
-        else:
-            content.append(("p", re.sub(r"\s*\n\s*", " ", b)))
-    slug = re.sub(r"^A-\d{4}-", "", path.stem)
-    first_p = next(t for k, t in content if k == "p")
-    desc = first_p if len(first_p) <= 158 else first_p[:158].rsplit(" ", 1)[0] + "…"
-    week_digits = re.search(r"\d+", meta.get("week_ref", "") or "")
-    n_chars = sum(len(t) for k, t in content if k == "p")
-    return {"slug": slug, "title": title, "keyword": meta.get("keyword", ""),
-            "week": int(week_digits.group()) if week_digits else 0, "desc": desc,
-            "content": content, "cta": cta, "mins": max(2, round(n_chars / 1100))}
+def home(arts,preview):
+    body=(ROOT/'templates/home.html').read_text()
+    by_slug={a['slug']:a for a in arts}
+    body=body.replace('{{FEATURED}}',''.join(card(by_slug[s]) for s in ['polozhitelnyy-test','rodom','trevoga'] if s in by_slug))
+    body=body.replace('{{WEEKS}}',''.join(f'<a href="/blog/{a["slug"]}.html" aria-label="{a["week"]} неделя беременности">{a["week"]}</a>' for a in sorted(arts,key=lambda a:a['week']) if a['category']=='weeks'))
+    body=re.sub(r'\{\{BOT:([^|]+)\|([^}]+)\}\}',lambda m:bot_link('landing',m[1],m[2]),body)
+    return shell('Мамина неделька — беременность по неделям и помощник в Telegram','Полезные статьи о беременности и приложение в Telegram: материалы по сроку, дневник самочувствия и вопросы к врачу. Начните с бесплатного доступа.','/',body,preview=preview)
 
+def sitemap(arts):
+    ET.register_namespace('','http://www.sitemaps.org/schemas/sitemap/0.9')
+    root=ET.Element('{http://www.sitemaps.org/schemas/sitemap/0.9}urlset')
+    paths=[('/',UPDATED),('/blog/index.html',UPDATED),('/about.html',UPDATED),('/editorial.html',UPDATED),('/privacy.html',UPDATED)]
+    paths += [(f'/blog/{a["slug"]}.html',a['modified']) for a in arts]
+    for path,date in paths:
+        url=ET.SubElement(root,'url');ET.SubElement(url,'loc').text=BASE+path;ET.SubElement(url,'lastmod').text=date
+    return '<?xml version="1.0" encoding="UTF-8"?>\n'+ET.tostring(root,encoding='unicode')+'\n'
 
-def plural_stati(n: int) -> str:
-    if n % 100 in (11, 12, 13, 14):
-        f = "статей"
-    elif n % 10 == 1:
-        f = "статья"
-    elif n % 10 in (2, 3, 4):
-        f = "статьи"
-    else:
-        f = "статей"
-    return f"{n} {f}"
-
-
-def trimester(week: int) -> str:
-    if not week:
-        return ""
-    return ("первый" if week <= 13 else "второй" if week <= 27 else "третий") + " триместр"
-
-
-def cta_text(raw: str) -> str:
-    txt = raw.replace("?start=vc_seo", "?start=blog")
-    txt = re.sub(r"\s*Посмотреть:\s*\S+\s*$", "", txt)
-    return re.sub(r"\s*\n\s*", " ", txt).strip()
-
-
-def jsonld_article(a: dict, url: str) -> str:
-    data = {
-        "@context": "https://schema.org", "@type": "Article",
-        "headline": a["title"], "description": a["desc"],
-        "inLanguage": "ru", "mainEntityOfPage": url,
-        "datePublished": PUBLISHED, "dateModified": TODAY,
-        "author": {"@type": "Organization", "name": "Мамина неделька", "url": BASE},
-        "publisher": {"@type": "Organization", "name": "Мамина неделька",
-                      "logo": {"@type": "ImageObject",
-                               "url": f"{BASE}/blog/assets/logo-96.png"}},
-    }
-    crumbs = {
-        "@context": "https://schema.org", "@type": "BreadcrumbList",
-        "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Мамина неделька", "item": BASE + "/"},
-            {"@type": "ListItem", "position": 2, "name": "Блог",
-             "item": BASE + "/blog/index.html"},
-            {"@type": "ListItem", "position": 3, "name": a["title"], "item": url},
-        ],
-    }
-    return ('<script type="application/ld+json">'
-            + json.dumps(data, ensure_ascii=False) + "</script>\n"
-            + '<script type="application/ld+json">'
-            + json.dumps(crumbs, ensure_ascii=False) + "</script>")
-
-
-def is_week_article(a: dict) -> bool:
-    return a["slug"].endswith("-nedelya")
-
-
-def card(a: dict, i: int) -> str:
-    bigwk = f'<span class="bigwk">{a["week"]}</span>' if is_week_article(a) else ""
-    return (f'<a class="card" href="{a["slug"]}.html">{bigwk}'
-            f'<span class="ic {ICON_BG[i % len(ICON_BG)]}">{EMOJI.get(a["slug"], "🌸")}</span>'
-            f'<div><b>{esc(a["title"])}</b>'
-            f'<span class="d">{esc(a["desc"])}</span></div></a>')
-
-
-def related(a: dict, arts: list) -> list:
-    others = [x for x in arts if x["slug"] != a["slug"]]
-    return sorted(others, key=lambda x: abs(x["week"] - a["week"]))[:3]
-
-
-def render_article(a: dict, arts: list) -> str:
-    url = f"{BASE}/blog/{a['slug']}.html"
-    parts = [HEAD.format(title=esc(a["title"]) + " — Мамина неделька",
-                         desc=esc(a["desc"]), url=url, ogtype="article", base=BASE,
-                         css=CSS, bot=BOT, short=" short", headextra="",
-                         jsonld=jsonld_article(a, url))]
-    parts.append('<a class="crumb" href="index.html">← Все статьи</a>')
-    chips = ""
-    if is_week_article(a):
-        chips += f'<span class="chip">неделя {a["week"]}</span>'
-        chips += f'<span class="chip alt">{trimester(a["week"])}</span>'
-    else:
-        chips += f'<span class="chip">{esc(SECTION_OF.get(a["slug"], "полезное"))}</span>'
-        if a["week"]:
-            chips += f'<span class="chip alt">{trimester(a["week"])}</span>'
-    chips += f'<span class="chip dim">{a["mins"]} мин</span>'
-    bigwk = f'<span class="bigwk">{a["week"]}</span>' if is_week_article(a) else ""
-    fruit = f'<span class="fr">{EMOJI.get(a["slug"], "🌸")}</span>'
-    parts.append(f'<div class="ahead">{bigwk}{fruit}'
-                 f'<div class="chiprow">{chips}</div>'
-                 f"<h1>{esc(a['title'])}</h1></div>")
-    # тело: интро-абзацы до первого h2 — первая карточка; дальше карточка на главу
-    blocks, cur, icon_i = [], [], 0
-    cur_head = None
-    for kind, txt in a["content"]:
-        if kind == "h2":
-            if cur or cur_head:
-                blocks.append((cur_head, cur))
-            cur_head, cur = txt, []
-        else:
-            cur.append(txt)
-    if cur or cur_head:
-        blocks.append((cur_head, cur))
-    for head, paras in blocks:
-        b = ['<div class="block">']
-        if head:
-            b.append(f'<h2><span class="em {ICON_BG[icon_i % len(ICON_BG)]}">'
-                     f"{h2_icon(head)}</span> {esc(head)}</h2>")
-            icon_i += 1
-        b.extend(f"<p>{esc(t)}</p>" for t in paras)
-        b.append("</div>")
-        parts.append("".join(b))
-    if a["cta"]:
-        parts.append('<div class="ctab"><span class="em">🌸</span><div>'
-                     "<b>«Мамина неделька» в Telegram</b>"
-                     f"<p>{esc(cta_text(a['cta']))}</p>"
-                     f'<a class="btn" href="{BOT}">Открыть бота</a></div></div>')
-    rel = related(a, arts)
-    if rel:
-        parts.append('<div class="rel"><div class="t">Ещё по теме</div><div class="row">'
-                     + "".join(card(r, i) for i, r in enumerate(rel)) + "</div></div>")
-    parts.append(FOOT.format(bot=BOT))
-    return "\n".join(parts)
-
-
-def render_index(arts: list) -> str:
-    url = f"{BASE}/blog/index.html"
-    by_slug = {a["slug"]: a for a in arts}
-    week_arts = sorted((a for a in arts if is_week_article(a)), key=lambda x: x["week"])
-    ribbon = "".join(f'<a class="wk" href="{a["slug"]}.html">нед.<b>{a["week"]}</b></a>'
-                     for a in week_arts)
-    ribbon += f'<a class="wk more" href="{BOT}">все 42<b>в боте →</b></a>'
-    headextra = ("<h1>Спокойные статьи для будущих мам</h1>"
-                 f'<p class="sub">{plural_stati(len(arts))}: что происходит с малышом по неделям, '
-                 "какие обследования когда и как собраться в&nbsp;роддом. Ориентиры, "
-                 "а не назначения — решает всегда ваш&nbsp;врач.</p>"
-                 f'<div class="weeks">{ribbon}</div>')
-    parts = [HEAD.format(
-        title="Блог — Мамина неделька: беременность по неделям, анализы, подготовка к родам",
-        desc="Спокойные статьи для будущих мам: что происходит по неделям, какие "
-             "обследования когда, как подготовиться к родам. Без алармизма, решает врач.",
-        url=url, ogtype="website", base=BASE, css=CSS, bot=BOT, short="",
-        headextra=headextra, jsonld="")]
-    hubs = "".join(f'<a class="hub" href="#{anchor}"><span>{em}</span>{esc(name)}</a>'
-                   for em, name, anchor, _ in SECTIONS)
-    parts.append('<div class="intro">'
-                 "<p><b>Это блог «Маминой недельки»</b> — гида по беременности в Telegram. "
-                 "Здесь — спокойные статьи по темам, которые чаще всего тревожат: выбирайте "
-                 "раздел, а понедельный календарь (все 42 недели, чек-листы и дневник) "
-                 "живёт в&nbsp;боте.</p>"
-                 f'<div class="hubs">{hubs}</div></div>')
-    placed = set()
-    i = 0
-    for em, name, anchor, slugs in SECTIONS:
-        items = [by_slug[s] for s in slugs if s in by_slug]
-        placed.update(x["slug"] for x in items)
-        if not items:
-            continue
-        parts.append(f'<div class="sec" id="{anchor}"><span class="em">{em}</span> '
-                     f"{esc(name)}</div>")
-        parts.append('<div class="row">'
-                     + "".join(card(a, i + j) for j, a in
-                               enumerate(sorted(items, key=lambda x: x["week"])))
-                     + "</div>")
-        i += len(items)
-    rest = [a for a in arts if a["slug"] not in placed]
-    if rest:
-        em, name = FALLBACK_SECTION
-        parts.append(f'<div class="sec"><span class="em">{em}</span> {esc(name)}</div>')
-        parts.append('<div class="row">' + "".join(card(a, i + j) for j, a in enumerate(rest))
-                     + "</div>")
-    parts.append(FOOT.format(bot=BOT))
-    return "\n".join(parts)
-
-
-def render_sitemap(arts: list) -> str:
-    urls = [(f"{BASE}/", TODAY), (f"{BASE}/blog/index.html", TODAY)]
-    urls += [(f"{BASE}/blog/{a['slug']}.html", TODAY) for a in arts]
-    items = "".join(
-        f"<url><loc>{u}</loc><lastmod>{d}</lastmod></url>" for u, d in urls)
-    return ('<?xml version="1.0" encoding="UTF-8"?>\n'
-            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-            + items + "</urlset>\n")
+def validate(arts,sources):
+    if not arts: raise ValueError('No articles found')
+    slugs={a['slug'] for a in arts}
+    if len(slugs)!=len(arts): raise ValueError('Duplicate slugs')
+    for a in arts:
+        date.fromisoformat(a['modified'])
+        if not a['title'] or not a['intro']: raise ValueError(f'{a["slug"]}: title and intro required')
+        if not a['sources']: raise ValueError(f'{a["slug"]}: missing sources')
+        for s in a['sources']:
+            if s not in sources: raise ValueError(f'{a["slug"]}: unknown source {s}')
+        for s in a['related']:
+            if s not in slugs or s==a['slug']: raise ValueError(f'{a["slug"]}: invalid related {s}')
+        if len(a['desc'])>180 or len(a['desc'])<55: raise ValueError(f'{a["slug"]}: description length')
+        if a['status'] not in ('specialist_review','owner_review','approved'):raise ValueError('Unknown approval state')
 
 
 def main():
-    arts = sorted((parse(p) for p in sorted(SRC.glob("A-*.md"))),
-                  key=lambda a: a["week"])
-    OUT.mkdir(exist_ok=True)
-    for a in arts:
-        (OUT / f"{a['slug']}.html").write_text(render_article(a, arts), encoding="utf-8")
-    (OUT / "index.html").write_text(render_index(arts), encoding="utf-8")
-    (ROOT / "sitemap.xml").write_text(render_sitemap(arts), encoding="utf-8")
-    (ROOT / "robots.txt").write_text(
-        f"User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
-    print(f"OK: {len(arts)} статей → blog/, + blog/index.html, sitemap.xml, robots.txt")
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('source',nargs='?',type=Path,default=SOURCE)
+    modes=parser.add_mutually_exclusive_group()
+    modes.add_argument('--release',action='store_true')
+    modes.add_argument('--public-preview',action='store_true',help='Authorized public version, with noindex and review notices')
+    parser.add_argument('--output',type=Path)
+    args=parser.parse_args()
+    sources=json.loads((args.source/'sources.json').read_text())
+    arts=[parse(p) for p in sorted(args.source.glob('A-*.md'))];validate(arts,sources)
+    deployment = args.release or args.public_preview
+    if deployment:
+        config=json.loads((ROOT/'release-checklist.json').read_text())
+        gates=RELEASE_GATES if args.release else PUBLIC_PREVIEW_GATES
+        missing=[k for k in gates if config.get(k) is not True]
+        if args.release:
+            missing += [a['id'] for a in arts if a['status']!='approved' or not a['review_evidence']]
+        if missing: raise SystemExit(('Release' if args.release else 'Public preview')+' blocked: '+', '.join(missing))
+        if not args.output or args.output.resolve()==ROOT: raise SystemExit('Deployment build requires a separate --output directory')
+    out=(args.output or ROOT).resolve()
+    if out in ROOT.parents: raise SystemExit('Output cannot be a parent of the repository')
+    if deployment and out.exists() and any(out.iterdir()):
+        raise SystemExit('Deployment output must be empty to avoid stale public files')
+    out.mkdir(parents=True,exist_ok=True);(out/'blog').mkdir(exist_ok=True)
+    if out!=ROOT:
+        (out/'assets').mkdir(exist_ok=True)
+        for name in ('site.css','site.js'): shutil.copy2(ROOT/'assets'/name,out/'assets'/name)
+        shutil.copytree(ROOT/'assets/illustrations',out/'assets/illustrations',dirs_exist_ok=True)
+        shutil.copytree(ROOT/'blog/assets',out/'blog/assets',dirs_exist_ok=True)
+    preview = 'public-preview' if args.public_preview else not args.release
+    for a in arts:(out/'blog'/f'{a["slug"]}.html').write_text(article(a,arts,sources,preview),encoding='utf-8')
+    (out/'blog/index.html').write_text(catalogue(arts,preview),encoding='utf-8')
+    (out/'index.html').write_text(home(arts,preview),encoding='utf-8')
+    for page,title,desc in [('about','О проекте и контакты','Кто делает Мамину недельку, как связаться с владельцем и получить поддержку.'),('editorial','Как мы готовим статьи','Редакционные принципы Маминой недельки: источники, исправления и границы медицинской информации.'),('privacy','Конфиденциальность','Какие данные используются на сайте Маминой недельки и что происходит при переходе в Telegram.')]:
+        body=(ROOT/f'templates/{page}.html').read_text()
+        (out/f'{page}.html').write_text(shell(title+' | Мамина неделька',desc,f'/{page}.html',body,page=page,preview=preview),encoding='utf-8')
+    (out/'404.html').write_text(shell('Страница не найдена | Мамина неделька','Вернитесь к полезным статьям о беременности или на главную страницу.','/404.html','<main class="wrap legal" id="main"><div class="eyebrow">404</div><h1>Эта страница не нашлась</h1><p>Возможно, в адресе опечатка. Найдите нужную тему в блоге.</p><a class="btn" href="/blog/index.html">Перейти в блог</a></main>',page='404',preview=preview or True),encoding='utf-8')
+    (out/'sitemap.xml').write_text(sitemap(arts),encoding='utf-8')
+    (out/'robots.txt').write_text('User-agent: *\nAllow: /\nDisallow: /tg/\nDisallow: /yookassa/\nDisallow: /health\nSitemap: '+BASE+'/sitemap.xml\n',encoding='utf-8')
+    manifest={'mode':'release' if args.release else 'public-preview' if args.public_preview else 'preview','articles':len(arts),'sources':len(sources),'updated':UPDATED,'paths':[f'/blog/{a["slug"]}.html' for a in arts]}
+    (out/'build-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    print(f'Built {len(arts)} articles; {manifest["mode"]} → {out}')
 
-
-if __name__ == "__main__":
-    main()
+if __name__=='__main__': main()

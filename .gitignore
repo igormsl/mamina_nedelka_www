@@ -1,2 +1,5 @@
 _probe/
 /evidence/
+
+__pycache__/
+*.py[cod]

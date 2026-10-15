@@ -1,45 +1,31 @@
 ---
 name: maintain-mamina-site
-description: Обслуживает hand-coded лендинг и сгенерированный SEO-блог «Маминой недельки». Использовать при правке index.html, assets, build_blog.py, blog, sitemap.xml, robots.txt, CTA/атрибуции, мобильной адаптации, SEO-статей или документации сайта; включает безопасную проверку apex-домена, который совместно обслуживает Telegram webhook.
+description: Обслуживает статический сайт и SEO-блог Маминой недельки: шаблоны, генератор, стили, CTA, медицинские источники, локальная проверка и отдельный безопасный релиз.
 ---
 
 # Maintain Mamina Site
 
+Сначала прочитать `README.md` и `STATUS.md`; количество статей и состояние production брать оттуда с учётом даты evidence.
+
 ## Каноны
 
-- Лендинг: `index.html` и `assets/` этого репозитория.
-- Статьи: `../mamina_marketing/vc_content/content/seo/A-*.md`.
-- Генератор: `build_blog.py`; результат: `blog/` и `sitemap.xml`.
-- Хостинг и deploy: `README.md` и `../VPS CLAUDE CODE RULES/12-mamina-landing.md`.
-- Проверенный срез: `STATUS.md`.
+- Главная и служебные страницы: `templates/*.html`; оформление: `assets/site.css`, `assets/site.js`.
+- Статьи: `../mamina_marketing/blog/content/seo/A-*.md`, реестр `sources.json`.
+- Генератор: `build_blog.py`. `index.html`, `blog/*.html`, служебные HTML, sitemap и robots — производные.
+- Продукт: соседний repo бота только на чтение; цены и лимиты могут переопределяться runtime.
+- Публикация: `docs/RELEASE.md` вместе с актуальным VPS-runbook. Сохранённая статика не доказывает включённую выдачу.
 
-Сначала сверить дату и ограничения в `STATUS.md`. Правка источника не разрешает
-возвращать отключённый сайт, менять Caddy или считать старый HTTP-срез свежим.
+## Работа
 
-## Граница apex
+1. Менять канонические исходники, сохраняя чужой dirty diff.
+2. Проверять медицинские утверждения по первичным источникам; отмечать требуемую рецензию. Не выдумывать авторов и отзывы.
+3. Собрать `python3 build_blog.py`; по умолчанию это noindex-preview.
+4. Запустить `python3 scripts/check_site.py` и относящиеся к изменению тесты `python3 -m unittest discover -s tests -v`.
+5. Открыть `python3 scripts/preview.py --port 8765`; браузерная проверка — workspace Python + `scripts/check_browser.py`.
+6. Просмотреть реальные desktop/mobile кадры: меню, поиск и категории, недели, оглавление, FAQ, CTA, focus и overflow. Не переносить проверки удалённых слайдера и отзывов.
+7. Сверить URL, Yandex verification, SEO, источник каждой статьи и сгенерированный HTML. CTA-метки определены в `docs/FUNNEL.md`.
+8. Обновить существующий STATUS и документы; провести docs-semantic-postflight.
 
-`maminanedelka.ru` совмещает статику и webhook. Статическая правка не меняет маршруты
-`/tg/*`, `/yookassa/*` и `/health`. Изменение Caddy, deploy в `/srv` и внешний smoke — отдельные
-операции после явного одобрения.
+## Граница релиза
 
-## Лендинг
-
-1. Править `index.html` напрямую, сохраняя `yandex-verification`, CTA-метку `?start=landing`,
-   reduced motion, keyboard/focus states и отсутствие горизонтального overflow.
-2. Проверить desktop 1280 px и mobile 390 px; отдельно открыть burger, week slider и отзывы.
-3. Для визуального изменения снять before/after по workspace-правилам скриншотов.
-
-## Блог
-
-1. Менять содержимое статьи в Markdown-источнике маркетингового репозитория.
-2. Запустить `python3 build_blog.py` из корня сайта.
-3. Сверить число `A-*.md`, `blog/*.html` без `index.html` и URL статей в `sitemap.xml`.
-4. Проверить плоский URL `blog/<slug>.html`, CTA `?start=blog`, ссылку на главную и метаданные.
-5. Просмотреть diff сгенерированных файлов до коммита.
-
-## Приёмка
-
-- Локальные источники и output совпадают по количеству и slug.
-- В diff нет секретов, персональных данных и случайных probe/backup-файлов.
-- Локальная проверка и production-smoke записаны раздельно.
-- Документы не утверждают свежесть production без даты и фактического HTTP/deploy evidence.
+Сайт совмещён с webhook: `/tg/*`, `/yookassa/*`, `/health` должны остаться у бота. Изменение Caddy, deploy и публичное включение требуют разрешения, актуального baseline, backup и rollback. Учитывать уже данное разрешение из разговора и STATUS. Для предварительного включения используется отдельный `--public-preview --output <пустой каталог>`: noindex и отметки проверок сохраняются. Индексируемый пакет `--release` требует всех доказанных согласований; не проставлять гейты автоматически. Проверять точный пакет через `scripts/check_site.py --root <каталог> --mode public-preview` и отдельный локальный Caddy. `scripts/deploy_site.py --bundle <каталог>` выполняет только preflight; `--apply`/`--rollback` требуют sudo владельца. Read-only HTTP-проверка не доказывает Telegram/платёжный E2E. Preview, Git, deploy и пользовательская приёмка фиксируются отдельно.

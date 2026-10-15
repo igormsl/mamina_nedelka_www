@@ -1,46 +1,29 @@
 # CLAUDE.md — mamina_nedelka_www
 
-Маркетинговый **лендинг** «Мамина неделька» (рекламирует Telegram-бот + мини-апп). Его адрес — `https://maminanedelka.ru/` (apex), статика хранится на VPS. Свой git-репо `igormsl/mamina_nedelka_www`.
+Сайт и блог «Мамина неделька». Независимый Git-репозиторий, статический стек HTML/CSS/JS + Python stdlib. Перед работой читать [README.md](README.md) и [STATUS.md](STATUS.md). Этот файл хранит рабочие правила; текущие количества, проверки и состояние выдачи — в STATUS.
 
-> ⏸️ **С 10.08.2026 сайт отключён.** Лендинг и блог отдают `503`; блок статики в Caddy заменён на
-> `respond`, файлы в `/srv` и этот репозиторий не тронуты. `/health` и оболочка Mini App доступны;
-> end-to-end сценарии Telegram и ЮKassa этой HTTP-проверкой не подтверждены.
-> Детали и порядок возврата — [STATUS.md](STATUS.md). Перед любым деплоем сначала верни сайт,
-> иначе выкатишь в недоступный apex.
+## Источники
 
-**Источник правды — [README.md](README.md). Прочитай его перед любой работой.** Этот файл — карта + критичное правило безопасности.
+- `templates/*.html` — главная и служебные страницы; `assets/site.css`, `assets/site.js` — общий дизайн и интерактивность.
+- `build_blog.py` — оболочка, статьи, каталог, SEO. Собирает также главную. Не редактировать производные HTML как исходники.
+- `../mamina_marketing/blog/content/seo/A-*.md` и `sources.json` — тексты, редакционные статусы и медицинские источники. Собственный сайт допускает внутренние ссылки и CTA; ограничения VC к нему автоматически не применяются.
+- `scripts/build_illustrations.py` — векторные обложки; старые фото/иллюстрации сохранены, но не используются.
+- `../mamina_nedelka/` — только чтение продуктовых фактов. Не импортировать код, не менять файлы, DB или секреты бота.
 
-## ⚠️ Главная опасность — apex со-хостит webhook бота
+## Проверки
 
-Apex `maminanedelka.ru` **одновременно** обслуживает живой Telegram-webhook прод-бота И этот лендинг. Caddy маршрутизирует по пути:
+`python3 build_blog.py`, `python3 scripts/check_site.py`, `python3 -m unittest discover -s tests -v`. Preview: `python3 scripts/preview.py --port 8765`. Браузер: workspace `.venv/bin/python scripts/check_browser.py`; нужны Playwright/Chromium и запущенный preview.
 
-- `/tg/*`, `/yookassa/*`, `/health` → бот (`127.0.0.1:8080`) — **НЕ ТРОГАТЬ, сломаешь приём оплат и сообщений**;
-- всё остальное → статика `/srv/maminanedelka_www/` (этот `index.html`).
+Для визуальных правок смотреть реальные кадры desktop/mobile. Проверить меню, поиск и категории, навигацию по неделям, оглавление, FAQ, клавиатуру, reduced motion, CTA и overflow. Производные страницы, sitemap и исходники должны совпадать. Снимки-инбокс — по workspace-правилам, сохранённые evidence — в проекте.
 
-Любая правка Caddy-конфига apex может убить вебхук. Деплой/откат лендинга — `../VPS CLAUDE CODE RULES/12-mamina-landing.md`.
+## Публикация и инварианты
 
-## Блог `/blog/` (SEO-статьи)
+- Сборка по умолчанию — локальный `preview` с `noindex`. Отдельный `--public-preview --output <пустой каталог>` допускает разрешённое предварительное включение с `noindex` и честными отметками незавершённых проверок. Индексируемый пакет создаёт `--release --output <пустой каталог>` после всех согласований. Сборка не является deploy.
+- Не отмечать медицинскую проверку без реального рецензента и evidence. Публичные метаданные не должны придумывать опыт, авторство, дату первой публикации и отзывы.
+- Сохранять Yandex verification `5de9122d74676c4f`, плоские URL `.html`, источники, корректные даты редакции и доступность.
+- CTA → `https://t.me/mamina_nedelka_bot`; поддержка → `@mamina_nedelka_support_bot`. Формат меток — [docs/FUNNEL.md](docs/FUNNEL.md). Runtime-цены и лимиты не копировать в сайт без свежей проверки.
+- Apex совмещает сайт с webhook и оплатами: **`/tg/*`, `/yookassa/*`, `/health` → бот**. Для изменения Caddy и включения сайта нужно разрешение владельца, покрывающее этот шаг; актуальное решение фиксируется в STATUS.
+- Порядок будущего релиза: [docs/RELEASE.md](docs/RELEASE.md) вместе с актуальными VPS CURRENT_STATE и `12-mamina-landing.md`. Backup статики и конфигурации, validate/reload только после разрешения, откат к точному предыдущему состоянию. Не откатывать весь apex на proxy бота.
+- Commit, push, deploy и приёмка — разные состояния. Не публиковать и не менять внешние сервисы без разрешения, покрывающего действие.
 
-Статика рядом с лендингом: `blog/<slug>.html` (источник — `../mamina_marketing/vc_content/content/seo/`,
-сборка `python3 build_blog.py`, деплой `cp -r blog sitemap.xml robots.txt /srv/maminanedelka_www/` без sudo).
-⚠️ URL только плоские `.html` — каталоги (`/blog/`) проваливаются в SPA-лендинг (см. README § Блог).
-
-## Как обновить лендинг
-
-С 2026-06-13 `index.html` — **hand-coded** (не Claude Design), ванильный JS без сборки. Правь файл напрямую, проверь рендером (playwright из воркспейсного `.venv`: desktop 1280 + mobile 390 + меню + сетка ширин на оверфлоу), коммить+push, затем на VPS `cp index.html /srv/maminanedelka_www/` (+ `cp -r assets ...` если менялись картинки) — без рестарта Caddy. После деплоя: `curl https://maminanedelka.ru/health` → `ok`.
-
-Метатег `<meta name="yandex-verification">` — обязательный инвариант `<head>`. Мобильные стили
-живут в `index.html`; отдельный патч старого бандла удалён.
-
-**Визуальный слой (с 2026-06-14):** живой aurora-фон (`#bg` блобы + `#grain` + `#prog`), стеклянные карточки со spotlight, hero с реальными скринами приложения + 3D-tilt, **карусель отзывов тянется мышью** (drag+инерция), **интерактивный слайдер недель 1→40**, count-up, scroll-reveal. Всё ванилью, `prefers-reduced-motion` + AA + 0 горизонт-скролла 360–1440. Подробности и грабли (IO-reveal + smooth-scroll = поздний ревил при playwright-проверке) — в [README.md](README.md).
-
-**Ассеты** в `assets/babies/` (илл. малыша для слайдера) + `assets/shots/` (скрины приложения). Данные недель **вшиты в JS-массив `WEEKS`** в `index.html` (на проде бот `weeks.json` не отдаёт) — при правке контента синхронизировать вручную из `../mamina_nedelka/content/weeks.json`.
-
-## Источник и связь
-
-Рабочий исходник лендинга и блога находится в этом репозитории: `index.html`, `assets/`,
-`build_blog.py`, `blog/`, `sitemap.xml` и `robots.txt`. Папка
-`../mamina_nedelka/docs/landing/` — только исторический архив прежнего Claude Design-процесса.
-CTA → `t.me/mamina_nedelka_bot`; поддержка → `@mamina_nedelka_support_bot`.
-
-Локальный статус и граница внешней проверки — [STATUS.md](STATUS.md).
+После изменения структуры и документации выполнить docs-semantic-postflight. Этот CLAUDE.md остаётся самостоятельным файлом; не заменять его ссылкой.

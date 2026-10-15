@@ -1,71 +1,64 @@
-# mamina_nedelka_www
+# Мамина неделька — сайт и блог
 
-Маркетинговый лендинг **«Мамина неделька»** — рекламирует Telegram-бот + мини-приложение.
+Публичная предварительная версия: **https://maminanedelka.ru/** (noindex). Принятый дизайн и локальная рабочая версия: `http://localhost:8765`. Прежний вариант для сравнения — `http://localhost:8766`. Текущий этап выкладки, результаты проверок и открытые вопросы — в [STATUS.md](STATUS.md). Публичное включение отдельно от сборки и Git.
 
-> **Публичные страницы на паузе с 10.08.2026.** Главная и блог сейчас отвечают `503`,
-> а `/health` и Mini App остаются доступны. Репозиторий хранит готовый к возврату исходник;
-> push сам по себе не включает сайт. Актуальная граница проверки описана в [STATUS.md](STATUS.md).
+Стек сохранён: статический HTML, CSS, ванильный JavaScript, генератор Python без сторонних зависимостей. Node, CMS и клиентского фреймворка нет.
 
-- **Адрес:** `https://maminanedelka.ru/` (apex); статика сохранена на VPS, но её выдача временно отключена в Caddy.
-- **CTA:** ведёт в бота `https://t.me/mamina_nedelka_bot`; поддержка — `@mamina_nedelka_support_bot`.
-- `index.html` — **hand-coded HTML/CSS** (с 2026-06-13). Один самодостаточный файл: инлайн-CSS, SVG-иконки, шрифт Manrope (Google Fonts), ванильный JS (без React/сборки), sticky-навбар (пункты «Возможности/AI/По неделям/Отзывы/Блог/Тарифы» + бургер-меню), секции hero/возможности/AI/недели/отзывы/тарифы/футер. Полностью редактируемый — правь прямо в файле.
-- **Визуальный слой (с 2026-06-14, эстетика «премиум/21st.dev»):** живой фон `#bg` — 4 дрейфующих брендовых блоба + SVG-зерно `#grain` + полоса прогресса чтения `#prog`; матово-стеклянные карточки (backdrop-blur) со spotlight-за-курсором; hero с реальными скриншотами приложения (3D-tilt по мыши + «дыхание»); **карусель отзывов тянется мышью** (pointer-drag + инерция; на тач — нативный свайп; стрелки/точки/автоскролл); **интерактивный слайдер недель 1→40** (картинка малыша + «размером как {фрукт}» + см + триместр + факт, плавающий bubble, градиентная заливка); count-up чисел AI-лимитов; кнопки с shine; мягкий scroll-reveal. Всё с поддержкой `prefers-reduced-motion` и контрастом AA, 0 горизонт-скролла на 360–1440.
-- **Ассеты лендинга:** `assets/babies/b{4..40}.jpg` (33 илл. малыша для слайдера, ресайз из `../mamina_nedelka/miniapp/public/babies/`) + `assets/shots/*.jpg` (4 скрина приложения, ресайз из `../mamina_marketing/vc_content/materials/app_shots/mamina_nedelka/`). Данные недель (фрукт/см/факт) **вшиты в JS-массив `WEEKS`** внутри `index.html` — на проде бот `weeks.json` не отдаёт, поэтому при правке контента недель синхронизировать массив вручную из `../mamina_nedelka/content/weeks.json`.
-- **Старый бандл Claude Design выведен из работы.** Мобильная адаптация находится прямо в
-  `index.html`; отдельные `apply-mobile-fixes.py`, `mobile-fixes.css` и HTML-бэкап удалены 2026-08-02.
-  Лендинг и блог — единый hand-coded сайт.
-- ⚠️ В `<head>` обязателен `<meta name="yandex-verification" content="5de9122d74676c4f">` — без него отвалится подтверждение домена в Яндекс.Вебмастере. CTA → `t.me/mamina_nedelka_bot?start=landing` (атрибуция).
+## Где редактировать
 
-## Архитектура хостинга (важно)
+| Что | Канонический источник |
+|---|---|
+| Главная, контакты, редакционные принципы, политика | `templates/*.html` |
+| Общая оболочка, статьи, каталог, метаданные | `build_blog.py` |
+| Дизайн и взаимодействие | `assets/site.css`, `assets/site.js` |
+| Тексты и статусы статей | `../mamina_marketing/blog/content/seo/A-*.md` |
+| Источники медицинских сведений | `../mamina_marketing/blog/content/seo/sources.json` |
+| Тематические обложки | `scripts/build_illustrations.py` → `assets/illustrations/` |
+| Текущее состояние | [STATUS.md](STATUS.md) |
 
-Apex `maminanedelka.ru` **одновременно** обслуживает Telegram-webhook бота и этот лендинг.
-Caddy маршрутизирует по пути:
+`index.html`, `blog/*.html`, `about.html`, `editorial.html`, `privacy.html`, `404.html`, `sitemap.xml`, `robots.txt` и `build-manifest.json` — **результат сборки**. Правки только в HTML будут потеряны. Прежние `assets/babies/` и `assets/shots/` сохранены, но новая версия их не загружает. Логотип и favicon используются из `blog/assets/`.
 
-- `/tg/*`, `/yookassa/*`, `/health` → бот (`127.0.0.1:8080`) — **webhook, трогать нельзя**;
-- всё остальное → статика из `/srv/maminanedelka_www/` (этот `index.html`).
+## Собрать и открыть
 
-Полная инструкция и процедура деплоя — в воркспейсе:
-`project/VPS CLAUDE CODE RULES/12-mamina-landing.md`.
+```bash
+python3 build_blog.py
+python3 scripts/preview.py --port 8765
+```
 
-## Обновить или вернуть лендинг
+Открыть `http://localhost:8765`, каталог — `/blog/index.html`. Preview слушает только `127.0.0.1`, выдаёт лишь публичные артефакты, закрывает `.git`, исходники и документы. Не используйте его как production-сервер. Если workspace находится на удалённой машине, нужен проброс порта 8765 на ваш компьютер.
 
-1. Править `index.html` напрямую (hand-coded, инлайн-CSS).
-2. Проверить рендером (playwright + chromium из воркспейсного `.venv`) — desktop 1280 + mobile 390 + меню + сетка ширин на горизонт-оверфлоу. ⚠️ scroll-reveal на IntersectionObserver + `scroll-behavior:smooth` → секции ревилятся ПОЗДНО: при скриншоте ждать ≥2 с после `scrollIntoView`, либо форсить `document.querySelectorAll('.reveal').forEach(e=>e.classList.add('in'))`, иначе поймаешь `opacity:0` и решишь что баг.
-3. Коммит, запушить.
-4. На VPS обновить сохранённую статику (без sudo; Caddy перечитывать не нужно):
-   ```bash
-   cp index.html /srv/maminanedelka_www/
-   cp -r assets /srv/maminanedelka_www/        # если менялись картинки малыша/скрины
-   ```
-5. Возврат публичной выдачи — отдельное production-изменение по VPS-runbook с явным одобрением,
-   backup/rollback и проверкой маршрутов webhook. После него проверить главную, блог, Mini App и
-   `curl https://maminanedelka.ru/health` → `ok`.
+Обычная сборка — `preview`: на всех страницах `noindex`, видимый статус подготовки, у медицинских текстов предупреждение об отсутствии рецензии. Это не готовый к выкладке публичный пакет.
 
-## Блог (`/blog/`)
+Для разрешённого предварительного включения есть отдельный режим `python3 build_blog.py --public-preview --output <пустой каталог>`. Он сохраняет `noindex` и статусы рецензий, заменяя подпись локального просмотра на «Предварительная версия». Требует приёмку дизайна, разрешение включения и подготовленный backup/rollback; не отмечает остальные условия `--release` выполненными. Проверка пакета: `python3 scripts/check_site.py --root <каталог> --mode public-preview`. `build-manifest.json` хранится рядом с публичным пакетом, в web root не выкладывается.
 
-SEO-статьи для будущих мам на нашем домене (стратегия `../mamina_marketing/STRATEGY_2026-06.md`):
-`https://maminanedelka.ru/blog/index.html` + `blog/<slug>.html` (**46 статей**) + `sitemap.xml`/`robots.txt`.
+## Проверки
 
-- **Источник статей** — `../mamina_marketing/vc_content/content/seo/A-*.md` (там и редактировать).
-- **Сборка:** `python3 build_blog.py` (stdlib, идемпотентно; парсит статьи → HTML в `blog/`,
-  обновляет `sitemap.xml`). Дизайн в цветах мини-аппа, шрифт Manrope (Google Fonts).
-- ⚠️ **URL только плоские** (`blog/<slug>.html`): apex-Caddy сконфигурирован `try_files {path} /index.html` —
-  реальный файл отдаётся, а URL-каталоги (`/blog/`, `/blog/slug/`) проваливаются в SPA-лендинг
-  (проверено локальным Caddy). Не делать ссылок на `/blog/` без `index.html`.
-- **Деплой (без sudo, `/srv` принадлежит igor):**
-  ```bash
-  cp -r blog /srv/maminanedelka_www/ && cp sitemap.xml robots.txt /srv/maminanedelka_www/
-  ```
-- CTA статей ведут в бота с меткой `?start=blog` (атрибуция канала).
-- ✅ Сайт добавлен в **Яндекс.Вебмастер** (подтверждён meta-тегом, sitemap отдан). Google
-  Search Console — в планах. Источник всех статей в `mamina_marketing/`, навигация назад из
-  блога — ссылка «← На сайт» в шапке.
+```bash
+python3 scripts/check_site.py
+python3 -m unittest discover -s tests -v
+/home/igor/projects/claudecode/.venv/bin/python scripts/check_browser.py
+```
 
-## Источник
+Браузерная проверка требует запущенный preview и имеющийся в workspace Playwright/Chromium. Проверяет все страницы на семи ширинах, поиск, меню, CTA, отсутствие внешних загрузок и снимает скриншоты. Evidence — `docs/evidence/`; скриншоты-инбокс — `../../screenshots/mamina_www/`. Сохраняемые кадры приёмки лежат в `docs/evidence/visual/`.
 
-Лендинг и блог — **hand-coded в этом репо** (`index.html` + `build_blog.py`); правятся напрямую.
-Исторические материалы прежнего воркфлоу Claude Design (intake/промты/старый вывод) лежат в репо
-бота `project/mamina_nedelka/docs/landing/` — **архив, больше не используется** (бандл заменён
-hand-coded версией 2026-06-13).
+Иллюстрации — собственные SVG предметов, без генеративной анатомии. `python3 scripts/build_illustrations.py` воспроизводит SVG; опциональный `--png` требует CairoSVG и создаёт PNG для социальных превью. PNG уже включены в проект, обычная сборка не требует CairoSVG.
 
-Текущий проверенный срез репозитория и граница live-проверки — [STATUS.md](STATUS.md).
+## SEO и URL
+
+- Старые адреса `/blog/<slug>.html` сохранены; [карта URL](docs/url-map.csv).
+- Canonical всегда на `https://maminanedelka.ru`; UTM не входит в canonical.
+- Уникальные title/description, sitemap, OG/Twitter, Article/BreadcrumbList/CollectionPage/WebSite JSON-LD. Автор-врач, рецензия, рейтинги и дата первой публикации не выдуманы.
+- `dateModified` берётся из `updated:` источника, не меняется при каждом запуске.
+- Подтверждение Яндекса `5de9122d74676c4f` сохранено. Вход в кабинет и актуальный статус прав отдельно не проверены.
+- Google Search Console: структура готова; подтверждение владельца через DNS либо выданный Google токен ещё нужно выполнить. Метрика и сторонняя аналитика не подключены.
+- Preview и действующий Caddy отдают реальные 404; `/blog/` перенаправляется на `/blog/index.html`, `/index.html` — на `/`. Текущий публичный fallback описан в [порядке релиза](docs/RELEASE.md).
+
+## Бот и публикация
+
+CTA ведут в `t.me/mamina_nedelka_bot` с короткими метками страницы, места кнопки и разрешённого канала. Код сайта не отправляет аналитику и не хранит cookie. Что измеряется сейчас и что пока только предложено — [воронка](docs/FUNNEL.md).
+
+Apex также обслуживает **`/tg/*`, `/yookassa/*`, `/health`**. Ни генератор, ни preview, ни работа над дизайном не изменяют эти production-маршруты.
+
+Индексируемый выпуск требует приёмки владельца, проверки материалов, юридических данных и разрешения. После выполнения условий `python3 build_blog.py --release --output /путь/к/отдельному/каталогу` собирает индексируемую версию. Команда сама ничего не деплоит. Гейты — `release-checklist.json`; рецензии — `status: approved` и `review_evidence:` в каждой статье. Предварительное включение через `--public-preview` не заменяет эти проверки.
+
+VPS-процедура: `../VPS CLAUDE CODE RULES/12-mamina-landing.md`, актуальный baseline — `CURRENT_STATE.md` рядом. Особенности новой сборки, backup и откат описаны в [docs/RELEASE.md](docs/RELEASE.md). Для следующего обновления собрать новый пакет, повторить backup и postflight; текущая предварительная версия уже включена.

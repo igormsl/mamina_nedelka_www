@@ -1,0 +1,56 @@
+{
+  "checks": [
+    "55 pages at 320px",
+    "55 pages at 360px",
+    "55 pages at 390px",
+    "55 pages at 768px",
+    "55 pages at 1024px",
+    "55 pages at 1280px",
+    "55 pages at 1440px",
+    "mobile menu + Escape + link",
+    "search, category intersection, zero state, reset, ё normalization",
+    "CTA source, channel, local click event without network",
+    "FAQ + reduced motion",
+    "no cookies/storage; no external subrequests",
+    "all 50 articles reachable without JS",
+    "real 404; repo files and bot endpoints not exposed by preview"
+  ],
+  "viewport_checks": 385,
+  "overflow": [],
+  "js_errors": [],
+  "external_subrequests": [],
+  "local_performance_not_field_CWV": {
+    "home_desktop": {
+      "requests": 7,
+      "bytes": 35527,
+      "domReadyMs": 152.5999999998603
+    },
+    "blog_desktop": {
+      "requests": 9,
+      "bytes": 37722,
+      "domReadyMs": 156.0999999998603
+    },
+    "article_desktop": {
+      "requests": 5,
+      "bytes": 34297,
+      "domReadyMs": 93
+    },
+    "home_mobile": {
+      "requests": 7,
+      "bytes": 35527,
+      "domReadyMs": 56.800000000046566
+    },
+    "blog_mobile": {
+      "requests": 9,
+      "bytes": 37722,
+      "domReadyMs": 97.29999999981374
+    },
+    "article_mobile": {
+      "requests": 5,
+      "bytes": 34297,
+      "domReadyMs": 74.10000000009313
+    }
+  },
+  "screenshots": "/home/igor/projects/claudecode/screenshots/mamina_www",
+  "passed": true
+}

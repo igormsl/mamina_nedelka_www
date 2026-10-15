@@ -1,0 +1,56 @@
+[
+  {
+    "id": "fas",
+    "url": "https://fas.gov.ru/pages/reklama_v_internete",
+    "status": 200,
+    "chars": 7643,
+    "title": "ФАС России | Реклама в интернете"
+  },
+  {
+    "id": "rkn",
+    "url": "https://pd.rkn.gov.ru/operators-registry/notification/",
+    "status": 403,
+    "chars": 58,
+    "title": ""
+  },
+  {
+    "id": "149",
+    "url": "https://www.consultant.ru/document/cons_doc_LAW_61798/",
+    "status": 200,
+    "chars": 9815,
+    "title": "Федеральный закон \"Об информации, информационных технологиях и о защите информации\" от 27.07.2006 N 149-ФЗ (последняя редакция) \\ КонсультантПлюс"
+  },
+  {
+    "id": "consent",
+    "url": "https://www.consultant.ru/document/cons_doc_LAW_61801/6c94959bc017ac80140621762d2ac59f6006b08c/",
+    "status": 200,
+    "chars": 7312,
+    "title": "Статья 9. Согласие субъекта персональных данных на обработку его персональных данных \\ КонсультантПлюс"
+  },
+  {
+    "id": "notice",
+    "url": "https://www.consultant.ru/document/cons_doc_LAW_61801/d996966e22e1320c9de1ab82d9f6be12c3d9d765/",
+    "status": 200,
+    "chars": 9166,
+    "title": "Статья 22. Уведомление об обработке персональных данных \\ КонсультантПлюс"
+  },
+  {
+    "id": "ads",
+    "url": "https://www.consultant.ru/document/cons_doc_LAW_502592/",
+    "status": 200,
+    "chars": 2214,
+    "title": "Федеральный закон от 07.04.2025 N 72-ФЗ\n\"О внесении изменений в статью 12 Федерального закона \"О противодействии экстремистской деятельности\" и Федеральный закон \"О рекламе\" \\ КонсультантПлюс"
+  },
+  {
+    "id": "kremlin",
+    "url": "https://www.kremlin.ru/acts/bank/24154",
+    "error": "HTTPSConnectionPool(host='www.kremlin.ru', port=443): Max retries exceeded with url: /acts/bank/24154 (Caused by ConnectTimeoutError(<HTTPSConnection("
+  },
+  {
+    "id": "fas-letter",
+    "url": "https://www.consultant.ru/document/cons_doc_LAW_503349/",
+    "status": 200,
+    "chars": 14711,
+    "title": "<Письмо> ФАС России от 09.04.2025 N АК/32908/25\n\"О рассмотрении обращения\" \\ КонсультантПлюс"
+  }
+]

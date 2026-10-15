@@ -1,3 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /tg/
+Disallow: /yookassa/
+Disallow: /health
 Sitemap: https://maminanedelka.ru/sitemap.xml

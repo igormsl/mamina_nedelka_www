@@ -1,0 +1,416 @@
+[
+  {
+    "id": "A-0001",
+    "file": "A-0001-rodom.md",
+    "slug": "rodom",
+    "title": "Что взять в роддом: полный список для мамы, малыша и документов",
+    "chars": 5432,
+    "sha256": "f15cb8b3e6b65fb1c1e597cd8dcb4c74b3022f211a0915f42f574a33efcb1259",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0002",
+    "file": "A-0002-analizy.md",
+    "slug": "analizy",
+    "title": "Какие анализы сдают при беременности по неделям: график по триместрам",
+    "chars": 4962,
+    "sha256": "08cd88a2bf64c56a8ca47624f69e2e4a4ff2a5b8d117fda93152360485b8a1fc",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0003",
+    "file": "A-0003-skrining.md",
+    "slug": "skrining",
+    "title": "Первый скрининг при беременности: что смотрят, когда делают и как читать результат",
+    "chars": 4528,
+    "sha256": "f620ec93ce199081a36bb250ddcc428f4b4a1773e73bb31e61aa7627f9e71828",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0004",
+    "file": "A-0004-sheveleniya-nachalo.md",
+    "slug": "sheveleniya-nachalo",
+    "title": "Шевеления плода: на какой неделе начинаются и что считать нормой",
+    "chars": 3935,
+    "sha256": "5b8685e6978876a6de4356b9b1b264fa96610ce900fb9b862572a5863ee64909",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0005",
+    "file": "A-0005-schitat-sheveleniya.md",
+    "slug": "schitat-sheveleniya",
+    "title": "Как считать шевеления плода: простые методики и когда звонить врачу",
+    "chars": 3878,
+    "sha256": "201d53ccc8eb772f2dd70142c7f73fa49b2fd9d7c9c7931466538b28a6524cd2",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0006",
+    "file": "A-0006-toksikoz.md",
+    "slug": "toksikoz",
+    "title": "Токсикоз при беременности: сколько длится и как себе помочь",
+    "chars": 4178,
+    "sha256": "d59a9739a6de7147db80e12d999a1abf7dd00241525e8cea3806820c9368be54",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0007",
+    "file": "A-0007-predvestniki.md",
+    "slug": "predvestniki",
+    "title": "Предвестники родов у первородящих: какие бывают и когда пора в роддом",
+    "chars": 4149,
+    "sha256": "c17e435f91715ee47cbca244c229cb82bca764f1cd094e382da5282e37c7d407",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0008",
+    "file": "A-0008-shvatki.md",
+    "slug": "shvatki",
+    "title": "Как отличить тренировочные схватки от настоящих: простые признаки",
+    "chars": 4031,
+    "sha256": "416f0c333ab4e6113fd6053aaf60c454a8cf8787d6cd34013146b5a6fbc11730",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0009",
+    "file": "A-0009-oteki.md",
+    "slug": "oteki",
+    "title": "Отёки при беременности на поздних сроках: что норма, а что повод к врачу",
+    "chars": 3890,
+    "sha256": "5e37dba2bf7d36c479785cc8e8c7e05c9f9a2a6e53c309d5fc687e06e6a162ed",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0010",
+    "file": "A-0010-pribavka-vesa.md",
+    "slug": "pribavka-vesa",
+    "title": "Прибавка веса при беременности по неделям: на какие ориентиры смотреть",
+    "chars": 3949,
+    "sha256": "a555ee001d03fe3afdd49367d32696cb08c1fc25a8c6dd607ca6031ed22bf847",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0011",
+    "file": "A-0011-pitanie.md",
+    "slug": "pitanie",
+    "title": "Питание при беременности по триместрам: что важно и чего лучше избегать",
+    "chars": 4339,
+    "sha256": "9c5b5009335ea3c661f3b1341654c7e612bfc6ec3bbd1f46d39e84030e1c3fa6",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0012",
+    "file": "A-0012-uzi-grafik.md",
+    "slug": "uzi-grafik",
+    "title": "Когда делают плановые УЗИ при беременности: график по триместрам",
+    "chars": 3821,
+    "sha256": "07d426545f304a078b5fd61d08294a70cda803efecf2d3691bcd242eaeb54f48",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0013",
+    "file": "A-0013-vtoroy-skrining.md",
+    "slug": "vtoroy-skrining",
+    "title": "Второй скрининг при беременности: сроки и что на нём смотрят",
+    "chars": 3870,
+    "sha256": "733492ee43fedc8f5efff55d27bfc57a8aeceae185c7e610a05c0a6078d36fd0",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0014",
+    "file": "A-0014-podgotovka-k-rodam.md",
+    "slug": "podgotovka-k-rodam",
+    "title": "Как подготовиться к родам: спокойный чек-лист на последние недели",
+    "chars": 3631,
+    "sha256": "1360c986e5716d1e3fbd1fe75837af17cb7785eb9e5c949017314aebdc1283f4",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0015",
+    "file": "A-0015-dekret.md",
+    "slug": "dekret",
+    "title": "Декретный отпуск: на какой неделе начинается и что нужно оформить",
+    "chars": 3668,
+    "sha256": "1a5ceae88409987c2012450ec34300a5e04bf750790a95f5ebaa9815451994c2",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0016",
+    "file": "A-0016-12-nedelya.md",
+    "slug": "12-nedelya",
+    "title": "12 неделя беременности: что происходит с малышом и мамой",
+    "chars": 3583,
+    "sha256": "1ce30e56bb969f31ecc8554b56d5417b361022d308a6cc6dbcffbcb01a22b164",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0017",
+    "file": "A-0017-20-nedelya.md",
+    "slug": "20-nedelya",
+    "title": "20 неделя беременности: что происходит с малышом и мамой",
+    "chars": 3479,
+    "sha256": "8a19a7342ceac228862e5ec180c5105c26961684fcee8efdcdb042f349417f82",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0018",
+    "file": "A-0018-30-nedelya.md",
+    "slug": "30-nedelya",
+    "title": "30 неделя беременности: что происходит с малышом и мамой",
+    "chars": 3536,
+    "sha256": "66a4d3eb529ef0e5732d9df1f60acdc809f38ac1c730584367f237e94e42f036",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0019",
+    "file": "A-0019-sravnenie-prilozheniy.md",
+    "slug": "sravnenie-prilozheniy",
+    "title": "Топ-5 приложений для беременных в 2026: честное сравнение (одно из них делаем мы)",
+    "chars": 6251,
+    "sha256": "0a6d6481bc1888d0cfa1b1e2ece582ba435d2adccfe053f52a1cc8712ad79438",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0020",
+    "file": "A-0020-5-nedelya.md",
+    "slug": "5-nedelya",
+    "title": "5 неделя беременности: что происходит, когда вы только узнали",
+    "chars": 3528,
+    "sha256": "611a3e704695862dfb1c4ac75f14b34c2780c77de4831cb1c7d70d31b5f6aa67",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0021",
+    "file": "A-0021-8-nedelya.md",
+    "slug": "8-nedelya",
+    "title": "8 неделя беременности: что происходит с малышом и почему так тяжело",
+    "chars": 3278,
+    "sha256": "eedb2d4a20a176af3d97930a78202df63f77fcef7ee698c841119ea27a5f8c43",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0022",
+    "file": "A-0022-16-nedelya.md",
+    "slug": "16-nedelya",
+    "title": "16 неделя беременности: животик заметен, и это только начало хорошего",
+    "chars": 3346,
+    "sha256": "8fe44319ae014b60203bc4ba828aa165970e87f4a8e890797b618dd90f002785",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0023",
+    "file": "A-0023-24-nedelya.md",
+    "slug": "24-nedelya",
+    "title": "24 неделя беременности: важный рубеж, о котором мало говорят",
+    "chars": 3375,
+    "sha256": "24cf99b5f282bcb04dcb6bf4d8893efe02cc2e056368ad1009ce1adf52c31fad",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0024",
+    "file": "A-0024-28-nedelya.md",
+    "slug": "28-nedelya",
+    "title": "28 неделя беременности: начался третий триместр — что меняется",
+    "chars": 3269,
+    "sha256": "4300c5594148abc058380384d788bb83934950986d82bf3f1181a54808e20938",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0025",
+    "file": "A-0025-34-nedelya.md",
+    "slug": "34-nedelya",
+    "title": "34 неделя беременности: финишная прямая без паники",
+    "chars": 3122,
+    "sha256": "ae3ab4146a689602d328340594121c7380cfc1d67d59b9183b577f24d0f8aaf1",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0026",
+    "file": "A-0026-38-nedelya.md",
+    "slug": "38-nedelya",
+    "title": "38 неделя беременности: всё готово — осталось дождаться",
+    "chars": 3234,
+    "sha256": "3814c293ca369350a74c082754b2af92a7a3140feecbc5a35ed7d8abb37b8268",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0027",
+    "file": "A-0027-40-nedelya.md",
+    "slug": "40-nedelya",
+    "title": "40 неделя беременности: ПДР наступила, а роды — нет. Это нормально",
+    "chars": 3019,
+    "sha256": "34ce016731b26a751fcc48c627d7ae2c5bacd5ea1d3878d28061a6f1e76f3177",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0028",
+    "file": "A-0028-kogda-viden-zhivot.md",
+    "slug": "kogda-viden-zhivot",
+    "title": "Когда становится виден живот при беременности: честный ответ — по-разному",
+    "chars": 3580,
+    "sha256": "1b9c29212d5e16cb0ce7dd08b9ac24693c5896e75a7b5771958a40508956b602",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0029",
+    "file": "A-0029-bessonnitsa.md",
+    "slug": "bessonnitsa",
+    "title": "Бессонница при беременности: что помогает, когда не спится",
+    "chars": 3703,
+    "sha256": "eb3990fbbed547cfb6bd15bfba5c9247ae7d76411104ae9500cb79afe55a359a",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0030",
+    "file": "A-0030-perelyoty.md",
+    "slug": "perelyoty",
+    "title": "Перелёты при беременности: до какого срока можно и как подготовиться",
+    "chars": 3685,
+    "sha256": "6a2d2862f1b0b860dcfb1b9cefc56e6f3437f56314ffe0308247d9e6e350f653",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0031",
+    "file": "A-0031-krasit-volosy.md",
+    "slug": "krasit-volosy",
+    "title": "Можно ли красить волосы при беременности: спокойный разбор",
+    "chars": 3538,
+    "sha256": "585d3eaef8f2f98042b8f6d13aaafccdb55b7df35fe5201a56dc3b3cc5f41ae2",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0032",
+    "file": "A-0032-prostuda.md",
+    "slug": "prostuda",
+    "title": "Простуда при беременности: что можно делать, а что решает только врач",
+    "chars": 3999,
+    "sha256": "8c1ec0b52f2c4139abf50a095dd8f6413cb029bda8284f924f712715c415b22d",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0033",
+    "file": "A-0033-6-nedelya.md",
+    "slug": "6-nedelya",
+    "title": "6 неделя беременности: сердце уже бьётся",
+    "chars": 3149,
+    "sha256": "3229285393685371f4f29930372fecb8baf11e77009f54e64b00af1236401850",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0034",
+    "file": "A-0034-10-nedelya.md",
+    "slug": "10-nedelya",
+    "title": "10 неделя беременности: финиш самого трудного уже виден",
+    "chars": 3222,
+    "sha256": "efe1f011ac86de44dc1f973a2c20b00f6da9deae6ac665ee82b7668fdd34e5cb",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0035",
+    "file": "A-0035-14-nedelya.md",
+    "slug": "14-nedelya",
+    "title": "14 неделя беременности: второй триместр начался — выдыхайте",
+    "chars": 3440,
+    "sha256": "78df30afb41e5106c45396ab349b5f6ff085e23468f62ce4fe52352fe58b6e82",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0036",
+    "file": "A-0036-18-nedelya.md",
+    "slug": "18-nedelya",
+    "title": "18 неделя беременности: неделя первых шевелений",
+    "chars": 3388,
+    "sha256": "0eb8c38f36d85a81034d206f71de5bf42eef5f2dc4cfb1e0114b42f11b047687",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0037",
+    "file": "A-0037-22-nedelya.md",
+    "slug": "22-nedelya",
+    "title": "22 неделя беременности: первые репетиции родов — и это нормально",
+    "chars": 3374,
+    "sha256": "10f367719780a587b12f1dbec42c28f89325921a638b1788abefb1926287f1d3",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0038",
+    "file": "A-0038-26-nedelya.md",
+    "slug": "26-nedelya",
+    "title": "26 неделя беременности: малыш открывает глаза",
+    "chars": 3086,
+    "sha256": "843a610d2148d404b93f887751866775d749a2d33d081862e91a11385e2cb47d",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0039",
+    "file": "A-0039-32-nedelya.md",
+    "slug": "32-nedelya",
+    "title": "32 неделя беременности: малыш получает от вас суперсилу",
+    "chars": 3249,
+    "sha256": "4b834e0209843f5a1633393a86906fa5a36da002694f9fba5419ed9c9f947d37",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0040",
+    "file": "A-0040-36-nedelya.md",
+    "slug": "36-nedelya",
+    "title": "36 неделя беременности: гнездование, сумка у двери и последняя прямая",
+    "chars": 3290,
+    "sha256": "9f514bc18d1fe80d42264cab8b4d48344cac5f70df893bca99c6357a5db79870",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0041",
+    "file": "A-0041-izzhoga.md",
+    "slug": "izzhoga",
+    "title": "Изжога при беременности: что помогает и почему это вообще происходит",
+    "chars": 3552,
+    "sha256": "8e6276854d847b37747b3bd118b9c9c3a3b454945fb01ee942868216c32e2a02",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0042",
+    "file": "A-0042-zapor.md",
+    "slug": "zapor",
+    "title": "Запор при беременности: что делать мягко и безопасно",
+    "chars": 3463,
+    "sha256": "360c264389c2c5693f5bc16cb6c28c297391b5e72d8f8589be119cfe8369d21a",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0043",
+    "file": "A-0043-bolit-poyasnitsa.md",
+    "slug": "bolit-poyasnitsa",
+    "title": "Болит поясница при беременности: почему и как себе помочь",
+    "chars": 3458,
+    "sha256": "acdbd74651bb112e0a6aa072468dbf0cb2b2a5fa57d2a4a66fc0b739ccbe9f99",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0044",
+    "file": "A-0044-mozhno-li-kofe.md",
+    "slug": "mozhno-li-kofe",
+    "title": "Можно ли кофе при беременности: спокойно про кофеин",
+    "chars": 3362,
+    "sha256": "bf8e40bed723edc3d111195df00082b3145334ccb270fd5fd4fda207ad6859cc",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0045",
+    "file": "A-0045-vydeleniya.md",
+    "slug": "vydeleniya",
+    "title": "Выделения при беременности: что обычно норма, а что — повод позвонить врачу",
+    "chars": 3811,
+    "sha256": "3cac302e7149da8676f2ad23f08451a239beff14a2724d5809d91a3c366de4e8",
+    "explicit_sources": false
+  },
+  {
+    "id": "A-0046",
+    "file": "A-0046-akusherskiy-srok.md",
+    "slug": "akusherskiy-srok",
+    "title": "Акушерский срок беременности: почему врач насчитал больше, чем вы",
+    "chars": 4669,
+    "sha256": "a22d4d5d7f7f4b5b0872b7ca0a78f6ba86e8ef1f9634428e396d06cc79b3e601",
+    "explicit_sources": false
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "verified_at_utc": "2026-10-15T00:41:29Z",
+  "checked_documents": 11,
+  "local_links": 97,
+  "errors": [],
+  "semantic_checks": [
+    "Design acceptance recorded separately from medical and legal reviews",
+    "Public preview deployed; noindex still active",
+    "Source templates and public build kept separate",
+    "Activation already performed; rollback tied to exact baseline",
+    "Bot routes and previous static files unchanged",
+    "Git publication not claimed",
+    "Marketing and VPS statuses refer to current site evidence",
+    "Active VPS map and diagnostics no longer describe the retired 503 fallback"
+  ]
+}

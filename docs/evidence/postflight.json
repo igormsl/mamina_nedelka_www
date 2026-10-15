@@ -1,0 +1,34 @@
+{
+  "checked_at": "2026-10-15T00:11:45.129558+00:00",
+  "canonical_sources": {
+    "state": "STATUS.md",
+    "copy": "templates/*.html and mamina_marketing/vc_content/content/seo/*.md",
+    "design": "assets/site.css and assets/site.js",
+    "build": "build_blog.py",
+    "production": "VPS CURRENT_STATE.md plus dated HTTP evidence"
+  },
+  "site_integrity": {
+    "pages": 56,
+    "articles": 50,
+    "sitemap_urls": 55,
+    "old_urls": 46,
+    "checks": "pass",
+    "errors": []
+  },
+  "generator_tests_passed": 6,
+  "marketing_tests_passed": 6,
+  "browser_width_checks": 385,
+  "affected_page_followup_checks": 21,
+  "nojs_mobile": "passed",
+  "diff_check_errors": [],
+  "git_publication": false,
+  "deployment": false,
+  "acceptance": "pending",
+  "remaining": [
+    "medical review for 45 articles",
+    "owner acceptance",
+    "hosting/data processing facts and final privacy policy",
+    "Telegram product E2E and runtime verification",
+    "future VPS runbook update/backup/rollback and explicit public enable approval"
+  ]
+}

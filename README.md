@@ -1,6 +1,6 @@
 # Мамина неделька — сайт и блог
 
-Публичная предварительная версия: **https://maminanedelka.ru/** (noindex). Принятый дизайн и локальная рабочая версия: `http://localhost:8765`. Прежний вариант для сравнения — `http://localhost:8766`. Текущий этап выкладки, результаты проверок и открытые вопросы — в [STATUS.md](STATUS.md). Публичное включение отдельно от сборки и Git.
+Сайт: **https://maminanedelka.ru/**, блог: **https://maminanedelka.ru/blog/index.html**. Блог открыт для индексации 19.10.2026 в 20:08 МСК: каталог и 50 статей, 51 URL Sitemap. Главная приложения и служебные страницы сохраняют noindex. [Текущий статус](STATUS.md), [применение и откат](docs/INDEXING.md). Локальный preview — `http://localhost:8765`.
 
 Стек сохранён: статический HTML, CSS, ванильный JavaScript, генератор Python без сторонних зависимостей. Node, CMS и клиентского фреймворка нет.
 
@@ -50,7 +50,7 @@ python3 -m unittest discover -s tests -v
 - Уникальные title/description, sitemap, OG/Twitter, Article/BreadcrumbList/CollectionPage/WebSite JSON-LD. Автор-врач, рецензия, рейтинги и дата первой публикации не выдуманы.
 - `dateModified` берётся из `updated:` источника, не меняется при каждом запуске.
 - Подтверждение Яндекса `5de9122d74676c4f` сохранено. Вход в кабинет и актуальный статус прав отдельно не проверены.
-- Google Search Console: структура готова; подтверждение владельца через DNS либо выданный Google токен ещё нужно выполнить. Метрика и сторонняя аналитика не подключены.
+- Google Search Console подключена 19.10.2026: verification-тег сохраняется генератором и опубликован, владелец подтвердил ресурс и доступ технического аккаунта. API-сбор в mamina_marketing работает, Google пока не вернул строки статистики (`empty`); см. STATUS. Метрика и счётчик общей посещаемости не подключены.
 - Preview и действующий Caddy отдают реальные 404; `/blog/` перенаправляется на `/blog/index.html`, `/index.html` — на `/`. Текущий публичный fallback описан в [порядке релиза](docs/RELEASE.md).
 
 ## Бот и публикация
@@ -62,3 +62,23 @@ Apex также обслуживает **`/tg/*`, `/yookassa/*`, `/health`**. Н
 Индексируемый выпуск требует приёмки владельца, проверки материалов, юридических данных и разрешения. После выполнения условий `python3 build_blog.py --release --output /путь/к/отдельному/каталогу` собирает индексируемую версию. Команда сама ничего не деплоит. Гейты — `release-checklist.json`; рецензии — `status: approved` и `review_evidence:` в каждой статье. Предварительное включение через `--public-preview` не заменяет эти проверки.
 
 VPS-процедура: `../VPS CLAUDE CODE RULES/12-mamina-landing.md`, актуальный baseline — `CURRENT_STATE.md` рядом. Особенности новой сборки, backup и откат описаны в [docs/RELEASE.md](docs/RELEASE.md). Для следующего обновления собрать новый пакет, повторить backup и postflight; текущая предварительная версия уже включена.
+
+## Подготовка к поиску — 19.10.2026
+
+[Пошаговый порядок](docs/INDEXING.md), [риски РФ](docs/LEGAL.md),
+[сведения для РКН](docs/RKN_PREPARATION.md), [рецензии статей](docs/REVIEW_QUEUE.md).
+Реквизиты подтверждены; отдельный `blog-release` применён 19.10, полный `--release` остаётся отдельной задачей. Проверка готовности:
+`python3 -B scripts/search_readiness.py --live`. Подготовка замороженной операции после
+реальных согласований: `python3 -B scripts/prepare_indexed_release.py`.
+Обе команды сами production не меняют; при незакрытых условиях возвращают код 2.
+
+## Отдельный индексируемый блог
+
+`python3 -B build_blog.py --blog-release --output <пустой каталог>` открывает для поиска
+каталог и 50 статей, оставляя прочие страницы noindex. Sitemap содержит 51 URL.
+Этот режим требует явного `blog_indexing_approved` и проверенных технических условий,
+сохраняет настоящие статусы/источники и не выдаёт медицинскую рецензию за выполненную.
+Проверка: `python3 -B scripts/check_site.py --root <каталог> --mode blog-release`.
+Подготовка операции: `python3 -B scripts/prepare_indexed_release.py --mode blog-release`.
+Живая проверка после применения: `python3 -B scripts/search_readiness.py --mode blog-release --live`.
+`--release` остаётся отдельным строгим полным выпуском. Подробности — [INDEXING](docs/INDEXING.md).

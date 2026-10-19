@@ -1,0 +1,30 @@
+{
+  "scope": "public deployed blog; no Telegram interaction",
+  "checks": [
+    {
+      "url": "https://maminanedelka.ru/blog/index.html",
+      "width": 1440,
+      "screenshot": "2026-10-19_blog-indexed-public_blog_1440.png"
+    },
+    {
+      "url": "https://maminanedelka.ru/blog/20-nedelya.html",
+      "width": 1440,
+      "screenshot": "2026-10-19_blog-indexed-public_article_1440.png"
+    },
+    {
+      "url": "https://maminanedelka.ru/blog/index.html",
+      "width": 390,
+      "screenshot": "2026-10-19_blog-indexed-public_blog_390.png"
+    },
+    {
+      "url": "https://maminanedelka.ru/blog/20-nedelya.html",
+      "width": 390,
+      "screenshot": "2026-10-19_blog-indexed-public_article_390.png"
+    }
+  ],
+  "search_menu_cta": true,
+  "honest_review_note": true,
+  "page_errors": [],
+  "external_requests": [],
+  "cookies_storage": 0
+}

@@ -1,0 +1,342 @@
+{
+  "checked_at": "2026-10-19",
+  "scope": "HTTP availability only; not claim verification or medical review",
+  "sources": [
+    {
+      "id": "movements",
+      "url": "https://www.nhs.uk/pregnancy/keeping-well/your-babys-movements/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/keeping-well/your-babys-movements/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "sickness",
+      "url": "https://www.nhs.uk/pregnancy/common-symptoms/vomiting-and-morning-sickness/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/common-symptoms/vomiting-and-morning-sickness/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "swelling",
+      "url": "https://www.nhs.uk/pregnancy/common-symptoms/swollen-ankles-feet-and-fingers/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/common-symptoms/swollen-ankles-feet-and-fingers/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "labour",
+      "url": "https://www.nhs.uk/pregnancy/labour-and-birth/signs-of-labour/signs-that-labour-has-begun/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/labour-and-birth/signs-that-labour-has-begun/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "food",
+      "url": "https://www.nhs.uk/pregnancy/keeping-well/foods-to-avoid/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/keeping-well/foods-to-avoid/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "diet",
+      "url": "https://www.nhs.uk/pregnancy/keeping-well/have-a-healthy-diet/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/keeping-well/have-a-healthy-diet/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "weight",
+      "url": "https://www.nhs.uk/pregnancy/related-conditions/common-symptoms/weight-gain/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/keeping-well/weight-gain/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "sleep",
+      "url": "https://www.nhs.uk/pregnancy/common-symptoms/tiredness/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/common-symptoms/tiredness/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "travel",
+      "url": "https://www.nhs.uk/pregnancy/keeping-well/travelling/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/keeping-well/travelling/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "medicines",
+      "url": "https://www.nhs.uk/pregnancy/keeping-well/medicines/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/keeping-well/medicines/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "heartburn",
+      "url": "https://www.nhs.uk/pregnancy/common-symptoms/indigestion-and-heartburn/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/common-symptoms/indigestion-and-heartburn/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "common",
+      "url": "https://www.nhs.uk/pregnancy/common-symptoms/common-health-problems/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/common-symptoms/common-health-problems/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "back",
+      "url": "https://www.nhs.uk/pregnancy/common-symptoms/back-pain/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/common-symptoms/back-pain/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "discharge",
+      "url": "https://www.nhs.uk/pregnancy/related-conditions/common-symptoms/vaginal-discharge/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/common-symptoms/vaginal-discharge/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "mental",
+      "url": "https://www.nhs.uk/pregnancy/mental-health-in-pregnancy-and-after-the-birth/mental-health/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/mental-health-in-pregnancy-and-after-the-birth/mental-health/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "test",
+      "url": "https://www.nhs.uk/pregnancy/finding-out/what-to-do-when-you-find-out-you-are-pregnant/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/finding-out/what-to-do-when-you-find-out-you-are-pregnant/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "due",
+      "url": "https://www.nhs.uk/pregnancy/finding-out/due-date-calculator/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/finding-out/due-date-calculator/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "bag",
+      "url": "https://www.nhs.uk/pregnancy/labour-and-birth/preparing-for-the-birth/pack-your-bag-for-labour/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/preparing-for-labour-and-birth/hospital-bag-checklist/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "plan",
+      "url": "https://www.nhs.uk/pregnancy/labour-and-birth/preparing-for-the-birth/how-to-make-a-birth-plan/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/preparing-for-labour-and-birth/what-to-include-in-your-birth-plan/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "partner",
+      "url": "https://derbyshirefamilyhealthservice.nhs.uk/our-services/pregnancy/dads-and-partners-matter-too/how-support-your-partner-during-pregnancy-and-beyond",
+      "status": 200,
+      "final_url": "https://derbyshirefamilyhealthservice.nhs.uk/our-services/pregnancy/dads-and-partners-matter-too/how-support-your-partner-during-pregnancy-and-beyond",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "id": "hair",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/using-hair-dye-in-pregnancy-is-it-safe/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/using-hair-dye-in-pregnancy-is-it-safe/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "ru-care",
+      "url": "https://gkb-buyanova.ru/patsientam/informatsiya-o-beremennosti/",
+      "status": 200,
+      "final_url": "https://gkb-buyanova.ru/patsientam/informatsiya-o-beremennosti/",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "id": "ru-guideline",
+      "url": "https://cr.minzdrav.gov.ru/preview-cr/288_2",
+      "status": 200,
+      "final_url": "https://cr.minzdrav.gov.ru/preview-cr/288_2",
+      "content_type": "text/html"
+    },
+    {
+      "id": "sfr",
+      "url": "https://sfr.gov.ru/employers/lk_insurer/baza_znanij/eln_vyplaty_oss_2/",
+      "status": 200,
+      "final_url": "https://sfr.gov.ru/employers/lk_insurer/baza_znanij/eln_vyplaty_oss_2/",
+      "content_type": "text/html; charset=UTF-8"
+    },
+    {
+      "id": "product",
+      "url": "https://maminanedelka.ru/about.html",
+      "status": 200,
+      "final_url": "https://maminanedelka.ru/about.html",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week5",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/1st-trimester/week-5/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/1st-trimester/week-5/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week6",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/1st-trimester/week-6/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/1st-trimester/week-6/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week8",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/1st-trimester/week-8/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/1st-trimester/week-8/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week10",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/1st-trimester/week-10/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/1st-trimester/week-10/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week12",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/1st-trimester/week-12/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/1st-trimester/week-12/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week14",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/2nd-trimester/week-14/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/2nd-trimester/week-14/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week16",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/2nd-trimester/week-16/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/2nd-trimester/week-16/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week18",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/2nd-trimester/week-18/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/2nd-trimester/week-18/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week20",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/2nd-trimester/week-20/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/2nd-trimester/week-20/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week22",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/2nd-trimester/week-22/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/2nd-trimester/week-22/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week24",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/2nd-trimester/week-24/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/2nd-trimester/week-24/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week26",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/2nd-trimester/week-26/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/2nd-trimester/week-26/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week28",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/3rd-trimester/week-28/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/3rd-trimester/week-28/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week30",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/3rd-trimester/week-30/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/3rd-trimester/week-30/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week32",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/3rd-trimester/week-32/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/3rd-trimester/week-32/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week34",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/3rd-trimester/week-34/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/3rd-trimester/week-34/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week36",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/3rd-trimester/week-36/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/3rd-trimester/week-36/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week38",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/3rd-trimester/week-38/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/3rd-trimester/week-38/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "week40",
+      "url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/3rd-trimester/week-40/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/best-start-in-life/pregnancy/week-by-week-guide-to-pregnancy/3rd-trimester/week-40/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "ectopic",
+      "url": "https://www.nhs.uk/conditions/ectopic-pregnancy/symptoms/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/conditions/ectopic-pregnancy/symptoms/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "induction",
+      "url": "https://www.nhs.uk/pregnancy/labour-and-birth/inducing-labour/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/pregnancy/labour-and-birth/inducing-labour/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "diabetes",
+      "url": "https://www.nhs.uk/conditions/gestational-diabetes/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/conditions/gestational-diabetes/",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "id": "anti-d",
+      "url": "https://www.nhs.uk/conditions/rhesus-disease/prevention/",
+      "status": 200,
+      "final_url": "https://www.nhs.uk/conditions/rhesus-disease-hdfn/",
+      "content_type": "text/html; charset=utf-8"
+    }
+  ]
+}

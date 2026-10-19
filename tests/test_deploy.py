@@ -10,6 +10,46 @@ spec.loader.exec_module(deploy)
 
 
 class RollbackContract(unittest.TestCase):
+    def test_blog_deploy_accepts_pending_review_but_never_indexes_landing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);public=root/'public';(public/'blog').mkdir(parents=True)
+            index='<meta name="robots" content="index, follow, max-image-preview:large">'
+            noindex='<meta name="robots" content="noindex, follow">'
+            (public/'index.html').write_text(noindex)
+            (public/'blog/example.html').write_text(index)
+            plan={'mode':'blog-release','files':{'index.html':'fixture','blog/example.html':'fixture'},
+                  'release_approvals':{'gates':dict.fromkeys(deploy.BLOG_RELEASE_GATES,True),
+                    'articles':{'blog/example.html':{'status':'specialist_review','review_evidence':''}}}}
+            deploy.check_public_mode(root,plan)
+            self.assertTrue(deploy.expected_header_noindex('assets/site.js','blog-release'))
+            self.assertFalse(deploy.expected_header_noindex('blog/example.html','blog-release'))
+            (public/'index.html').write_text(index)
+            with self.assertRaisesRegex(RuntimeError,'indexing mode mismatch'):
+                deploy.check_public_mode(root,plan)
+
+    def test_release_refuses_unreviewed_articles_even_with_all_owner_gates(self):
+        plan={'mode':'release','files':{'blog/example.html':'fixture'},
+              'release_approvals':{'gates':dict.fromkeys(deploy.RELEASE_GATES,True),
+                  'articles':{'blog/example.html':{'status':'specialist_review','review_evidence':''}}}}
+        with self.assertRaisesRegex(RuntimeError,'missing article reviews'):
+            deploy.check_public_mode(Path('/unused'),plan)
+
+    def test_release_preserves_404_noindex_but_requires_other_html_indexable(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);public=root/'public';(public/'blog').mkdir(parents=True)
+            index='<meta name="robots" content="index, follow, max-image-preview:large">'
+            noindex='<meta name="robots" content="noindex, follow">'
+            (public/'index.html').write_text(index)
+            (public/'blog/example.html').write_text(index)
+            (public/'404.html').write_text(noindex)
+            plan={'mode':'release','files':{p:'fixture' for p in ('index.html','blog/example.html','404.html')},
+                  'release_approvals':{'gates':dict.fromkeys(deploy.RELEASE_GATES,True),
+                      'articles':{'blog/example.html':{'status':'approved','review_evidence':'fixture-review'}}}}
+            deploy.check_public_mode(root,plan)
+            (public/'blog/example.html').write_text(noindex)
+            with self.assertRaisesRegex(RuntimeError,'indexing mode mismatch'):
+                deploy.check_public_mode(root,plan)
+
     def test_restores_exact_config_and_reloads_before_verification(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);config=root/'Caddyfile';backup=root/'backup';backup.mkdir()

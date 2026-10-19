@@ -1,0 +1,1878 @@
+{
+  "checked_at_utc": "2026-10-19T16:17:52.557732+00:00",
+  "release_ready": false,
+  "release_blockers": [
+    "privacy_and_hosting_review",
+    "bot_telegram_smoke",
+    "a0001",
+    "a0002",
+    "a0003",
+    "a0004",
+    "a0005",
+    "a0006",
+    "a0007",
+    "a0008",
+    "a0009",
+    "a0010",
+    "a0011",
+    "a0012",
+    "a0013",
+    "a0014",
+    "a0015",
+    "a0016",
+    "a0017",
+    "a0018",
+    "a0019",
+    "a0020",
+    "a0021",
+    "a0022",
+    "a0023",
+    "a0024",
+    "a0025",
+    "a0026",
+    "a0027",
+    "a0028",
+    "a0029",
+    "a0030",
+    "a0031",
+    "a0032",
+    "a0033",
+    "a0034",
+    "a0035",
+    "a0036",
+    "a0037",
+    "a0038",
+    "a0039",
+    "a0040",
+    "a0041",
+    "a0042",
+    "a0043",
+    "a0044",
+    "a0045",
+    "a0046",
+    "a0047",
+    "a0048",
+    "a0049",
+    "a0050"
+  ],
+  "gates": {
+    "owner_visual_acceptance": true,
+    "owner_details_confirmed": true,
+    "privacy_and_hosting_review": false,
+    "bot_telegram_smoke": false,
+    "vps_backup_and_rollback_plan": true,
+    "public_enable_approved": true
+  },
+  "article_status_counts": {
+    "owner_review": 5,
+    "specialist_review": 45
+  },
+  "articles": [
+    {
+      "file": "A-0001-rodom.md",
+      "title": "Что взять в роддом: список по трём сумкам",
+      "url": "https://maminanedelka.ru/blog/rodom.html",
+      "medical": false,
+      "status": "owner_review",
+      "review_evidence": "",
+      "sources": [
+        "bag",
+        "ru-care"
+      ],
+      "sha256": "71e9fae451fcbf0418506b251c7592908a89aca9e96aec829c77a715cd618c39"
+    },
+    {
+      "file": "A-0002-analizy.md",
+      "title": "Анализы при беременности: как разобраться в назначениях",
+      "url": "https://maminanedelka.ru/blog/analizy.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "ru-care",
+        "ru-guideline"
+      ],
+      "sha256": "1cbf5909ab7e16214dcf53e301076b5321adbcd1852d10a4573eac3e97040ce8"
+    },
+    {
+      "file": "A-0003-skrining.md",
+      "title": "Первый скрининг: сроки, подготовка и вопросы врачу",
+      "url": "https://maminanedelka.ru/blog/skrining.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "ru-care",
+        "ru-guideline"
+      ],
+      "sha256": "8f20bb856260c29e5528f2de59f7651069d9c3c4208b94e50c5f87dc37718b2b"
+    },
+    {
+      "file": "A-0004-sheveleniya-nachalo.md",
+      "title": "Первые шевеления: когда их замечают и когда звонить врачу",
+      "url": "https://maminanedelka.ru/blog/sheveleniya-nachalo.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "movements",
+        "ru-care"
+      ],
+      "sha256": "9706345d44db317e90e11fa7a22aca67fbbe60d628d6b2c0ea0f84cfe5f4a9ad"
+    },
+    {
+      "file": "A-0005-schitat-sheveleniya.md",
+      "title": "Как наблюдать за шевелениями: без универсальной нормы",
+      "url": "https://maminanedelka.ru/blog/schitat-sheveleniya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "movements",
+        "ru-care"
+      ],
+      "sha256": "e534f68f990647639b23ac7d86bac3035d079918db3488373980fe0b336c0b46"
+    },
+    {
+      "file": "A-0006-toksikoz.md",
+      "title": "Токсикоз: что попробовать и когда нужна помощь",
+      "url": "https://maminanedelka.ru/blog/toksikoz.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "sickness",
+        "ru-care"
+      ],
+      "sha256": "5fb0330fb76a4e809a26badcbca262c35e8f6d18411602d175e884f410d11c73"
+    },
+    {
+      "file": "A-0007-predvestniki.md",
+      "title": "Предвестники родов: что они могут и чего не могут подсказать",
+      "url": "https://maminanedelka.ru/blog/predvestniki.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "labour",
+        "ru-care"
+      ],
+      "sha256": "ffb8f5dd312aab3d13b93de074ce597ddc12aabec9a852034d354a3d2f69b11f"
+    },
+    {
+      "file": "A-0008-shvatki.md",
+      "title": "Тренировочные и родовые схватки: ориентиры для обращения",
+      "url": "https://maminanedelka.ru/blog/shvatki.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "labour",
+        "ru-care"
+      ],
+      "sha256": "d86fd29295fe062c50abbfbcc1633a176694e5820e5c2061b086d0a24b83061d"
+    },
+    {
+      "file": "A-0009-oteki.md",
+      "title": "Отёки при беременности: что наблюдать и когда обращаться",
+      "url": "https://maminanedelka.ru/blog/oteki.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "swelling",
+        "ru-care"
+      ],
+      "sha256": "47e6b0383fc86783743d0bf8f9ce3dbfbd784a61602e4865f6b234a598171ad5"
+    },
+    {
+      "file": "A-0010-pribavka-vesa.md",
+      "title": "Прибавка веса при беременности: как обсуждать её с врачом",
+      "url": "https://maminanedelka.ru/blog/pribavka-vesa.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "weight",
+        "diet",
+        "swelling"
+      ],
+      "sha256": "b03dec8b84f5ed4616a7a8c4b5b924d83887c062437cfa73d492b8e2fdd7df2c"
+    },
+    {
+      "file": "A-0011-pitanie.md",
+      "title": "Питание при беременности: повседневный рацион и безопасность",
+      "url": "https://maminanedelka.ru/blog/pitanie.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "diet",
+        "food",
+        "sickness",
+        "heartburn"
+      ],
+      "sha256": "0e47156498ccddc10dbb3c344a070ae2ea3cfaf891fad6dec3a26e7c6311da8b"
+    },
+    {
+      "file": "A-0012-uzi-grafik.md",
+      "title": "УЗИ при беременности: как спланировать обследования",
+      "url": "https://maminanedelka.ru/blog/uzi-grafik.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "ru-care",
+        "ru-guideline"
+      ],
+      "sha256": "e8f895eb7c75471ed23fa9f963ee0450fa2818c415be1b1f8c8a00cf3cec6acf"
+    },
+    {
+      "file": "A-0013-vtoroy-skrining.md",
+      "title": "Второй скрининг: что смотрят и что спросить после УЗИ",
+      "url": "https://maminanedelka.ru/blog/vtoroy-skrining.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "ru-care",
+        "ru-guideline"
+      ],
+      "sha256": "5f51619e823107bab201832ffefacda2322510a0b86c5dbfe0eaec7ec5833240"
+    },
+    {
+      "file": "A-0014-podgotovka-k-rodam.md",
+      "title": "Подготовка к родам: договорённости, вещи и вопросы",
+      "url": "https://maminanedelka.ru/blog/podgotovka-k-rodam.html",
+      "medical": false,
+      "status": "owner_review",
+      "review_evidence": "",
+      "sources": [
+        "plan",
+        "bag"
+      ],
+      "sha256": "d0a9334144ca7017491e30baf416ad98843d111fd2c49c47b7e53b751958a713"
+    },
+    {
+      "file": "A-0015-dekret.md",
+      "title": "Когда уходят в декрет и как оформить отпуск",
+      "url": "https://maminanedelka.ru/blog/dekret.html",
+      "medical": false,
+      "status": "owner_review",
+      "review_evidence": "",
+      "sources": [
+        "sfr"
+      ],
+      "sha256": "4d654c247cf7d9bc76f366651628087bf1de2f7445b300e397791d8f74043cc7"
+    },
+    {
+      "file": "A-0016-12-nedelya.md",
+      "title": "12 неделя беременности: скрининг и следующие договорённости",
+      "url": "https://maminanedelka.ru/blog/12-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week12",
+        "ru-care",
+        "ru-guideline",
+        "sickness",
+        "ectopic"
+      ],
+      "sha256": "940bb143995ad9774cfdc492f689001cc9660b7bcef0112291c2ab236d1f2681"
+    },
+    {
+      "file": "A-0017-20-nedelya.md",
+      "title": "20 неделя беременности: результаты УЗИ и план середины беременности",
+      "url": "https://maminanedelka.ru/blog/20-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week20",
+        "movements",
+        "ru-care",
+        "ru-guideline",
+        "labour",
+        "swelling"
+      ],
+      "sha256": "bab5b0299a5a78f944b0ccde27825048623e51c7d324fe48bdb9711ec0663328"
+    },
+    {
+      "file": "A-0018-30-nedelya.md",
+      "title": "30 неделя беременности: документы, работа и ближайшие решения",
+      "url": "https://maminanedelka.ru/blog/30-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week30",
+        "sfr",
+        "ru-care",
+        "movements",
+        "labour",
+        "swelling"
+      ],
+      "sha256": "b41c947e459d1f6575bc2bd531d5547f32245bdecdf08f3ff1fde265a8665a03"
+    },
+    {
+      "file": "A-0019-sravnenie-prilozheniy.md",
+      "title": "Как выбрать приложение для беременности: что проверить",
+      "url": "https://maminanedelka.ru/blog/sravnenie-prilozheniy.html",
+      "medical": false,
+      "status": "owner_review",
+      "review_evidence": "",
+      "sources": [
+        "product"
+      ],
+      "sha256": "f2ae75cb7e7fe2fce1590bb33e141b9a3bf8e0f20cf762f5e4d590ebe98f72ae"
+    },
+    {
+      "file": "A-0020-5-nedelya.md",
+      "title": "5 неделя беременности: первые шаги после теста",
+      "url": "https://maminanedelka.ru/blog/5-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week5",
+        "test",
+        "medicines",
+        "ru-care",
+        "ectopic",
+        "sickness"
+      ],
+      "sha256": "2f70a98967b68ed7507d7df9b024a00eaf48b812bb84d5b7bb48c9a13cf70069"
+    },
+    {
+      "file": "A-0021-8-nedelya.md",
+      "title": "8 неделя беременности: тошнота, усталость и помощь в быту",
+      "url": "https://maminanedelka.ru/blog/8-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week8",
+        "sickness",
+        "mental",
+        "ru-care",
+        "ectopic"
+      ],
+      "sha256": "dd2b7142dfad3e8c12b049c390d22180509c8b771858fde998ab685e02985254"
+    },
+    {
+      "file": "A-0022-16-nedelya.md",
+      "title": "16 неделя беременности: изменения тела и ожидание первых движений",
+      "url": "https://maminanedelka.ru/blog/16-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week16",
+        "movements",
+        "common",
+        "ru-care",
+        "labour",
+        "swelling"
+      ],
+      "sha256": "76948acb6ba0e8bc7988f8a144a7bb96d0cc6b089bed48dc6716fe4770034f0f"
+    },
+    {
+      "file": "A-0023-24-nedelya.md",
+      "title": "24 неделя беременности: первые движения и обследования по плану",
+      "url": "https://maminanedelka.ru/blog/24-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week24",
+        "movements",
+        "ru-care",
+        "ru-guideline",
+        "diabetes",
+        "labour",
+        "swelling"
+      ],
+      "sha256": "d1a9fa438eacb800e79f3292491b8ebbb602239fd453dc19de8cebe46122c6af"
+    },
+    {
+      "file": "A-0024-28-nedelya.md",
+      "title": "28 неделя беременности: начало третьего триместра и план наблюдения",
+      "url": "https://maminanedelka.ru/blog/28-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week28",
+        "sleep",
+        "movements",
+        "ru-care",
+        "ru-guideline",
+        "anti-d",
+        "labour",
+        "swelling"
+      ],
+      "sha256": "fee1bc05d0fec7894b0685f4541d37308e119a07a82f2c3c16e68e406f88deb2"
+    },
+    {
+      "file": "A-0025-34-nedelya.md",
+      "title": "34 неделя беременности: сумка, маршрут и контакты",
+      "url": "https://maminanedelka.ru/blog/34-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week34",
+        "bag",
+        "labour",
+        "movements",
+        "ru-care",
+        "swelling"
+      ],
+      "sha256": "317aeb2fdde941498fce6ebba6974dc2cd148b4da64b31c312d22c57405d4272"
+    },
+    {
+      "file": "A-0026-38-nedelya.md",
+      "title": "38 неделя беременности: ожидание родов и понятный план обращения",
+      "url": "https://maminanedelka.ru/blog/38-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week38",
+        "labour",
+        "movements",
+        "plan",
+        "swelling"
+      ],
+      "sha256": "5c3a706d24c0fea90e2450a42d95d10b844f618598b54d0cfecb6db67714bf56"
+    },
+    {
+      "file": "A-0027-40-nedelya.md",
+      "title": "40 неделя беременности: предполагаемая дата родов и дальнейший план",
+      "url": "https://maminanedelka.ru/blog/40-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week40",
+        "due",
+        "labour",
+        "movements",
+        "ru-care",
+        "ru-guideline",
+        "induction",
+        "swelling"
+      ],
+      "sha256": "f493844a11e81dd4b04db54d0a1edaf73f296eef305407fa084ec16fd6d957f6"
+    },
+    {
+      "file": "A-0028-kogda-viden-zhivot.md",
+      "title": "Когда становится виден живот при беременности",
+      "url": "https://maminanedelka.ru/blog/kogda-viden-zhivot.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week12",
+        "week16",
+        "week20",
+        "ru-care"
+      ],
+      "sha256": "3584c93b0cc2e019527ddc8e717577067f644c4308ab181f54e40bc9287e4230"
+    },
+    {
+      "file": "A-0029-bessonnitsa.md",
+      "title": "Бессонница при беременности: как облегчить ночь",
+      "url": "https://maminanedelka.ru/blog/bessonnitsa.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "sleep",
+        "mental",
+        "heartburn"
+      ],
+      "sha256": "c26a9a84867e6ddae6c4f7c200804191e4443c0bf056dffde0f4f8e88053e405"
+    },
+    {
+      "file": "A-0030-perelyoty.md",
+      "title": "Перелёты при беременности: что проверить до билетов",
+      "url": "https://maminanedelka.ru/blog/perelyoty.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "travel"
+      ],
+      "sha256": "47070b9dd326068adee7bb31e170f023d11d88b1f184b9a5e5aa930ecbe0181f"
+    },
+    {
+      "file": "A-0031-krasit-volosy.md",
+      "title": "Окрашивание волос при беременности: меры предосторожности",
+      "url": "https://maminanedelka.ru/blog/krasit-volosy.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "hair",
+        "medicines"
+      ],
+      "sha256": "525b3f100a5e60d3e66a6a789dab780977ec7ddd44527c12e0f5193881e9af7b"
+    },
+    {
+      "file": "A-0032-prostuda.md",
+      "title": "Простуда при беременности: как действовать при симптомах",
+      "url": "https://maminanedelka.ru/blog/prostuda.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "medicines",
+        "ru-care"
+      ],
+      "sha256": "35e68dd0b417af2a62321a8f423da93af012b0f1be71ca2b961ba4c4adb2de06"
+    },
+    {
+      "file": "A-0033-6-nedelya.md",
+      "title": "6 неделя беременности: самочувствие и план первого визита",
+      "url": "https://maminanedelka.ru/blog/6-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week6",
+        "sickness",
+        "medicines",
+        "ru-care",
+        "ectopic"
+      ],
+      "sha256": "e705e8b961556d431379ad2a9f63eb932e2ab0188be3a309f0dffc55cd776cd9"
+    },
+    {
+      "file": "A-0034-10-nedelya.md",
+      "title": "10 неделя беременности: подготовка к первому скринингу",
+      "url": "https://maminanedelka.ru/blog/10-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week10",
+        "ru-care",
+        "ru-guideline",
+        "sickness",
+        "ectopic"
+      ],
+      "sha256": "cb8222c61f96794fc7b36dd9b62aa78bc7f67a09e1eac2bc6ba565122800f97c"
+    },
+    {
+      "file": "A-0035-14-nedelya.md",
+      "title": "14 неделя беременности: второй триместр без обязательной бодрости",
+      "url": "https://maminanedelka.ru/blog/14-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week14",
+        "diet",
+        "sickness",
+        "ru-care",
+        "ectopic"
+      ],
+      "sha256": "3604d88457aeec1cb6bd0af939a999c46f97f492db2be26ab0e954caf4e26ecb"
+    },
+    {
+      "file": "A-0036-18-nedelya.md",
+      "title": "18 неделя беременности: первые шевеления и запись на УЗИ",
+      "url": "https://maminanedelka.ru/blog/18-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week18",
+        "movements",
+        "ru-care",
+        "ru-guideline",
+        "labour",
+        "swelling"
+      ],
+      "sha256": "51f3924a53877f3d88bf36bf76bc18af0cabd030baa2797715da00a09012c9ca"
+    },
+    {
+      "file": "A-0037-22-nedelya.md",
+      "title": "22 неделя беременности: движения, нагрузка и бытовой комфорт",
+      "url": "https://maminanedelka.ru/blog/22-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week22",
+        "movements",
+        "back",
+        "ru-care",
+        "labour",
+        "swelling"
+      ],
+      "sha256": "4aad5715833cdfff0c61e50b8b09ab1db40238c0e68f0993f176c929256de555"
+    },
+    {
+      "file": "A-0038-26-nedelya.md",
+      "title": "26 неделя беременности: сон, изжога и подготовка к третьему триместру",
+      "url": "https://maminanedelka.ru/blog/26-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week26",
+        "sleep",
+        "heartburn",
+        "movements",
+        "ru-care",
+        "labour",
+        "swelling"
+      ],
+      "sha256": "c4a07b8f16aac11dfa2a2e9a0fd856150186121e77e7aa31c8bc191753bd3385"
+    },
+    {
+      "file": "A-0039-32-nedelya.md",
+      "title": "32 неделя беременности: выбор роддома и план помощи",
+      "url": "https://maminanedelka.ru/blog/32-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week32",
+        "movements",
+        "ru-care",
+        "plan",
+        "labour",
+        "swelling"
+      ],
+      "sha256": "66a44e5b11c8fe59650b67291e93a14c663fcbb325b0a44b1ce4c1fd24c9f5e2"
+    },
+    {
+      "file": "A-0040-36-nedelya.md",
+      "title": "36 неделя беременности: последние приготовления и вопросы врачу",
+      "url": "https://maminanedelka.ru/blog/36-nedelya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "week36",
+        "labour",
+        "plan",
+        "movements",
+        "ru-care",
+        "swelling"
+      ],
+      "sha256": "ffd8ae00f3fbf7f8668ff85405cc3957123ba129c6d6b3a8f4d34e6b69632a1f"
+    },
+    {
+      "file": "A-0041-izzhoga.md",
+      "title": "Изжога при беременности: привычки, которые можно изменить",
+      "url": "https://maminanedelka.ru/blog/izzhoga.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "heartburn",
+        "swelling"
+      ],
+      "sha256": "172f4e8427a9d08435349cced104f7ab0f39cd6199fe2ff5ee96fe27718228cb"
+    },
+    {
+      "file": "A-0042-zapor.md",
+      "title": "Запор при беременности: питание, привычки и помощь",
+      "url": "https://maminanedelka.ru/blog/zapor.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "common",
+        "medicines",
+        "diet"
+      ],
+      "sha256": "e63547dee014bc2f101b25ceb10e62df8c972a49968807dd0372940d95645439"
+    },
+    {
+      "file": "A-0043-bolit-poyasnitsa.md",
+      "title": "Боль в пояснице при беременности: что обсудить с врачом",
+      "url": "https://maminanedelka.ru/blog/bolit-poyasnitsa.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "back",
+        "labour"
+      ],
+      "sha256": "2f604cf85cace29fd0ffa3568cd75842a75d1c4ba0d19f071de20122c6f66f15"
+    },
+    {
+      "file": "A-0044-mozhno-li-kofe.md",
+      "title": "Кофе при беременности: как учитывать кофеин",
+      "url": "https://maminanedelka.ru/blog/mozhno-li-kofe.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "food"
+      ],
+      "sha256": "e5cd09c4ed06c2517a9b5ad65d8a758320cf708d3edb99b2204be58e85743df8"
+    },
+    {
+      "file": "A-0045-vydeleniya.md",
+      "title": "Выделения при беременности: какие изменения обсуждать",
+      "url": "https://maminanedelka.ru/blog/vydeleniya.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "discharge",
+        "labour"
+      ],
+      "sha256": "a778ae8d683ee4441365e78b11d21ea8e11bbbf7c286622b08bb27274c868b2b"
+    },
+    {
+      "file": "A-0046-akusherskiy-srok.md",
+      "title": "Акушерский срок беременности: как считают недели и ПДР",
+      "url": "https://maminanedelka.ru/blog/akusherskiy-srok.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "due",
+        "ru-guideline"
+      ],
+      "sha256": "e7c8d864d88a1438a3325c943e403424aa1e133ba8a9f0bbdbf7199699a06cac"
+    },
+    {
+      "file": "A-0047-polozhitelnyy-test.md",
+      "title": "Положительный тест на беременность: что делать дальше",
+      "url": "https://maminanedelka.ru/blog/polozhitelnyy-test.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "test",
+        "medicines",
+        "ru-care",
+        "ectopic"
+      ],
+      "sha256": "dce562a6865e4d4193a184286afd4a6c733db0cff17e39a142f185fe2eab6a8f"
+    },
+    {
+      "file": "A-0048-lekarstva.md",
+      "title": "Лекарства при беременности: что уточнить до приёма и отмены",
+      "url": "https://maminanedelka.ru/blog/lekarstva.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "medicines",
+        "test"
+      ],
+      "sha256": "fa15a73f027c9ec98ac049760fab87e91f354727e3c638c67ba9fd4fdbe2e2d7"
+    },
+    {
+      "file": "A-0049-trevoga.md",
+      "title": "Тревога при беременности: поддержка и обращение за помощью",
+      "url": "https://maminanedelka.ru/blog/trevoga.html",
+      "medical": true,
+      "status": "specialist_review",
+      "review_evidence": "",
+      "sources": [
+        "mental",
+        "sleep"
+      ],
+      "sha256": "76a8120ef9310d20a431154fafc6aba1b0567298ff67484686c9de3c3048d30f"
+    },
+    {
+      "file": "A-0050-podderzhka-partnera.md",
+      "title": "Как поддержать беременную партнёршу: конкретные дела",
+      "url": "https://maminanedelka.ru/blog/podderzhka-partnera.html",
+      "medical": false,
+      "status": "owner_review",
+      "review_evidence": "",
+      "sources": [
+        "partner",
+        "mental",
+        "product"
+      ],
+      "sha256": "472ca33e698aa24120a12b3f01525ba296b8c86890f46e8e9f8a485535f0a3b6"
+    }
+  ],
+  "live": {
+    "sitemap": {
+      "url": "https://maminanedelka.ru/sitemap.xml",
+      "final_url": "https://maminanedelka.ru/sitemap.xml",
+      "status": 200,
+      "content_type": "text/xml; charset=utf-8",
+      "x_robots_tag": "noindex, follow",
+      "sha256": "33a0ea9bcf3b7eae5cc304abd3ab55535684ec975e4e6e57491a3292e9766a09"
+    },
+    "robots": {
+      "url": "https://maminanedelka.ru/robots.txt",
+      "final_url": "https://maminanedelka.ru/robots.txt",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "x_robots_tag": "noindex, follow",
+      "sha256": "91c6e90732d9474f24de63870052039a2ba8f98cae2ab4426dbc77e7b5eb8523"
+    },
+    "errors": [],
+    "pages": [
+      {
+        "url": "https://maminanedelka.ru/",
+        "final_url": "https://maminanedelka.ru/",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "ad760fca37da990a380cf29ebff98f003b320e47ec002d53b446bb9b75e76cac",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/"
+        ],
+        "title": "Мамина неделька — беременность по неделям и помощник в Telegram",
+        "h1": 1,
+        "google_verification_present": true,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/about.html",
+        "final_url": "https://maminanedelka.ru/about.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "d5d828f8c8408441add1aeabe3977654f8e9da7a6cfaaf21670467b0cc13c897",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/about.html"
+        ],
+        "title": "О проекте и контакты | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/10-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/10-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "916950df3a9357bd4ec1dbf8cd0cab13b00ac371e73c6e142b9138f77f1427d5",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/10-nedelya.html"
+        ],
+        "title": "10 неделя беременности: подготовка к первому скринингу | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/12-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/12-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "4c3b4a457250484763e2a7bb5a53599622ae9e6adfdfdbe083347fbae607a430",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/12-nedelya.html"
+        ],
+        "title": "12 неделя беременности: скрининг и следующие договорённости | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/14-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/14-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "109095f3133226aa7dc1f41e58f4e0ebd563873f874c1c398a85c43314c4bc99",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/14-nedelya.html"
+        ],
+        "title": "14 неделя беременности: второй триместр без обязательной бодрости | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/16-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/16-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "bbd16cb7723da90aec851851378964b7860f77c1c5581f44e95025b198bad20c",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/16-nedelya.html"
+        ],
+        "title": "16 неделя беременности: изменения тела и ожидание первых движений | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/18-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/18-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "da0517e203dac160cff5e2cfdffd378b49f9442be8396c4d8b4567ba2b88761e",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/18-nedelya.html"
+        ],
+        "title": "18 неделя беременности: первые шевеления и запись на УЗИ | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/20-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/20-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "a327d7714e7a8bad7a8e04833620bed0c7600ba3c3a03259badf55e60a0295dd",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/20-nedelya.html"
+        ],
+        "title": "20 неделя беременности: результаты УЗИ и план середины беременности | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/22-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/22-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "9980046970705677df11cbfabc4b1d39712978a635393924e785318f391b48c0",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/22-nedelya.html"
+        ],
+        "title": "22 неделя беременности: движения, нагрузка и бытовой комфорт | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/24-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/24-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "2de280f771d9eaa8d1b5460b1d91be7361fc120c0ac61e7f95ac76aea47ed96e",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/24-nedelya.html"
+        ],
+        "title": "24 неделя беременности: первые движения и обследования по плану | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/26-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/26-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "1b1b748abb3a0e97968e9f02d64896d185b5b8728537b8aad4b9202573b06925",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/26-nedelya.html"
+        ],
+        "title": "26 неделя беременности: сон, изжога и подготовка к третьему триместру | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/28-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/28-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "4e3de3d5b57f060b2fc82ac5b4cdf7549d635dd6bd203196e5e403056e14bcd1",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/28-nedelya.html"
+        ],
+        "title": "28 неделя беременности: начало третьего триместра и план наблюдения | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/30-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/30-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "9f5fdef6c843747c1e2ac621d829a9ccb1bf9426f9541989a3d220292618ff9f",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/30-nedelya.html"
+        ],
+        "title": "30 неделя беременности: документы, работа и ближайшие решения | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/32-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/32-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "7c9502aa1de903a1dfae802ce2875fc751e7cc46bd95e691076cf60c8bbcda18",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/32-nedelya.html"
+        ],
+        "title": "32 неделя беременности: выбор роддома и план помощи | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/34-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/34-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "7e1783e3fe4de3cea374e7e56a27d3f4d6986082c8b59289c8763c6e42d16cc9",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/34-nedelya.html"
+        ],
+        "title": "34 неделя беременности: сумка, маршрут и контакты | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/36-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/36-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "9bdd442babe1cc4e5e46eb4e497c7bea5733339aef4763588dded3fa901c12dc",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/36-nedelya.html"
+        ],
+        "title": "36 неделя беременности: последние приготовления и вопросы врачу | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/38-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/38-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "1251246f4c59b81523047a48e7f5d0290ef2c91a667904a1cdb4715c873c0813",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/38-nedelya.html"
+        ],
+        "title": "38 неделя беременности: ожидание родов и понятный план обращения | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/40-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/40-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "576fa6b15fad6c325c45f7635cda5aa05024b74aad4015cf0c7a2a0095df70b0",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/40-nedelya.html"
+        ],
+        "title": "40 неделя беременности: предполагаемая дата родов и дальнейший план | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/5-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/5-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "911d0b6e07d11c95f5bf7bdb375a125b7d5114260baa51addcc65fa1125d943b",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/5-nedelya.html"
+        ],
+        "title": "5 неделя беременности: первые шаги после теста | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/6-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/6-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "22e39d4133225065231cf311617b61b31852f20f54c45e2df3cf75307e8044ff",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/6-nedelya.html"
+        ],
+        "title": "6 неделя беременности: самочувствие и план первого визита | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/8-nedelya.html",
+        "final_url": "https://maminanedelka.ru/blog/8-nedelya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "241ff2854a02147d8e369a8418b65c4ff501650c58f7a2ba06ae3de2775df5a8",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/8-nedelya.html"
+        ],
+        "title": "8 неделя беременности: тошнота, усталость и помощь в быту | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/akusherskiy-srok.html",
+        "final_url": "https://maminanedelka.ru/blog/akusherskiy-srok.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "83e101c580bae23b6ed07a0e7fa3db4d29826d719d0f07d62fb022863f5b9223",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/akusherskiy-srok.html"
+        ],
+        "title": "Акушерский срок беременности: как считают недели и ПДР | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/analizy.html",
+        "final_url": "https://maminanedelka.ru/blog/analizy.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "f373be60ab0935cfea1158dac251edb203e210d2f59ed8fcee28f159a461e568",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/analizy.html"
+        ],
+        "title": "Анализы при беременности: как разобраться в назначениях | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/bessonnitsa.html",
+        "final_url": "https://maminanedelka.ru/blog/bessonnitsa.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "f956ee3e9fb767c7bdfebe57dfd85246ed5c0624867994d0e009b0bdf8d7955f",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/bessonnitsa.html"
+        ],
+        "title": "Бессонница при беременности: как облегчить ночь | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/bolit-poyasnitsa.html",
+        "final_url": "https://maminanedelka.ru/blog/bolit-poyasnitsa.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "3f099011527faba5d84b44b9b193f47adb69041bc4f8558643b098869b914203",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/bolit-poyasnitsa.html"
+        ],
+        "title": "Боль в пояснице при беременности: что обсудить с врачом | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/dekret.html",
+        "final_url": "https://maminanedelka.ru/blog/dekret.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "956eff173397e9f81eced4b44456567472ed262bd80bfb175b8e31197778ede4",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/dekret.html"
+        ],
+        "title": "Когда уходят в декрет и как оформить отпуск | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/index.html",
+        "final_url": "https://maminanedelka.ru/blog/index.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "887316a1d4cf14d7634102ed39c9fdbf3233579f5f99f3551037a440455ebe7c",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/index.html"
+        ],
+        "title": "Блог о беременности: недели, самочувствие, подготовка к родам | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/izzhoga.html",
+        "final_url": "https://maminanedelka.ru/blog/izzhoga.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "d3ffe8949eb7b638128d3776d325e98b92ef0b40296b55198a3dee92baf72968",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/izzhoga.html"
+        ],
+        "title": "Изжога при беременности: привычки, которые можно изменить | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/kogda-viden-zhivot.html",
+        "final_url": "https://maminanedelka.ru/blog/kogda-viden-zhivot.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "c58c29a7dcbd6b3a0d31c8bad8c98bfeec594202aabb9d4cebf898acc00ec815",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/kogda-viden-zhivot.html"
+        ],
+        "title": "Когда становится виден живот при беременности | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/krasit-volosy.html",
+        "final_url": "https://maminanedelka.ru/blog/krasit-volosy.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "299da769a46e30051f87f2e9c1f74751eebfc0cd222ed11968a82f2681f37fdd",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/krasit-volosy.html"
+        ],
+        "title": "Окрашивание волос при беременности: меры предосторожности | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/lekarstva.html",
+        "final_url": "https://maminanedelka.ru/blog/lekarstva.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "1bbc24b9778109ee6e2e1549b9fdae95dee53eb42fc01dcfd427c69398d7536f",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/lekarstva.html"
+        ],
+        "title": "Лекарства при беременности: что уточнить до приёма и отмены | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/mozhno-li-kofe.html",
+        "final_url": "https://maminanedelka.ru/blog/mozhno-li-kofe.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "8868d01cc9d995dbda7cb9d08278ebe667019456387965eb3c4dee698588808f",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/mozhno-li-kofe.html"
+        ],
+        "title": "Кофе при беременности: как учитывать кофеин | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/oteki.html",
+        "final_url": "https://maminanedelka.ru/blog/oteki.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "5b5090afab0737d64fed9f6b6003b215b049c062aa8c9ac8cc364109d3ac1bc5",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/oteki.html"
+        ],
+        "title": "Отёки при беременности: что наблюдать и когда обращаться | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/perelyoty.html",
+        "final_url": "https://maminanedelka.ru/blog/perelyoty.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "a0e8263b3f49dca265afd4f7981128369176055019fe9cce2cfe921e6aa90967",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/perelyoty.html"
+        ],
+        "title": "Перелёты при беременности: что проверить до билетов | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/pitanie.html",
+        "final_url": "https://maminanedelka.ru/blog/pitanie.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "5c7f72f9056857d37a1217c27197dbd748548a80c427c2325a4b624d7e05b5e3",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/pitanie.html"
+        ],
+        "title": "Питание при беременности: повседневный рацион и безопасность | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/podderzhka-partnera.html",
+        "final_url": "https://maminanedelka.ru/blog/podderzhka-partnera.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "e8e4153c886ed5fe2eab50d9a2d8d6b93aa038236a828733e3b8d3cfd51e4bf9",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/podderzhka-partnera.html"
+        ],
+        "title": "Как поддержать беременную партнёршу: конкретные дела | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/podgotovka-k-rodam.html",
+        "final_url": "https://maminanedelka.ru/blog/podgotovka-k-rodam.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "b9c7f527fc8f1f049c5472ffafb10b58f8cdcd99429e201c3fa7a17904f0647a",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/podgotovka-k-rodam.html"
+        ],
+        "title": "Подготовка к родам: договорённости, вещи и вопросы | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/polozhitelnyy-test.html",
+        "final_url": "https://maminanedelka.ru/blog/polozhitelnyy-test.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "c1842bfe544393e9bae73a1d1b1d9672e23029f93084901e3b0884bb1d00dbe6",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/polozhitelnyy-test.html"
+        ],
+        "title": "Положительный тест на беременность: что делать дальше | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/predvestniki.html",
+        "final_url": "https://maminanedelka.ru/blog/predvestniki.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "c2ef55ed62b90d8fff6589f43338b44f5e30edb1c6a7deb18c2884024cd77f20",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/predvestniki.html"
+        ],
+        "title": "Предвестники родов: что они могут и чего не могут подсказать | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/pribavka-vesa.html",
+        "final_url": "https://maminanedelka.ru/blog/pribavka-vesa.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "5084ba64f0c29fe9f6f14500fae1ef1b5f24670ef688bad6fd4649803a68559a",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/pribavka-vesa.html"
+        ],
+        "title": "Прибавка веса при беременности: как обсуждать её с врачом | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/prostuda.html",
+        "final_url": "https://maminanedelka.ru/blog/prostuda.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "0f7e5db8aa597733c714b75373c7aa7e269414962fc6af1f0a343f85001e3d48",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/prostuda.html"
+        ],
+        "title": "Простуда при беременности: как действовать при симптомах | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/rodom.html",
+        "final_url": "https://maminanedelka.ru/blog/rodom.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "d0065a8e58daae091727268552f23585df80dc2628c6ee8c61042fe69ff011b9",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/rodom.html"
+        ],
+        "title": "Что взять в роддом: список по трём сумкам | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/schitat-sheveleniya.html",
+        "final_url": "https://maminanedelka.ru/blog/schitat-sheveleniya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "812e32d86e3ac960739867b8184965c5909cfb5e81967f491197cd6cd2a460f1",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/schitat-sheveleniya.html"
+        ],
+        "title": "Как наблюдать за шевелениями: без универсальной нормы | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/sheveleniya-nachalo.html",
+        "final_url": "https://maminanedelka.ru/blog/sheveleniya-nachalo.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "1cfd9d16f31318680793553c2313828e3b3a36cd82a272621b5642f39b172fa1",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/sheveleniya-nachalo.html"
+        ],
+        "title": "Первые шевеления: когда их замечают и когда звонить врачу | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/shvatki.html",
+        "final_url": "https://maminanedelka.ru/blog/shvatki.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "ffb033b24e6998ff6be5919a0d7cb22b39f60d5f1e85bfbd2a5e285c6fddb7ff",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/shvatki.html"
+        ],
+        "title": "Тренировочные и родовые схватки: ориентиры для обращения | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/skrining.html",
+        "final_url": "https://maminanedelka.ru/blog/skrining.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "1c232b4089bd41692e2a7814cb68f3f498869ef9cbf79d8ec813fed7267e0d3b",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/skrining.html"
+        ],
+        "title": "Первый скрининг: сроки, подготовка и вопросы врачу | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/sravnenie-prilozheniy.html",
+        "final_url": "https://maminanedelka.ru/blog/sravnenie-prilozheniy.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "a16c3054d2a43ca6fe793e887586239ab198e0173fb87e6d841f62416fc0e077",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/sravnenie-prilozheniy.html"
+        ],
+        "title": "Как выбрать приложение для беременности: что проверить | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/toksikoz.html",
+        "final_url": "https://maminanedelka.ru/blog/toksikoz.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "57818424cd5e455fff56b16d20f040c4e02a32872c89ebaf5164c8ddba008577",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/toksikoz.html"
+        ],
+        "title": "Токсикоз: что попробовать и когда нужна помощь | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/trevoga.html",
+        "final_url": "https://maminanedelka.ru/blog/trevoga.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "7bb5f35632d5c8541805a0c154163fc101137358c671aebf4023c579d817b38b",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/trevoga.html"
+        ],
+        "title": "Тревога при беременности: поддержка и обращение за помощью | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/uzi-grafik.html",
+        "final_url": "https://maminanedelka.ru/blog/uzi-grafik.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "14a0cdcefb4dfd6fec16f52b645d7e93bc397164dd873eb30aaddd13ca5c74c6",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/uzi-grafik.html"
+        ],
+        "title": "УЗИ при беременности: как спланировать обследования | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/vtoroy-skrining.html",
+        "final_url": "https://maminanedelka.ru/blog/vtoroy-skrining.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "189cb38f07f5cafb51f36d052c4deaa7080c24f64a2e3870b93cfa120f43cc84",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/vtoroy-skrining.html"
+        ],
+        "title": "Второй скрининг: что смотрят и что спросить после УЗИ | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/vydeleniya.html",
+        "final_url": "https://maminanedelka.ru/blog/vydeleniya.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "22742e2ba7781106eb013f9765f52c3ae19300a12e9b6d2a8274a499d2442a0d",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/vydeleniya.html"
+        ],
+        "title": "Выделения при беременности: какие изменения обсуждать | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/blog/zapor.html",
+        "final_url": "https://maminanedelka.ru/blog/zapor.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "9f98804a2c1a38d1d7790171683a5d949f46ca333cbfa2b74f1afa48e54f3f37",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/blog/zapor.html"
+        ],
+        "title": "Запор при беременности: питание, привычки и помощь | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/editorial.html",
+        "final_url": "https://maminanedelka.ru/editorial.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "a025819f34aa31519b02b203e9d490fa1a7c07af2781e9a6e3c11da97384b232",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/editorial.html"
+        ],
+        "title": "Как мы готовим статьи | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      },
+      {
+        "url": "https://maminanedelka.ru/privacy.html",
+        "final_url": "https://maminanedelka.ru/privacy.html",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "x_robots_tag": "noindex, follow",
+        "sha256": "ddeab9f7820fbfdbdb3da794b432ad26c92c3a4f8f8243e1c6ccfaf9e5791fc1",
+        "meta_robots": "noindex, follow",
+        "canonical": [
+          "https://maminanedelka.ru/privacy.html"
+        ],
+        "title": "Конфиденциальность | Мамина неделька",
+        "h1": 1,
+        "issues": [
+          "meta_noindex",
+          "header_noindex"
+        ],
+        "technically_indexable": false
+      }
+    ],
+    "pages_checked": 55,
+    "indexable_pages": 0,
+    "issue_counts": {
+      "meta_noindex": 55,
+      "header_noindex": 55
+    },
+    "index_membership": "not_checked"
+  }
+}

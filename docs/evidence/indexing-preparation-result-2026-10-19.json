@@ -1,0 +1,25 @@
+{
+  "verified_at_utc": "2026-10-19T16:30:30.014916+00:00",
+  "site_tests_passed": 19,
+  "site_validator": {
+    "pages": 56,
+    "articles": 50,
+    "sitemap_urls": 55,
+    "result": "pass"
+  },
+  "live_http_pages_ok": 55,
+  "live_pages_indexable": 0,
+  "browser": "desktop/mobile viewed; no overflow/errors/external requests/cookie/storage",
+  "docs": {
+    "documents": 12,
+    "local_links_checked": 140,
+    "issues": []
+  },
+  "caddy_candidate": "validated; outside static fallback identical",
+  "static_backup_restore": "77 files hash matched",
+  "release_preparation": "blocked before bundle creation by actual incomplete approvals",
+  "production_changed": false,
+  "sitemap_submitted": false,
+  "git_published": false,
+  "site_working_tree_entries": 31
+}

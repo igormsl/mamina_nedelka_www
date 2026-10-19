@@ -1,0 +1,487 @@
+{
+  "state": "deployed_blog_release",
+  "at_utc": "2026-10-19T17:08:12Z",
+  "target": "/srv/mamina-www-releases/20261019T170138Z",
+  "checks": {
+    "https://maminanedelka.ru/404.html": {
+      "status": 200,
+      "sha256": "cb1a0c59c436b4a6a7dc9914dd3df12ec407a40507252500d211df06619a2712",
+      "bytes": 4443,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/about.html": {
+      "status": 200,
+      "sha256": "36ae29c3d1bbc65d3df175093152843dc50d217f9cf19286a068985e046c967b",
+      "bytes": 6812,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/illustrations/birth.png": {
+      "status": 200,
+      "sha256": "f6e584cc06a8003d0e13253b54c66532646d49d212216f37b6cba4282f0e968a",
+      "bytes": 22181,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/illustrations/birth.svg": {
+      "status": 200,
+      "sha256": "7066bdd7d2071fe920631af30ba95d7f7b5d7163bb3ebefb366a701ed074f32d",
+      "bytes": 884,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/illustrations/checkups.png": {
+      "status": 200,
+      "sha256": "1d554ffb6058c5a03d75ac2023008a7238531dbfef551f56f56ed1e2bba9c0f3",
+      "bytes": 20791,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/illustrations/checkups.svg": {
+      "status": 200,
+      "sha256": "0c25423a70d07a4f9ce9c111554fba4f5e539e50e0cc8ed547012f9c43a7527c",
+      "bytes": 895,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/illustrations/feel.png": {
+      "status": 200,
+      "sha256": "24c73e2d7b187a0744ca6f80e01f0e2a516cd92b16d638cd25b120e862394a6c",
+      "bytes": 30844,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/illustrations/feel.svg": {
+      "status": 200,
+      "sha256": "cfae9e52830dafbcacec5c5b7182a88ac9d809152f061134cc97cd2234202c9d",
+      "bytes": 824,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/illustrations/life.png": {
+      "status": 200,
+      "sha256": "02bdeaabcef3d4861fa4965d3fd763774bfbfff216f6d189cf25251e14261bd3",
+      "bytes": 23956,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/illustrations/life.svg": {
+      "status": 200,
+      "sha256": "ec52ab4d1951d01cfde6bb9bcb4c395fc5cf0ad228e0e45f0dc193db77f27f35",
+      "bytes": 822,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/illustrations/sprout.svg": {
+      "status": 200,
+      "sha256": "114fdc68e20bae670ac1aa0f3821c5ce452d1d9c1d90909e9493467376f05eb4",
+      "bytes": 441,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/illustrations/start.png": {
+      "status": 200,
+      "sha256": "d7502d8daa8c3991998b15e117b4da556530732eaad96767b55c696282f05690",
+      "bytes": 22182,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/illustrations/start.svg": {
+      "status": 200,
+      "sha256": "5d937b3b565908a4a596de736ecf365386b5a157a1bbb1a0e1cbd99ba23e641b",
+      "bytes": 870,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/illustrations/weeks.png": {
+      "status": 200,
+      "sha256": "d428ff9005236561af1619d1cb5134c3eca6cae4f591007fee847af99ca5667b",
+      "bytes": 19365,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/illustrations/weeks.svg": {
+      "status": 200,
+      "sha256": "84bf96ce65a4df5697ecd24b97db2136974ffac4ee772651f7b363b49a090e3d",
+      "bytes": 919,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/site.css": {
+      "status": 200,
+      "sha256": "539c8fedb94efeccc56b904af01da5c200b8a8ca4d10be11f898577be85e1e39",
+      "bytes": 14717,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/assets/site.js": {
+      "status": 200,
+      "sha256": "964933e39f50b7e51a25de69269a03177c9e11c1bf51a05afe7020226dcdefa5",
+      "bytes": 3264,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/blog/10-nedelya.html": {
+      "status": 200,
+      "sha256": "88b5baca2663fb4ba79558ce2611fb2d8c664c4917cccf6901e45019a8d95ca8",
+      "bytes": 16558,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/12-nedelya.html": {
+      "status": 200,
+      "sha256": "1015463442b83a61be73a9f15a69152ca0b2cabfb268980be7186e79f4c5ea4b",
+      "bytes": 16892,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/14-nedelya.html": {
+      "status": 200,
+      "sha256": "9d96d53b27e823d3ab9dd8650717b7de79c15a8a972d6244279bd7e0901f8eb7",
+      "bytes": 16775,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/16-nedelya.html": {
+      "status": 200,
+      "sha256": "0176ff5a0ae50e94b1ed15ad982b7397a3538cf63f3b30e70688d8ed2f19a37e",
+      "bytes": 16900,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/18-nedelya.html": {
+      "status": 200,
+      "sha256": "d8308e6a543870717f1f4cd0946336c59edff73298ec7d5163e16bae3ededd2f",
+      "bytes": 16965,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/20-nedelya.html": {
+      "status": 200,
+      "sha256": "77f61893a0d56d88cc75d1c73825f7dacdc88f065a7405c9b77b104e24140f6f",
+      "bytes": 17321,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/22-nedelya.html": {
+      "status": 200,
+      "sha256": "37b7505eeb2075c8b943b99c3f82e1278e9ff57bb6a53c7f492d7049b1b84c9f",
+      "bytes": 17209,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/24-nedelya.html": {
+      "status": 200,
+      "sha256": "6412a7f6bbdc25b537b1b38b1aa515aaa00726d30f19c949003cc095aefd43ee",
+      "bytes": 17593,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/26-nedelya.html": {
+      "status": 200,
+      "sha256": "7d410709b1ba0c4502fdc48f6505cbfc1ec83c143fbe261a1c690d2b0aee8427",
+      "bytes": 17491,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/28-nedelya.html": {
+      "status": 200,
+      "sha256": "06c71e043007003077c03227e2414d68d7dbf6d66f03d34c50e273d7c91ac74d",
+      "bytes": 18140,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/30-nedelya.html": {
+      "status": 200,
+      "sha256": "31c5b0f6a20ff3baf23005c82a7a11e9ff88e6fea4659cb6f86a535d961d902a",
+      "bytes": 17285,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/32-nedelya.html": {
+      "status": 200,
+      "sha256": "215ced108b03da2a25d03089fb06111788a26cd9ac01753bfdffd7cde2ed1a27",
+      "bytes": 17035,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/34-nedelya.html": {
+      "status": 200,
+      "sha256": "0c995c8e5865dd6198aebc562e2994422994e49181de196c51badb3f51d54f23",
+      "bytes": 17076,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/36-nedelya.html": {
+      "status": 200,
+      "sha256": "491c7010da1d2876937f6885e0a9de73ee6c88d28f9784ef18e1133acb08c917",
+      "bytes": 17256,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/38-nedelya.html": {
+      "status": 200,
+      "sha256": "7984eecb3a392a9b67c4ac7d0709fe8d39811fcf166438b8c9794f070603ab08",
+      "bytes": 16715,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/40-nedelya.html": {
+      "status": 200,
+      "sha256": "9eea983c45b69135528d66891293e219bae33c2aa2b2a460e2e06dd699503061",
+      "bytes": 18293,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/5-nedelya.html": {
+      "status": 200,
+      "sha256": "25421808cf1cc934d40234e751056aac3773d305ef854d5ab244e2e4cd231bfd",
+      "bytes": 17257,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/6-nedelya.html": {
+      "status": 200,
+      "sha256": "9d5b9c63a79d8da7fdcdbf7b29e28a3d91c318c07bbcff4912b8bee7be115893",
+      "bytes": 16709,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/8-nedelya.html": {
+      "status": 200,
+      "sha256": "43c0f77051fc2541f5f97d830a791086756327342945d839007ea3e4446cb252",
+      "bytes": 16659,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/akusherskiy-srok.html": {
+      "status": 200,
+      "sha256": "9cda6680cedf43c789fd04f39e2e1f46757c1997de41aa8bc7c3383141f0a4f5",
+      "bytes": 16396,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/analizy.html": {
+      "status": 200,
+      "sha256": "7448466d88c6d786dd7300735eaf9bf514dfd6895998ad117d04a6bc306015aa",
+      "bytes": 17092,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/assets/favicon-32.png": {
+      "status": 200,
+      "sha256": "55c8a643b7ae6f3a7013a9e55c8bccd02fb39683f078c6bbd06eee00820e00cd",
+      "bytes": 2357,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/blog/assets/logo-96.png": {
+      "status": 200,
+      "sha256": "679ca536f0366aa066e2c930739597b64314a0db0d1a7cf92fa4c6b882759d7d",
+      "bytes": 14527,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/blog/assets/og-cover.png": {
+      "status": 200,
+      "sha256": "cab6841f1361644f4424837d10fb9f3b3f3d825a51dbf6fe3f197bf1cb2e42ec",
+      "bytes": 48944,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/blog/assets/og-landing.png": {
+      "status": 200,
+      "sha256": "971ea98cc2dd39acf19e69b007b99c51b16f9951e9ada06767a59014f2c71424",
+      "bytes": 68184,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/blog/bessonnitsa.html": {
+      "status": 200,
+      "sha256": "9c97fe2526dd0d19108274687f864646759499a8a5785b09a10f2f4a8595f32e",
+      "bytes": 16190,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/bolit-poyasnitsa.html": {
+      "status": 200,
+      "sha256": "7ddb039d25a4a8db91ee7891692f78be7df31a359e72a85cd96887b30cba7f6c",
+      "bytes": 16139,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/dekret.html": {
+      "status": 200,
+      "sha256": "91ce1360bb2f0c4f1b4282682ec81f5438614209718d42041677732532afec20",
+      "bytes": 15906,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/index.html": {
+      "status": 200,
+      "sha256": "8efa161fd5942ce7ffac60fe0ebcec47f296e271e9795ddc8476e5d647ae7dd6",
+      "bytes": 69923,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/izzhoga.html": {
+      "status": 200,
+      "sha256": "408d4560a646e26fd99ae73d81d5707711640c2eecdb971b175cbaafc5cb3423",
+      "bytes": 15938,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/kogda-viden-zhivot.html": {
+      "status": 200,
+      "sha256": "268dbc95fd8694636500621ab2a4a903ea725dd8b356288933f5deba2d8bc703",
+      "bytes": 16484,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/krasit-volosy.html": {
+      "status": 200,
+      "sha256": "89ae2df4acb8270bbb6bc3222795d7891fb200a1e1d963cb6ffdac2b9d01de78",
+      "bytes": 16029,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/lekarstva.html": {
+      "status": 200,
+      "sha256": "67faacab93b3c19217dc9166c57c689d774f17f050542103385dabc84e8575f8",
+      "bytes": 16660,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/mozhno-li-kofe.html": {
+      "status": 200,
+      "sha256": "e777a2c7aedf59eeac1df454de47ad034445b9e345ff80a98189a7c6145afb30",
+      "bytes": 15407,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/oteki.html": {
+      "status": 200,
+      "sha256": "b42f846b7290311c1da6e5fa403ade90ec29f25d3b1499ac59a9aa84fc1d79e8",
+      "bytes": 15651,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/perelyoty.html": {
+      "status": 200,
+      "sha256": "3d4c9fa3a93633bb681981d38d8f86f791c2dab3f9e07a418c1cc2c41e774444",
+      "bytes": 15504,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/pitanie.html": {
+      "status": 200,
+      "sha256": "b5ae7d8e82a78d1488b1ee5415c939cba02d7396221cc9b08f77832ba2efe4f3",
+      "bytes": 17128,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/podderzhka-partnera.html": {
+      "status": 200,
+      "sha256": "2448006af6bc7859b59570ce2e782c4b9c596138b81e65179ffbf70646f4ccea",
+      "bytes": 16446,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/podgotovka-k-rodam.html": {
+      "status": 200,
+      "sha256": "a75e47ec1c9d9ffb9e0e916c4dfa9a3c4cf98c6df3008c4e3fb90e8e8f31fae7",
+      "bytes": 15907,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/polozhitelnyy-test.html": {
+      "status": 200,
+      "sha256": "382cf1a5a3f1e3d0878324a0f94b7fcc44f3573928ac607533ade63493a2e290",
+      "bytes": 17387,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/predvestniki.html": {
+      "status": 200,
+      "sha256": "f01aab76901a58dae19253d1fdb6fdc294bd9294bbf71cbb1a51334a0448a5eb",
+      "bytes": 16032,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/pribavka-vesa.html": {
+      "status": 200,
+      "sha256": "77ea76bf722a774fbdf804ecc227a7ac79e9404888adcd91e3694e1c41871d1c",
+      "bytes": 16418,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/prostuda.html": {
+      "status": 200,
+      "sha256": "f47baad93aaf952d403056bb34b77046b4fbc3f788f19f261965956856c2c3fd",
+      "bytes": 16442,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/rodom.html": {
+      "status": 200,
+      "sha256": "c0d11a9b6074d23578dee11d49cb587f26e1a830eb03a7a9e9cd97024d70edca",
+      "bytes": 16336,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/schitat-sheveleniya.html": {
+      "status": 200,
+      "sha256": "94d4868adf863546c245b3fc908116732b662b95bb4d3a1e56432dce2b7936fd",
+      "bytes": 16045,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/sheveleniya-nachalo.html": {
+      "status": 200,
+      "sha256": "d614c6dfeb6a897ba76b63582b153b3e8d2c367b32a597839e91f7616be711fb",
+      "bytes": 16103,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/shvatki.html": {
+      "status": 200,
+      "sha256": "c9e551914d6c12657b80dd6bd6f0fe1c41f210eaf073183b222ebc557b84f2c7",
+      "bytes": 15781,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/skrining.html": {
+      "status": 200,
+      "sha256": "e485d8d76576f8935ca162235d5c3e0c602a9300f03b6ef163e735b8eb3e5b43",
+      "bytes": 16573,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/sravnenie-prilozheniy.html": {
+      "status": 200,
+      "sha256": "77fdcdb685902c18131bab2b5bf1b102762978b194360fa48f6abcb6f0ab393c",
+      "bytes": 16143,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/toksikoz.html": {
+      "status": 200,
+      "sha256": "6a730fdeefcfdce6df6a8305566b603ac4505668453fe3dedc536c59c4f09f06",
+      "bytes": 16259,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/trevoga.html": {
+      "status": 200,
+      "sha256": "28409ca6f14bae414032f6d73649a0b5fda7c26f7b8a949ea8aac6edd1e74889",
+      "bytes": 16515,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/uzi-grafik.html": {
+      "status": 200,
+      "sha256": "7c4646b0c8e222b7e81207cd56e54fbf10a276c5bd94ce8726eae41c918b35ea",
+      "bytes": 16396,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/vtoroy-skrining.html": {
+      "status": 200,
+      "sha256": "fc0bfcf8eca476ecd256c647b89a3e46152a78f9a874404ce2845b9108a93012",
+      "bytes": 16376,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/vydeleniya.html": {
+      "status": 200,
+      "sha256": "e172c3ae037a50edf57af3b77daf2cede7305e2fdcf204aa9cf034936670e27b",
+      "bytes": 15856,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/blog/zapor.html": {
+      "status": 200,
+      "sha256": "7c7ff7f13ea475c0427b0c523db9d8e8ff18352dab994adb6de4e35e7f1ce959",
+      "bytes": 16249,
+      "noindex": false
+    },
+    "https://maminanedelka.ru/editorial.html": {
+      "status": 200,
+      "sha256": "a025819f34aa31519b02b203e9d490fa1a7c07af2781e9a6e3c11da97384b232",
+      "bytes": 7820,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/": {
+      "status": 200,
+      "sha256": "ad760fca37da990a380cf29ebff98f003b320e47ec002d53b446bb9b75e76cac",
+      "bytes": 17819,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/privacy.html": {
+      "status": 200,
+      "sha256": "ddeab9f7820fbfdbdb3da794b432ad26c92c3a4f8f8243e1c6ccfaf9e5791fc1",
+      "bytes": 9480,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/robots.txt": {
+      "status": 200,
+      "sha256": "91c6e90732d9474f24de63870052039a2ba8f98cae2ab4426dbc77e7b5eb8523",
+      "bytes": 123,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/sitemap.xml": {
+      "status": 200,
+      "sha256": "ca6825bdcebafa48e4f0e00692863a33fe899ba6f3a00d49d25da1e4e641701a",
+      "bytes": 5047,
+      "noindex": true
+    },
+    "https://maminanedelka.ru/health": {
+      "status": 200,
+      "sha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df",
+      "bytes": 2,
+      "noindex": false
+    },
+    "http://127.0.0.1:8080/health": {
+      "status": 200,
+      "sha256": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df",
+      "bytes": 2,
+      "noindex": false
+    },
+    "https://app.maminanedelka.ru/app/": {
+      "status": 200,
+      "sha256": "8909f160a0bc39ff6ff1bbbf51bf471e03ae7cc55aacc5f6d026b5b9e94c46e7",
+      "bytes": 562,
+      "noindex": false
+    }
+  }
+}

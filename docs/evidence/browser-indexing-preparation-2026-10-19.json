@@ -1,0 +1,24 @@
+{
+  "scope": "local preview only; no Telegram launch",
+  "checks": [
+    {
+      "page": "about",
+      "width": 1440,
+      "overflow": false,
+      "screenshot": "2026-10-19_about_1440_after.png"
+    },
+    {
+      "page": "about",
+      "width": 390,
+      "overflow": false,
+      "screenshot": "2026-10-19_about_390_after.png"
+    }
+  ],
+  "mobile_menu_escape": true,
+  "search": true,
+  "cta_link": true,
+  "google_verification": true,
+  "external_requests": [],
+  "page_errors": [],
+  "cookie_storage_count": 0
+}

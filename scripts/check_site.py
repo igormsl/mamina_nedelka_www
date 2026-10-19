@@ -14,9 +14,9 @@ sys.path.insert(0,str(ROOT))
 import build_blog as build
 
 class Page(HTMLParser):
-    def __init__(self,path):
+    def __init__(self,path,text=None):
         super().__init__();self.path=path;self.ids=[];self.links=[];self.images=[];self.meta={};self.canonical=[];self.h1=0;self.title='';self.scripts=[];self.in_title=False;self.in_json=False;self.json_text='';self.bot=[]
-        self.feed(path.read_text())
+        self.feed(path.read_text() if text is None else text)
     def handle_starttag(self,tag,attrs):
         a=dict(attrs)
         if 'id' in a:self.ids.append(a['id'])
@@ -43,7 +43,7 @@ def main():
     global ROOT
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root',type=Path,default=PROJECT)
-    parser.add_argument('--mode',choices=('preview','public-preview','release'),default='preview')
+    parser.add_argument('--mode',choices=('preview','public-preview','release','blog-release'),default='preview')
     args=parser.parse_args()
     ROOT=args.root.resolve()
     arts=[build.parse(p) for p in sorted(build.SOURCE.glob('A-*.md'))]
@@ -52,6 +52,9 @@ def main():
     pages={p.resolve():Page(p) for p in files};errors=[]
     def check(ok,msg):
         if not ok:errors.append(msg)
+    if args.mode in ('release','blog-release'):
+        blockers=build.release_blockers(arts,json.loads((PROJECT/'release-checklist.json').read_text()),blog_release=args.mode=='blog-release')
+        check(not blockers,'release approvals missing: '+', '.join(blockers))
     titles=set();descs=set()
     for path,page in pages.items():
         rel=path.relative_to(ROOT).as_posix();prefix=rel+': '
@@ -61,9 +64,12 @@ def main():
         check(page.meta.get('description') and page.meta['description'] not in descs,prefix+'description absent/duplicate');descs.add(page.meta.get('description'))
         check(page.canonical==[build.BASE+('/' if rel=='index.html' else '/'+rel)],prefix+'canonical mismatch')
         check(page.meta.get('yandex-verification')=='5de9122d74676c4f',prefix+'Yandex verification lost')
+        if rel=='index.html':
+            check(page.meta.get('google-site-verification')==build.GOOGLE_SITE_VERIFICATION,prefix+'Google verification lost')
         noindex='noindex' in page.meta.get('robots','')
-        check(noindex == (args.mode!='release' or rel=='404.html'),prefix+'indexing mode mismatch')
-        if args.mode=='public-preview':
+        expected_indexable = args.mode=='release' and rel!='404.html' or args.mode=='blog-release' and build.blog_indexable('/'+rel)
+        check(noindex != expected_indexable,prefix+'indexing mode mismatch')
+        if args.mode in ('public-preview','blog-release'):
             check('Локальный просмотр' not in path.read_text(),prefix+'local-only label on public preview')
         check(bool(page.scripts),prefix+'JSON-LD absent')
         og = page.meta.get('og:image','')
@@ -82,7 +88,8 @@ def main():
     expected={build.BASE+'/blog/'+a['slug']+'.html' for a in arts}
     sitemap={e.text for e in ET.parse(ROOT/'sitemap.xml').iter() if e.tag.endswith('loc')}
     check(expected=={u for u in sitemap if '/blog/' in u and not u.endswith('/index.html')},'sitemap/source mismatch')
-    check(len(sitemap)==len(arts)+5,'sitemap size mismatch')
+    expected_sitemap={e.text for e in ET.fromstring(build.sitemap(arts,blog_only=args.mode=='blog-release')).iter() if e.tag.endswith('loc')}
+    check(sitemap==expected_sitemap,'sitemap scope mismatch')
     old=json.loads((PROJECT/'docs/evidence/original-inventory.json').read_text())
     oldslugs={x['slug'] for x in old} if isinstance(old,list) else set()
     check(oldslugs <= {a['slug'] for a in arts},'old URLs lost')

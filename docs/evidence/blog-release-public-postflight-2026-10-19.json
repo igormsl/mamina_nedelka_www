@@ -1,0 +1,40 @@
+{
+  "operation": "20261019T170138Z",
+  "deployed_at_utc": "2026-10-19T17:08:12Z",
+  "root": "/srv/mamina-www-releases/20261019T170138Z",
+  "all_77_installed_files_match": true,
+  "caddy_disk_matches_plan": true,
+  "caddy_loaded_matches_disk": true,
+  "outside_static_fallback_unchanged": true,
+  "non_blog_checks": [
+    {
+      "path": "/",
+      "status": 200,
+      "noindex": true
+    },
+    {
+      "path": "/about.html",
+      "status": 200,
+      "noindex": true
+    },
+    {
+      "path": "/editorial.html",
+      "status": 200,
+      "noindex": true
+    },
+    {
+      "path": "/privacy.html",
+      "status": 200,
+      "noindex": true
+    },
+    {
+      "path": "/404.html",
+      "status": 200,
+      "noindex": true
+    }
+  ],
+  "verification_tags_preserved": true,
+  "source_state": "22 tests passed before deployment; 24 passed after next-release preparation helper follow-up; frozen deployment and production files unchanged",
+  "site_tests_after_followup": 24,
+  "following_blog_release_candidate_validated": true
+}

@@ -1,0 +1,13 @@
+{
+  "checked_at_utc": "2026-10-19T16:25:45.272843+00:00",
+  "scope": "configuration candidate and backup restore only; no releasable content bundle",
+  "private_artifacts": "/home/igor/.local/state/mamina-indexing-check/20261019T162544Z",
+  "previous_root": "/srv/mamina-www-releases/20261015T003038Z",
+  "public_file_count": 77,
+  "backup_restore_verified": true,
+  "caddy_candidate_valid": true,
+  "outside_static_fallback_identical": true,
+  "candidate_header_noindex_removed": true,
+  "production_changed": false,
+  "release_bundle_created": false
+}

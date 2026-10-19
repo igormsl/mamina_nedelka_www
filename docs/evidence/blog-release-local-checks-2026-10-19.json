@@ -1,0 +1,396 @@
+{
+  "operation": "20261019T170138Z",
+  "mode": "blog-release",
+  "files_checked": 77,
+  "indexed_html": 51,
+  "private_missing_paths_404": 6,
+  "redirects_308": 3,
+  "checks": [
+    {
+      "path": "/404.html",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/about.html",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/illustrations/birth.png",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/illustrations/birth.svg",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/illustrations/checkups.png",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/illustrations/checkups.svg",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/illustrations/feel.png",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/illustrations/feel.svg",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/illustrations/life.png",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/illustrations/life.svg",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/illustrations/sprout.svg",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/illustrations/start.png",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/illustrations/start.svg",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/illustrations/weeks.png",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/illustrations/weeks.svg",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/site.css",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/assets/site.js",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/blog/10-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/12-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/14-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/16-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/18-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/20-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/22-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/24-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/26-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/28-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/30-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/32-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/34-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/36-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/38-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/40-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/5-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/6-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/8-nedelya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/akusherskiy-srok.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/analizy.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/assets/favicon-32.png",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/blog/assets/logo-96.png",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/blog/assets/og-cover.png",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/blog/assets/og-landing.png",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/blog/bessonnitsa.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/bolit-poyasnitsa.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/dekret.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/index.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/izzhoga.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/kogda-viden-zhivot.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/krasit-volosy.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/lekarstva.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/mozhno-li-kofe.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/oteki.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/perelyoty.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/pitanie.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/podderzhka-partnera.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/podgotovka-k-rodam.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/polozhitelnyy-test.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/predvestniki.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/pribavka-vesa.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/prostuda.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/rodom.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/schitat-sheveleniya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/sheveleniya-nachalo.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/shvatki.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/skrining.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/sravnenie-prilozheniy.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/toksikoz.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/trevoga.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/uzi-grafik.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/vtoroy-skrining.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/vydeleniya.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/blog/zapor.html",
+      "status": 200,
+      "header_noindex": false
+    },
+    {
+      "path": "/editorial.html",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/privacy.html",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200,
+      "header_noindex": true
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "header_noindex": true
+    }
+  ],
+  "production_changed": false
+}

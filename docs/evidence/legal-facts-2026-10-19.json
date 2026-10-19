@@ -1,0 +1,43 @@
+{
+  "verified_date": "2026-10-19",
+  "owner_confirmation": {
+    "public_requisites_confirmed": true,
+    "rkn_notification_submitted": false,
+    "source": "explicit user answers in current conversation"
+  },
+  "runtime": {
+    "host": "htogudjjkn",
+    "location": "Kazakhstan, Astana; Beget; CURRENT_STATE.md",
+    "bot_pid": 1088,
+    "primary_database_path": "/var/lib/mamina_bot/mamina.db",
+    "evidence": "open file paths in /proc/1088/fd; no database contents read",
+    "bot_active": true,
+    "miniapp_active": true,
+    "caddy_active": true
+  },
+  "website": {
+    "access_logging_enabled": false,
+    "forms": false,
+    "browser_analytics": false,
+    "privacy_finalized": false,
+    "public_changes_applied_this_task": false
+  },
+  "open_facts": [
+    "processor legal entities/countries/contracts",
+    "primary Russian storage architecture",
+    "notification actual start date/purposes/retention",
+    "special-category consent form and proof",
+    "mail/system/provider logs retention",
+    "real Telegram-to-Mini-App smoke",
+    "medical reviews and owner editorial acceptance"
+  ],
+  "legal_source_access": {
+    "consultant_law_articles": "available text/search; see LEGAL.md",
+    "fas_letter": "GARANT copy available",
+    "fns_receipts": "official FNS available",
+    "rkn_portal": "web tool inaccessible",
+    "official_publication_portal": "web tool timeout",
+    "kremlin": "web tool timeout"
+  },
+  "checked_at_utc": "2026-10-19T16:29:41.909222+00:00"
+}

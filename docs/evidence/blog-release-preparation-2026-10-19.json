@@ -1,0 +1,15 @@
+{
+  "operation": "20261019T170138Z",
+  "state": "prepared_awaiting_owner_sudo",
+  "mode": "blog-release",
+  "public_files": 77,
+  "sitemap_urls": 51,
+  "site_tests_passed": 22,
+  "local_checks": "blog-release-local-checks-2026-10-19.json",
+  "browser": "blog-release-browser-2026-10-19.json",
+  "docs": "blog-release-doc-postflight-2026-10-19.json",
+  "production_changed": false,
+  "candidate_sha256": "ea92e2206da3da7afc9b6618ddb0b789eb5e536b50b15f8074decb4e152e9088",
+  "script_sha256": "625271782e446533e5eb4df9163cc25077eb1fb9d2d0d5a1c8aa8c16684ccf0d",
+  "source_statuses_unchanged": true
+}

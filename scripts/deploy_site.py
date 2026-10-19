@@ -24,6 +24,17 @@ CONFIG = Path('/etc/caddy/Caddyfile')
 RELEASES = Path('/srv/mamina-www-releases')
 BACKUPS = Path('/var/backups/mamina-www')
 DOMAIN = 'https://maminanedelka.ru'
+RELEASE_GATES = ('owner_visual_acceptance', 'owner_details_confirmed',
+                 'privacy_and_hosting_review', 'bot_telegram_smoke',
+                 'vps_backup_and_rollback_plan', 'public_enable_approved')
+BLOG_RELEASE_GATES = ('owner_visual_acceptance', 'owner_details_confirmed',
+                      'vps_backup_and_rollback_plan', 'public_enable_approved', 'blog_indexing_approved')
+
+
+def expected_header_noindex(name, mode):
+    if mode == 'blog-release':
+        return not bool(re.fullmatch(r'blog/[a-z0-9-]+\.html', name))
+    return mode == 'public-preview'
 
 
 def sha(path):
@@ -83,6 +94,33 @@ def response(url):
                 'bytes': len(body), 'noindex': 'noindex' in reply.headers.get('X-Robots-Tag', '')}
 
 
+def check_public_mode(bundle, plan):
+    mode = plan['mode']
+    if mode not in ('public-preview', 'release', 'blog-release'):
+        raise RuntimeError('Unknown public deployment mode')
+    if mode in ('release', 'blog-release'):
+        approvals = plan.get('release_approvals', {})
+        gates = BLOG_RELEASE_GATES if mode == 'blog-release' else RELEASE_GATES
+        if any(approvals.get('gates', {}).get(k) is not True for k in gates):
+            raise RuntimeError('Indexed release is missing owner/operational approvals')
+        reviews = approvals.get('articles', {})
+        expected = {n for n in plan['files'] if n.startswith('blog/') and n.endswith('.html') and n != 'blog/index.html'}
+        if not expected or set(reviews) != expected:
+            raise RuntimeError('Indexed release review inventory mismatch')
+        if mode == 'release' and any(r.get('status') != 'approved' or not str(r.get('review_evidence', '')).strip()
+               for r in reviews.values()):
+            raise RuntimeError('Indexed release is missing article reviews')
+    for name in plan['files']:
+        if name.endswith('.html'):
+            text = (bundle / 'public' / name).read_text()
+            expected_noindex = expected_header_noindex(name, mode) or name == '404.html'
+            has_noindex = bool(re.search(r'<meta\s+name="robots"\s+content="[^"]*noindex', text))
+            if has_noindex != expected_noindex:
+                raise RuntimeError('HTML indexing mode mismatch: ' + name)
+            if not expected_noindex and 'content="index, follow, max-image-preview:large"' not in text:
+                raise RuntimeError('Indexed HTML must declare its mode: ' + name)
+
+
 def check(bundle, plan):
     if not re.fullmatch(r'\d{8}T\d{6}Z', plan['id']):
         raise RuntimeError('Invalid deployment ID')
@@ -90,8 +128,7 @@ def check(bundle, plan):
         raise RuntimeError('Wrong target host')
     if plan['target'] != str(RELEASES / plan['id']) or plan['config'] != str(CONFIG):
         raise RuntimeError('Unexpected production target')
-    if plan['mode'] != 'public-preview':
-        raise RuntimeError('This prepared operation is only for the approved public preview')
+    check_public_mode(bundle, plan)
     if plan.get('backup_restore_verified') is not True:
         raise RuntimeError('Backup restore was not verified')
     if sha(CONFIG) != plan['before_sha256']:
@@ -108,9 +145,6 @@ def check(bundle, plan):
         raise RuntimeError('Public bundle changed or contains extra files')
     if 'index.html' not in plan['files']:
         raise RuntimeError('Homepage missing')
-    for name in plan['files']:
-        if name.endswith('.html') and 'content="noindex, follow"' not in (bundle / 'public' / name).read_text():
-            raise RuntimeError('Public preview must keep noindex: ' + name)
     before, after = adapted(CONFIG), adapted(bundle / 'Caddyfile.next')
     if without_static(before) != without_static(after):
         raise RuntimeError('Changes outside the static apex handler')
@@ -151,7 +185,8 @@ def verify(plan, published):
         for name, digest in plan['files'].items():
             url = DOMAIN + ('/' if name == 'index.html' else '/' + name)
             result = response(url)
-            if result['status'] != 200 or result['sha256'] != digest or not result['noindex']:
+            expected_noindex = expected_header_noindex(name, plan['mode'])
+            if result['status'] != 200 or result['sha256'] != digest or result['noindex'] != expected_noindex:
                 raise RuntimeError('Published file mismatch: ' + name)
             checked[url] = result
         for path in ('/not-a-real-mamina-page', '/.git/config', '/templates/home.html', '/docs/LEGAL.md', '/build-manifest.json'):
@@ -160,7 +195,8 @@ def verify(plan, published):
                 raise RuntimeError('Expected 404: ' + path)
     else:
         result = response(DOMAIN + '/')
-        if result['status'] != plan['http_before'][DOMAIN + '/']['status']:
+        expected = plan['http_before'][DOMAIN + '/']
+        if any(result[k] != expected[k] for k in ('status', 'sha256', 'noindex')):
             raise RuntimeError('Previous site status was not restored')
         checked[DOMAIN + '/'] = result
     for url in (DOMAIN + '/health', 'http://127.0.0.1:8080/health', 'https://app.maminanedelka.ru/app/'):
@@ -240,11 +276,11 @@ def main():
             try:
                 run('systemctl', 'reload', 'caddy')
                 checked = verify(plan, True)
-                receipt(bundle, 'deployed_public_preview', target=str(target), checks=checked)
+                receipt(bundle, 'deployed_' + plan['mode'].replace('-', '_'), target=str(target), checks=checked)
             except Exception:
                 rollback(bundle, plan, backup)
                 raise
-            print('Published and verified: ' + DOMAIN + '/ (noindex public preview)')
+            print('Published and verified: ' + DOMAIN + '/ (' + plan['mode'] + ')')
     else:
         check(bundle, plan)
         print('Preflight passed. No production changes made.')

@@ -15,12 +15,15 @@ from xml.etree import ElementTree as ET
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT.parent / 'mamina_marketing/blog/content/seo'
 BASE = 'https://maminanedelka.ru'
+GOOGLE_SITE_VERIFICATION = 'vxssvvoZ0YXI9jxsM1R7xCki1lAf798v34-bzXGFfCU'
 BOT = 'https://t.me/mamina_nedelka_bot'
 UPDATED = '2026-10-15'
+PAGE_UPDATED = {'/about.html': '2026-10-19'}
 RELEASE_GATES = ('owner_visual_acceptance', 'owner_details_confirmed',
                  'privacy_and_hosting_review', 'bot_telegram_smoke',
                  'vps_backup_and_rollback_plan', 'public_enable_approved')
 PUBLIC_PREVIEW_GATES = ('owner_visual_acceptance', 'vps_backup_and_rollback_plan', 'public_enable_approved')
+BLOG_RELEASE_GATES = PUBLIC_PREVIEW_GATES + ('owner_details_confirmed', 'blog_indexing_approved')
 CATEGORIES = {'weeks':'По неделям','checkups':'Обследования','feel':'Самочувствие','birth':'К родам','life':'Повседневная жизнь','start':'Начало беременности'}
 DEFAULT_GROUPS = {
  'checkups':'analizy skrining vtoroy-skrining uzi-grafik',
@@ -83,14 +86,22 @@ def bot_link(source, placement, label='Открыть в Telegram', light=False)
 def json_script(data):
     return '<script type="application/ld+json">'+json.dumps(data,ensure_ascii=False).replace('<','\\u003c')+'</script>'
 
+def blog_indexable(path):
+    return bool(re.fullmatch(r'/blog/[a-z0-9-]+\.html', path))
+
 def shell(title, description, path, body, *, source='landing', page='home', schema=None, preview=True, image='life'):
     url=BASE+path
+    indexable = not preview or preview == 'blog-release' and blog_indexable(path)
+    banner = ('Информационный блог · материалы со ссылками на источники' if indexable else
+              'Предварительная версия · материалы проходят проверку' if preview in ('public-preview','blog-release') else
+              'Локальный просмотр · материалы готовятся к публикации')
+    google_verification = f'<meta name="google-site-verification" content="{esc(GOOGLE_SITE_VERIFICATION)}">' if path == '/' else ''
     schemas=[{'@context':'https://schema.org','@type':'WebSite','@id':BASE+'/#website','name':'Мамина неделька','url':BASE+'/' ,'inLanguage':'ru-RU'}]
     if schema: schemas.extend(schema)
     return f'''<!doctype html>
 <html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)}</title><meta name="description" content="{esc(description)}">
-<meta name="yandex-verification" content="5de9122d74676c4f"><meta name="robots" content="{'noindex, follow' if preview else 'index, follow, max-image-preview:large'}">
+<meta name="yandex-verification" content="5de9122d74676c4f"><meta name="robots" content="{'index, follow, max-image-preview:large' if indexable else 'noindex, follow'}">{google_verification}
 <meta name="referrer" content="strict-origin-when-cross-origin"><meta name="theme-color" content="#faf8f5">
 <link rel="canonical" href="{url}"><link rel="icon" href="/blog/assets/favicon-32.png" sizes="32x32" type="image/png">
 <meta property="og:site_name" content="Мамина неделька"><meta property="og:locale" content="ru_RU"><meta property="og:type" content="{'article' if re.fullmatch(r'a[0-9]{4}',page) else 'website'}">
@@ -100,7 +111,7 @@ def shell(title, description, path, body, *, source='landing', page='home', sche
 <noscript><style>.filter-panel{{display:none}}@media(max-width:760px){{.topbar{{position:static}}.navrow{{flex-wrap:wrap;padding-bottom:16px}}.menu-toggle{{display:none}}.navlinks{{display:flex;position:static;flex-flow:row wrap;gap:16px;padding:0;box-shadow:none;border:0;width:100%;margin:0}}}}</style></noscript>
 {''.join(json_script(s) for s in schemas)}</head><body data-page="{page}">
 <a class="skip" href="#main">Перейти к содержанию</a>
-{('<div class="preview-label">' + ('Предварительная версия · материалы проходят проверку' if preview == 'public-preview' else 'Локальный просмотр · материалы готовятся к публикации') + '</div>') if preview else ''}
+{('<div class="preview-label">' + banner + '</div>') if preview else ''}
 <header class="topbar"><div class="wrap navrow"><a class="brand" href="/"><img src="/blog/assets/logo-96.png" alt="" width="37" height="37"><span>Мамина неделька<small>рядом с самого начала</small></span></a>
 <button class="menu-toggle" aria-label="Меню" aria-expanded="false" aria-controls="navigation">☰</button>
 <nav class="navlinks" id="navigation" aria-label="Главная навигация"><a href="/blog/index.html">Блог</a><a href="/#features">О приложении</a><a href="/#plans">Тарифы</a>{bot_link(source,'nav')}</nav></div></header>
@@ -132,7 +143,7 @@ def article(a, all_articles, sources, preview):
         related += [x for x in all_articles if x['category']==a['category'] and x not in related and x!=a][:3-len(related)]
     refs=''.join(f'<li><a href="{esc(site_href(sources[s]["url"]))}" rel="noreferrer">{esc(sources[s]["title"])}</a> — {esc(sources[s]["scope"])}</li>' for s in a['sources'])
     review = ('Требуется проверка акушером-гинекологом перед публикацией. Ссылки на источники приведены в конце; медицинская рецензия пока не проводилась.' if a['medical'] else 'Редакционный материал подготовлен для приёмки владельцем. Публикация ещё не выполнена.')
-    if preview == 'public-preview':
+    if preview in ('public-preview','blog-release'):
         review = ('Медицинская рецензия пока не проводилась. Материал требует проверки акушером-гинекологом; ссылки на использованные источники приведены в конце.' if a['medical'] else 'Предварительная редакция: материал проходит проверку.')
     note=f'<div class="review-note">{review}</div>' if a['status']!='approved' else '<div class="review-note">Информационный материал. Индивидуальные рекомендации даёт ваш врач.</div>' if a['medical'] else ''
     cta=f'''<section class="article-cta"><h2>Своя неделя — под рукой</h2><p>В «Маминой недельке» можно открыть материалы по сроку и сохранить вопросы к приёму. После перехода нажмите «Старт» в Telegram, откройте приложение и укажите срок. Базовый доступ бесплатный.</p>{bot_link(source,'article_end','Посмотреть свою неделю')}<p class="small">При тревожных симптомах обращайтесь за медицинской помощью; бот не оценивает срочность вашего состояния.</p></section>'''
@@ -162,13 +173,14 @@ def home(arts,preview):
     body=re.sub(r'\{\{BOT:([^|]+)\|([^}]+)\}\}',lambda m:bot_link('landing',m[1],m[2]),body)
     return shell('Мамина неделька — беременность по неделям и помощник в Telegram','Полезные статьи о беременности и приложение в Telegram: материалы по сроку, дневник самочувствия и вопросы к врачу. Начните с бесплатного доступа.','/',body,preview=preview)
 
-def sitemap(arts):
+def sitemap(arts, *, blog_only=False):
     ET.register_namespace('','http://www.sitemaps.org/schemas/sitemap/0.9')
     root=ET.Element('{http://www.sitemaps.org/schemas/sitemap/0.9}urlset')
     paths=[('/',UPDATED),('/blog/index.html',UPDATED),('/about.html',UPDATED),('/editorial.html',UPDATED),('/privacy.html',UPDATED)]
+    if blog_only: paths=[('/blog/index.html',UPDATED)]
     paths += [(f'/blog/{a["slug"]}.html',a['modified']) for a in arts]
     for path,date in paths:
-        url=ET.SubElement(root,'url');ET.SubElement(url,'loc').text=BASE+path;ET.SubElement(url,'lastmod').text=date
+        url=ET.SubElement(root,'url');ET.SubElement(url,'loc').text=BASE+path;ET.SubElement(url,'lastmod').text=PAGE_UPDATED.get(path,date)
     return '<?xml version="1.0" encoding="UTF-8"?>\n'+ET.tostring(root,encoding='unicode')+'\n'
 
 def validate(arts,sources):
@@ -187,23 +199,30 @@ def validate(arts,sources):
         if a['status'] not in ('specialist_review','owner_review','approved'):raise ValueError('Unknown approval state')
 
 
+def release_blockers(arts, config, *, public_preview=False, blog_release=False):
+    """Report actual outstanding approvals; never infer them from build success."""
+    gates = BLOG_RELEASE_GATES if blog_release else PUBLIC_PREVIEW_GATES if public_preview else RELEASE_GATES
+    missing = [k for k in gates if config.get(k) is not True]
+    if not public_preview and not blog_release:
+        missing += [a['id'] for a in arts if a['status'] != 'approved' or not a['review_evidence'].strip()]
+    return missing
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('source',nargs='?',type=Path,default=SOURCE)
     modes=parser.add_mutually_exclusive_group()
     modes.add_argument('--release',action='store_true')
     modes.add_argument('--public-preview',action='store_true',help='Authorized public version, with noindex and review notices')
+    modes.add_argument('--blog-release',action='store_true',help='Owner-authorized blog indexing; preserves pending reviews and non-blog noindex')
     parser.add_argument('--output',type=Path)
     args=parser.parse_args()
     sources=json.loads((args.source/'sources.json').read_text())
     arts=[parse(p) for p in sorted(args.source.glob('A-*.md'))];validate(arts,sources)
-    deployment = args.release or args.public_preview
+    deployment = args.release or args.public_preview or args.blog_release
     if deployment:
         config=json.loads((ROOT/'release-checklist.json').read_text())
-        gates=RELEASE_GATES if args.release else PUBLIC_PREVIEW_GATES
-        missing=[k for k in gates if config.get(k) is not True]
-        if args.release:
-            missing += [a['id'] for a in arts if a['status']!='approved' or not a['review_evidence']]
+        missing=release_blockers(arts, config, public_preview=args.public_preview, blog_release=args.blog_release)
         if missing: raise SystemExit(('Release' if args.release else 'Public preview')+' blocked: '+', '.join(missing))
         if not args.output or args.output.resolve()==ROOT: raise SystemExit('Deployment build requires a separate --output directory')
     out=(args.output or ROOT).resolve()
@@ -216,7 +235,7 @@ def main():
         for name in ('site.css','site.js'): shutil.copy2(ROOT/'assets'/name,out/'assets'/name)
         shutil.copytree(ROOT/'assets/illustrations',out/'assets/illustrations',dirs_exist_ok=True)
         shutil.copytree(ROOT/'blog/assets',out/'blog/assets',dirs_exist_ok=True)
-    preview = 'public-preview' if args.public_preview else not args.release
+    preview = 'blog-release' if args.blog_release else 'public-preview' if args.public_preview else not args.release
     for a in arts:(out/'blog'/f'{a["slug"]}.html').write_text(article(a,arts,sources,preview),encoding='utf-8')
     (out/'blog/index.html').write_text(catalogue(arts,preview),encoding='utf-8')
     (out/'index.html').write_text(home(arts,preview),encoding='utf-8')
@@ -224,9 +243,9 @@ def main():
         body=(ROOT/f'templates/{page}.html').read_text()
         (out/f'{page}.html').write_text(shell(title+' | Мамина неделька',desc,f'/{page}.html',body,page=page,preview=preview),encoding='utf-8')
     (out/'404.html').write_text(shell('Страница не найдена | Мамина неделька','Вернитесь к полезным статьям о беременности или на главную страницу.','/404.html','<main class="wrap legal" id="main"><div class="eyebrow">404</div><h1>Эта страница не нашлась</h1><p>Возможно, в адресе опечатка. Найдите нужную тему в блоге.</p><a class="btn" href="/blog/index.html">Перейти в блог</a></main>',page='404',preview=preview or True),encoding='utf-8')
-    (out/'sitemap.xml').write_text(sitemap(arts),encoding='utf-8')
+    (out/'sitemap.xml').write_text(sitemap(arts,blog_only=args.blog_release),encoding='utf-8')
     (out/'robots.txt').write_text('User-agent: *\nAllow: /\nDisallow: /tg/\nDisallow: /yookassa/\nDisallow: /health\nSitemap: '+BASE+'/sitemap.xml\n',encoding='utf-8')
-    manifest={'mode':'release' if args.release else 'public-preview' if args.public_preview else 'preview','articles':len(arts),'sources':len(sources),'updated':UPDATED,'paths':[f'/blog/{a["slug"]}.html' for a in arts]}
+    manifest={'mode':'blog-release' if args.blog_release else 'release' if args.release else 'public-preview' if args.public_preview else 'preview','articles':len(arts),'sources':len(sources),'updated':UPDATED,'paths':[f'/blog/{a["slug"]}.html' for a in arts]}
     (out/'build-manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(f'Built {len(arts)} articles; {manifest["mode"]} → {out}')
 

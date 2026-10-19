@@ -1,0 +1,40 @@
+{
+  "scope": "prepared blog-release bundle, no production/Telegram interaction",
+  "pages": [
+    {
+      "page": "/blog/index.html",
+      "width": 1440,
+      "screenshot": "2026-10-19_blog-release_blog_1440.png"
+    },
+    {
+      "page": "/blog/rodom.html",
+      "width": 1440,
+      "screenshot": "2026-10-19_blog-release_article_1440.png"
+    },
+    {
+      "page": "/",
+      "width": 1440,
+      "screenshot": "2026-10-19_blog-release_home_1440.png"
+    },
+    {
+      "page": "/blog/index.html",
+      "width": 390,
+      "screenshot": "2026-10-19_blog-release_blog_390.png"
+    },
+    {
+      "page": "/blog/rodom.html",
+      "width": 390,
+      "screenshot": "2026-10-19_blog-release_article_390.png"
+    },
+    {
+      "page": "/",
+      "width": 390,
+      "screenshot": "2026-10-19_blog-release_home_390.png"
+    }
+  ],
+  "search_filters_menu_cta": true,
+  "honest_medical_review_note": true,
+  "page_errors": [],
+  "external_requests": [],
+  "storage_count": 0
+}

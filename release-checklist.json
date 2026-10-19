@@ -1,8 +1,9 @@
 {
   "owner_visual_acceptance": true,
-  "owner_details_confirmed": false,
+  "owner_details_confirmed": true,
   "privacy_and_hosting_review": false,
   "bot_telegram_smoke": false,
   "vps_backup_and_rollback_plan": true,
-  "public_enable_approved": true
+  "public_enable_approved": true,
+  "blog_indexing_approved": true
 }

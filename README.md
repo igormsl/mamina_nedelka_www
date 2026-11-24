@@ -16,7 +16,7 @@
 | Тематические обложки | `scripts/build_illustrations.py` → `assets/illustrations/` |
 | Текущее состояние | [STATUS.md](STATUS.md) |
 
-`index.html`, `blog/*.html`, `about.html`, `editorial.html`, `privacy.html`, `404.html`, `sitemap.xml`, `robots.txt` и `build-manifest.json` — **результат сборки**. Правки только в HTML будут потеряны. Прежние `assets/babies/` и `assets/shots/` сохранены, но новая версия их не загружает. Логотип и favicon используются из `blog/assets/`.
+`index.html`, `blog/*.html`, `about.html`, `editorial.html`, `privacy.html`, `404.html`, `sitemap.xml`, `robots.txt` и `build-manifest.json` — **результат сборки**. Правки только в HTML будут потеряны. Логотип и favicon используются из `blog/assets/`.
 
 ## Собрать и открыть
 

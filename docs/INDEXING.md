@@ -86,10 +86,10 @@ verification, меню, поиск и CTA сохраняются. Провери
 ```bash
 python3 -B build_blog.py --blog-release --output /tmp/mamina-blog-release
 python3 -B scripts/check_site.py --root /tmp/mamina-blog-release --mode blog-release
-python3 -B scripts/prepare_indexed_release.py --mode blog-release
 ```
 
-Нужны пустой output и свежий VPS baseline; операция формируется заново. Генератор читает
+Нужны пустой output и свежий baseline. Для выкладки используйте [Процедура FirstVDS](../../VPS%20CLAUDE%20CODE%20RULES/12-mamina-landing.md#обновление-сайта-на-firstvds);
+исторический скрипт подготовки работает только на Beget. Генератор читает
 реальные исходники и `blog_indexing_approved`, не проставляет проверки за владельца/врача.
 Полный `--release` остаётся отдельным режимом со всеми прежними согласованиями.
 Публичный `--public-preview` и локальный preview остаются полностью noindex.

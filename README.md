@@ -68,9 +68,8 @@ VPS-процедура: `../VPS CLAUDE CODE RULES/12-mamina-landing.md`, акт�
 [Пошаговый порядок](docs/INDEXING.md), [риски РФ](docs/LEGAL.md),
 [сведения для РКН](docs/RKN_PREPARATION.md), [рецензии статей](docs/REVIEW_QUEUE.md).
 Реквизиты подтверждены; отдельный `blog-release` применён 19.10, полный `--release` остаётся отдельной задачей. Проверка готовности:
-`python3 -B scripts/search_readiness.py --live`. Подготовка замороженной операции после
-реальных согласований: `python3 -B scripts/prepare_indexed_release.py`.
-Обе команды сами production не меняют; при незакрытых условиях возвращают код 2.
+`python3 -B scripts/search_readiness.py --live`. Проверка готовности читает текущие условия и при блокировках возвращает код 2.
+Для обновления на FirstVDS см. [порядок выкладки](docs/RELEASE.md#действующая-площадка--firstvds).
 
 ## Отдельный индексируемый блог
 
@@ -79,6 +78,6 @@ VPS-процедура: `../VPS CLAUDE CODE RULES/12-mamina-landing.md`, акт�
 Этот режим требует явного `blog_indexing_approved` и проверенных технических условий,
 сохраняет настоящие статусы/источники и не выдаёт медицинскую рецензию за выполненную.
 Проверка: `python3 -B scripts/check_site.py --root <каталог> --mode blog-release`.
-Подготовка операции: `python3 -B scripts/prepare_indexed_release.py --mode blog-release`.
+Порядок переключения релиза — в [процедуре FirstVDS](docs/RELEASE.md#действующая-площадка--firstvds).
 Живая проверка после применения: `python3 -B scripts/search_readiness.py --mode blog-release --live`.
 `--release` остаётся отдельным строгим полным выпуском. Подробности — [INDEXING](docs/INDEXING.md).

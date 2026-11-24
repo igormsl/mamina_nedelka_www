@@ -1,6 +1,9 @@
 # Мамина неделька — сайт и блог
 
-Сайт: **https://maminanedelka.ru/**, блог: **https://maminanedelka.ru/blog/index.html**. Блог открыт для индексации 19.10.2026 в 20:08 МСК: каталог и 50 статей, 51 URL Sitemap. Главная приложения и служебные страницы сохраняют noindex. [Текущий статус](STATUS.md), [применение и откат](docs/INDEXING.md). Локальный preview — `http://localhost:8765`.
+С 18.11.2026 сайт и блог обслуживает FirstVDS. Публичный пакет `blog-release`
+включает каталог и 50 статей, 51 URL в sitemap. На главной и служебных
+страницах действует `noindex`. Локальный preview доступен на `http://localhost:8765`.
+[Сайт](https://maminanedelka.ru/) · [Блог](https://maminanedelka.ru/blog/index.html) · [Текущий статус](STATUS.md) · [Публикация на FirstVDS](../VPS%20CLAUDE%20CODE%20RULES/12-mamina-landing.md).
 
 Стек сохранён: статический HTML, CSS, ванильный JavaScript, генератор Python без сторонних зависимостей. Node, CMS и клиентского фреймворка нет.
 
@@ -61,7 +64,8 @@ Apex также обслуживает **`/tg/*`, `/yookassa/*`, `/health`**. Н
 
 Индексируемый выпуск требует приёмки владельца, проверки материалов, юридических данных и разрешения. После выполнения условий `python3 build_blog.py --release --output /путь/к/отдельному/каталогу` собирает индексируемую версию. Команда сама ничего не деплоит. Гейты — `release-checklist.json`; рецензии — `status: approved` и `review_evidence:` в каждой статье. Предварительное включение через `--public-preview` не заменяет эти проверки.
 
-VPS-процедура: `../VPS CLAUDE CODE RULES/12-mamina-landing.md`, актуальный baseline — `CURRENT_STATE.md` рядом. Особенности новой сборки, backup и откат описаны в [docs/RELEASE.md](docs/RELEASE.md). Для следующего обновления собрать новый пакет, повторить backup и postflight; текущая предварительная версия уже включена.
+Перед обновлением собрать новый пакет и сверить состояние Caddy, резерв и
+проверки после публикации. [Выкладка сайта](docs/RELEASE.md) · [Состояние FirstVDS](../VPS%20CLAUDE%20CODE%20RULES/CURRENT_STATE.md).
 
 ## Подготовка к поиску — 19.10.2026
 
